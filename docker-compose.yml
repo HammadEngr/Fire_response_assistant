@@ -1,0 +1,32 @@
+services:
+  web:
+    image: python:3.8-slim
+    container_name: django_web
+    working_dir: /app
+    volumes:
+      - ./django:/app
+    command: tail -f /dev/null
+    ports:
+      - "8000:8000"
+
+  rasa:
+    image: rasa/rasa:3.1.0
+    container_name: rasa_server
+    entrypoint:
+      - sleep
+      - infinity
+    working_dir: /app
+    volumes:
+      - ./rasa:/app
+    ports:
+      - "5005:5005"
+
+  actions:
+    image: python:3.8-slim
+    container_name: rasa_actions
+    working_dir: /app
+    volumes:
+      - ./actions:/app
+    command: tail -f /dev/null
+    ports:
+      - "5055:5055"
