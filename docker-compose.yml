@@ -21,6 +21,8 @@ services:
   web:
     build: ./django
     container_name: django_web
+    env_file:
+      - .env
     volumes:
       - ./django:/app
     ports:

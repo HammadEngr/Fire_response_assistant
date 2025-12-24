@@ -5,5 +5,23 @@
 {%endblock %} 
 
 {% block content %}
-    <h1>Fire Response Assistant Chat Bot</h1>
+    <header class="chatbot-header">
+        <h1>Fire Response Assistant</h1>
+    </header>
+    <section class="chatbot-section">
+        <div class="chatbot__input-box">
+            <form action="" class="chatbot__input-form">
+                <input 
+                    type="text" 
+                    class="chatbot__input-input" 
+                    placeholder="Do you want to report about fire or you need fire education ?" 
+                />
+                <button type="submit" class="chatbot__send-button">Send</button>
+            </form>
+        </div>
+    </section>
+    <footer class="chatbot-footer">
+        <p>Fire Emergency Response chatbot to help citizens to rescue, mitigate and general fire safety education.</p>
+        <p>Created By: Hammad Ahmed <span>Student Id: Q1106537</span></p>
+    </footer>
 {% endblock %}
