@@ -14,4 +14,4 @@ class ActionHelloWorld(Action):
     ) -> List[Dict[Text, Any]]:
 
         dispatcher.utter_message(text="Hello from action server!")
-        return "action_hello_world"
+        return []
