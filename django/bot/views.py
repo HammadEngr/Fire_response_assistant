@@ -25,3 +25,6 @@ def chat(request):
     response = requests.post(RASA_URL, json=payload)
     print("RASA response:", response)
     return JsonResponse(response.json(), safe=False)
+
+def index(request):
+    return render(request, "bot/index.html")
