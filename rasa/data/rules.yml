@@ -1,12 +1,45 @@
 version: "3.1"
 
 rules:
-  - rule: greet triggers action
+  - rule: Start fire report flow
     steps:
-      - intent: greet
-      - action: action_hello_world
+      - intent: report_fire
+      - action: utter_fire_entry
+      - action: utter_ask_fire_location
 
-  - rule: say goodbye
+  - rule: Fire location slected
     steps:
-      - intent: goodbye
-      - action: utter_goodbye
+      - or:
+          - intent: location_kitchen
+          - intent: location_electrical
+          - intent: location_living_area
+          - intent: location_garage
+          - intent: location_gas_pipeline
+          - intent: location_other
+      - action: utter_check_immediate_threat
+
+  - rule: Immediate life threatening situation
+    steps:
+      - intent: immediate_threat_yes
+      - action: utter_emergency_rescue_plan
+
+  - rule: No immediate life threatening situation
+    steps:
+      - intent: immediate_threat_no
+      - action: utter_ask_hazard_presence
+
+  - rule: Hazard escalates to emergency
+    steps:
+      - or:
+          - intent: hazard_heavy_smoke
+          - intent: hazard_buring_embers
+          - intent: hazard_gas_smell
+          - intent: hazard_electric_spark
+      - action: utter_emergency_rescue_plan
+
+  - rule: Non critical hazard detected
+    steps:
+      - or:
+          - intent: hazard_no_smoke
+          - intent: hazard_light_smoke
+      - action: utter_non_critical_hazard_advice

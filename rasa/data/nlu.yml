@@ -1,14 +1,62 @@
 version: "3.1"
 
 nlu:
-  - intent: greet
+  - intent: report_fire
     examples: |
-      - hello
-      - hi
-      - hey
+      - /report_fire
 
-  - intent: goodbye
+  - intent: location_kitchen
     examples: |
-      - bye
-      - goodbye
-      - see you
+      - /location_kitchen
+
+  - intent: location_electrical
+    examples: |
+      - /location_electrical
+
+  - intent: location_living_area
+    examples: |
+      - /location_living_area
+
+  - intent: location_garage
+    examples: |
+      - /location_garage
+
+  - intent: location_gas_pipeline
+    examples: |
+      - /location_gas_pipeline
+
+  - intent: location_other
+    examples: |
+      - /location_other
+
+  - intent: immediate_threat_yes
+    examples: |
+      - /immediate_threat_yes
+
+  - intent: immediate_threat_no
+    examples: |
+      - /immediate_threat_no
+
+  - intent: hazard_no_smoke
+    examples: |
+      - /hazard_no_smoke
+
+  - intent: hazard_light_smoke
+    examples: |
+      - /hazard_light_smoke
+
+  - intent: hazard_heavy_smoke
+    examples: |
+      - /hazard_heavy_smoke
+
+  - intent: hazard_buring_embers
+    examples: |
+      - /hazard_buring_embers
+
+  - intent: hazard_gas_smell
+    examples: |
+      - /hazard_gas_smell
+
+  - intent: hazard_electrical_spark
+    examples: |
+      - /hazard_electrical_spark

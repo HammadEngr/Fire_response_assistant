@@ -3,13 +3,105 @@ version: "3.1"
 intents:
   - greet
   - goodbye
+  - report_fire
+  - immediate_threat_yes
+  - immediate_threat_no
+
+  - location_kitchen
+  - location_electrical
+  - location_living_area
+  - location_garage
+  - location_gas_pipeline
+  - location_other
+
+  - hazard_no_smoke
+  - hazard_light_smoke
+  - hazard_heavy_smoke
+  - hazard_buring_embers
+  - hazard_gas_smell
+  - hazard_electrical_spark
 
 responses:
   utter_goodbye:
     - text: "Goodbye!"
 
-actions:
-  - action_hello_world
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+
+  utter_fire_entry:
+    - text: "You are reporting a fire at your house."
+
+  utter_ask_fire_location:
+    - text: "Where is the fire located?"
+      buttons:
+        - title: "Kitchen"
+          payload: "/location_kitchen"
+        - title: "Electrical / Technical Room"
+          payload: "/location_electrical"
+        - title: "Living Area / Bedroom"
+          payload: "/location_living_area"
+        - title: "Garage"
+          payload: "/location_garage"
+        - title: "Nearby Gas Pipeline / Cylinder"
+          payload: "/location_gas_pipeline"
+        - title: "Other"
+          payload: "/location_other"
+
+  utter_check_immediate_threat:
+    - text: "Is there an immediate threat to life, such as people trapped or heavy smoke?"
+      buttons:
+        - title: "Yes"
+          payload: "/immediate_threat_yes"
+        - title: "No"
+          payload: "/immediate_threat_no"
+
+  utter_ask_hazard_presence:
+    - text: "What signs are currently present?"
+      buttons:
+        - title: "No Smoke"
+          payload: "/hazard_no_smoke"
+        - title: "Light Smoke"
+          payload: "/hazard_light_smoke"
+        - title: "Heavy Smoke"
+          payload: "/hazard_heavy_smoke"
+        - title: "Burning Embers"
+          payload: "/hazard_buring_embers"
+        - title: "Pungent Gas Smell"
+          payload: "/hazard_gas_smell"
+        - title: "Electric Spark"
+          payload: "/hazard_electrical_spark"
+
+  utter_emergency_rescue_plan:
+    - text: "IMMEDIATE DANGER DETECTED!\n
+        1. Evacuate everyone immediately, including pets, if safe.\n
+        2. Call emergency services once outside at a safe distance.\n
+        3. If clothes catch fire: stop, drop, and roll.\n
+        4. Do NOT attempt to extinguish the fire.\n
+        5. Stay low to avoid smoke inhalation.\n
+        6. If exits are blocked, move to a room with a window and seal door gaps.\n
+        7. Signal for help only if safe.\n
+        8. Do NOT reopen closed doors.\n
+        9. During blackout:\n
+        - Do NOT touch exposed wires\n
+        - Do NOT use switches or flames\n
+        - Leave immediately if you smell gas\n
+
+        Your safety is the priority."
+
+  utter_non_critical_hazard_advice:
+    - text: |
+        ⚠️ No immediate danger detected at this moment.
+
+        • Stay alert and monitor the situation closely.
+        • Keep exits clear.
+        • Avoid electrical switches if conditions change.
+        • If smoke increases, gas smell appears, or sparks occur,
+          leave immediately and call emergency services.
+
+        You can report again if the situation changes.
+
+# actions:
+#   - action_hello_world
 
 session_config:
   session_expiration_time: 60
