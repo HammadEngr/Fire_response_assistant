@@ -12,51 +12,16 @@
         <div class="chatbot__chats">
             <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
             <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp"><p>Hi user</p></div>
         </div>
         <div class="chatbot__input-box">
             <div action="" class="chatbot__input-form">
+                {% csrf_token %}
                 <input 
                     type="text" 
                     class="chatbot__input-input" 
                     placeholder="Do you want to report about fire or you need fire education ?" 
                 />
-                <button type="submit" class="chatbot__send-button">Ask</button>
+                <button type="submit" class="chatbot__send-button" id="main-btn">Ask</button>
             </div>
         </div>
     </section>

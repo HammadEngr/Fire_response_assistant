@@ -28,3 +28,20 @@ def chat(request):
 
 def index(request):
     return render(request, "bot/index.html")
+
+def handle_user_message(requset):
+    data = json.loads(requset.body)
+
+    user_message = data.get("user_message")
+
+    print("User message:", user_message)
+
+    
+    rasa_response = requests.post(RASA_URL, json={
+        "sender": "user",
+        "message": user_message
+    })
+
+    bot_message = rasa_response.json()
+
+    return JsonResponse({"status": "success"," response": bot_message})
