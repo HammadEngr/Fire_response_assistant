@@ -1,62 +1,82 @@
 version: "3.1"
 
 nlu:
+  - intent: greet
+    examples: |
+      - hello
+      - hi
+      - hey
+      - good morning
+      - good evening
+      - hey there
+      - help
+      - help me
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you later
+      - see you
+      - catch you later
+
+  - intent: fire_education
+    examples: |
+      - /fire_education
+      - fire basics
+      - tell me about fire safety
+      - give me fire safety tips
+      - educate me about fire safety
+      - i want to learn about fire types
+      - can you provide fire safety education
+      - fire safety information please
+      - how can i avoid fire
+      - how to extinguish fire
+      - what is fire extinguisher
+
   - intent: report_fire
     examples: |
       - /report_fire
+      - fire
+      - i see flames
+      - there is a fire
+      - I want to report a fire
+      - I need to report a fire emergency
+      - my house is on fire
+      - the house is burning
+      - something is burning
 
-  - intent: location_kitchen
-    examples: |
-      - /location_kitchen
+      - fire in my [house](incident_site)
+      - fire in the [factory](incident_site)
+      - fire in the [building](incident_site)
+      - fire in the [warehouse](incident_site)
+      - fire in the [store room](incident_site)
+      - fire in the [forest](incident_site)
+      - fire in the [farms](incident_site)
+      - fire in the [garden](incident_site)
 
-  - intent: location_electrical
-    examples: |
-      - /location_electrical
+      - fire in the [kitchen](incident_area)
+      - fire in the [garage](incident_area)
+      - fire in the [bedroom](incident_area)
+      - fire in the [living room](incident_area)
+      - fire in the [electrical room](incident_area)
+      - fire in the [technical room](incident_area)
+      - fire near the [gas cylinder](incident_area)
+      - fire near the [gas pipeline](incident_area)
+      - fire in the [house](incident_area)
 
-  - intent: location_living_area
-    examples: |
-      - /location_living_area
-
-  - intent: location_garage
-    examples: |
-      - /location_garage
-
-  - intent: location_gas_pipeline
-    examples: |
-      - /location_gas_pipeline
-
-  - intent: location_other
-    examples: |
-      - /location_other
+      - i see [light smoke](hazard)
+      - i smell [gas](hazard)
+      - there are [sparks](hazard)
+      - i see [embers](hazard)
 
   - intent: immediate_threat_yes
     examples: |
       - /immediate_threat_yes
-
-  - intent: immediate_threat_no
-    examples: |
-      - /immediate_threat_no
-
-  - intent: hazard_no_smoke
-    examples: |
-      - /hazard_no_smoke
-
-  - intent: hazard_light_smoke
-    examples: |
-      - /hazard_light_smoke
-
-  - intent: hazard_heavy_smoke
-    examples: |
-      - /hazard_heavy_smoke
-
-  - intent: hazard_buring_embers
-    examples: |
-      - /hazard_buring_embers
-
-  - intent: hazard_gas_smell
-    examples: |
-      - /hazard_gas_smell
-
-  - intent: hazard_electrical_spark
-    examples: |
-      - /hazard_electrical_spark
+      - i am trapped
+      - i cannot escape
+      - i am in danger
+      - people are injured
+      - people are burning
+      - pets are burning
+      - i am burning

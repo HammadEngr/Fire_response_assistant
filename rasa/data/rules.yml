@@ -1,45 +1,49 @@
 version: "3.1"
 
 rules:
-  - rule: Start fire report flow
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Say goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Fire education
+    steps:
+      - intent: fire_education
+      - action: utter_fire_education
+
+  - rule: Fire reported
     steps:
       - intent: report_fire
       - action: utter_fire_entry
-      - action: utter_ask_fire_location
+      - action: utter_ask_fire_site
 
-  - rule: Fire location slected
-    steps:
-      - or:
-          - intent: location_kitchen
-          - intent: location_electrical
-          - intent: location_living_area
-          - intent: location_garage
-          - intent: location_gas_pipeline
-          - intent: location_other
-      - action: utter_check_immediate_threat
-
-  - rule: Immediate life threatening situation
+  - rule: Immediate threat yes
     steps:
       - intent: immediate_threat_yes
-      - action: utter_emergency_rescue_plan
+      - action: utter_immediate_threat_yes
 
-  - rule: No immediate life threatening situation
-    steps:
-      - intent: immediate_threat_no
-      - action: utter_ask_hazard_presence
-
-  - rule: Hazard escalates to emergency
+  - rule: Ask for fire site after reporting fire
     steps:
       - or:
-          - intent: hazard_heavy_smoke
-          - intent: hazard_buring_embers
-          - intent: hazard_gas_smell
-          - intent: hazard_electric_spark
-      - action: utter_emergency_rescue_plan
+          - intent: site_house
+          - intent: site_factory
+          - intent: site_building
+          - intent: site_warehouse
+          - intent: site_forest_grassland
+      - action: utter_ask_fire_site
 
-  - rule: Non critical hazard detected
+  - rule: Ask for fire area after fire site reported
     steps:
       - or:
-          - intent: hazard_no_smoke
-          - intent: hazard_light_smoke
-      - action: utter_non_critical_hazard_advice
+          - intent: area_kitchen
+          - intent: area_garage
+          - intent: area_living_area
+          - intent: area_electrical
+          - intent: area_gas_pipeline
+          - intent: area_other
+      - action: utter_ask_fire_area
