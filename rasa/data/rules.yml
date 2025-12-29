@@ -11,14 +11,14 @@ rules:
       - intent: goodbye
       - action: utter_goodbye
 
-  - rule: Fire education
+  - rule: Handle fire education flow
     steps:
       - intent: fire_education
-      - action: utter_fire_education
+      - action: action_handle_fire_education_chapter_choice
 
-  - rule: Fire reported
+  - rule: Fire Incident
     steps:
-      - intent: report_fire
+      - intent: fire_incident
       - action: utter_fire_entry
       - action: utter_ask_fire_site
 

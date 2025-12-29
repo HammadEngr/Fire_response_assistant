@@ -3,6 +3,9 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 RASA_URL = "http://rasa:5005/webhooks/rest/webhook"
 
@@ -41,7 +44,20 @@ def handle_user_message(requset):
         "sender": "user",
         "message": user_message
     })
+    logger.info("called rasa")
 
     bot_message = rasa_response.json()
+    bot_final_message = None
+    print(bot_message[0])
 
-    return JsonResponse({"status": "success"," response": bot_message})
+    if bot_message and bot_message[0].get("buttons"):
+        bot_final_message = {
+            "status":bot_message[0].get("status"),
+            "text":bot_message[0].get("text"),
+            "is_btn": True,
+            "buttons":bot_message[0].get("buttons")
+        }
+    else:
+        bot_final_message = bot_message[0]
+
+    return JsonResponse({"status": "success","response": bot_final_message})

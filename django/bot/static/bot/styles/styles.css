@@ -78,6 +78,33 @@ body {
   padding-left: var(--padding-main);
 }
 
+.chatbot-response-box {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--flex-gap);
+}
+
+.chat_btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--flex-gap);
+}
+.chat_btn {
+  width: fit-content;
+  min-width: 140px;
+  height: 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  background-color: var(--text-tertiary);
+
+  box-shadow: 0 2px 4px rgba(78, 77, 77, 0.9);
+}
+.chat_btn:hover {
+  background-color: aliceblue;
+}
+
 .chatbot__input-box {
   display: flex;
   justify-content: space-between;

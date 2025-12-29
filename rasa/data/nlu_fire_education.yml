@@ -1,0 +1,44 @@
+version: "3.1"
+
+nlu:
+  - intent: fire_education
+    examples: |
+      - fire safety
+      - safety tips
+      - fire extinguisher
+
+      - fire [basics](education_chapter)
+      - [fundamentals](education_chapter)
+      - [introduction](education_chapter) to fire
+      - fire [overview](education_chapter)
+
+      - explain [risk assessment](education_chapter)
+      - fire [hazard analysis](education_chapter)
+      - teach [mitigation](education_chapter) steps
+      - explain fire [control measures](education_chapter)
+      - [damage reduction](education_chapter)
+      - explain [safety measures](education_chapter)
+
+  - synonym: basics
+    examples: |
+      - fundamentals
+      - introduction
+      - overview
+
+  - synonym: risk_assessment
+    examples: |
+      - risk assessments
+      - hazard assessment
+      - hazard analysis
+      - danger assessment
+      - risk evaluation
+      - assessing fire risks
+      - hazards evaluation
+
+  - synonym: mitigation_steps
+    examples: |
+      - control measures
+      - fire control steps
+      - damage reduction
+      - safety measures
+      - containment steps

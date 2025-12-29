@@ -6,7 +6,7 @@ intents:
 
   # selectable options step 1
   - fire_education
-  - report_fire
+  - fire_incident
 
   # selectable options step 2
   - site_house
@@ -26,9 +26,19 @@ intents:
   - area_other
 
 entities:
+  - education_chapter
   - incident_site
   - incident_area
   - hazard
+  - report
+
+slots:
+  education_chapter:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: education_chapter
 
 responses:
   utter_greet:
@@ -39,13 +49,31 @@ responses:
     - text: "Goodbye! Stay safe."
 
   utter_fire_education:
-    - text: "Do you want basic fire education or you want to proceed with fire types"
+    - text: "Do you want basic fire education or something more ? Select any of the option"
       buttons:
         - title: "Fire Basics"
           payload: "/fire_basics"
 
-        - title: "Fire Types"
-          payload: "/fire_types"
+        - title: "Mitigation Steps"
+          payload: "/fire_mitigation"
+
+        - title: "Risk Assesment"
+          payload: "/risk_assesment"
+
+  utter_fire_basics:
+    - text: "Fire basics"
+
+  utter_fire_mitigation:
+    - text: "Fire mitigation"
+
+  utter_fire_risk_assessment_steps:
+    - text: "Fire risk assessment"
+
+  utter_general_education:
+    - text: "Fire general education"
+      buttons:
+        - title: "Fire Education"
+          payload: "/fire_education"
 
   utter_immediate_threat_yes:
     - text: "If you are in immediate danger, please call emergency services right away!"
@@ -87,8 +115,8 @@ responses:
         - title: "Other"
           payload: "/area_other"
 
-# actions:
-#   - action_hello_world
+actions:
+  - action_handle_fire_education_chapter_choice
 
 session_config:
   session_expiration_time: 60
