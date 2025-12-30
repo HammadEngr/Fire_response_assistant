@@ -59,6 +59,7 @@ def handle_user_message(request):
         # REFACTORING BOT MESSAGE ON PURPOSE
         if bot_message and bot_message[0].get("buttons"):
             bot_final_message = {
+                "sender":"bot",
                 "sender_id":sender_id,
                 "status":bot_message[0].get("status"),
                 "text":bot_message[0].get("text"),
@@ -67,6 +68,7 @@ def handle_user_message(request):
             }
         else:
             bot_final_message = {
+                "sender":"bot",
                 "sender_id": sender_id,
                 "status":bot_message[0].get("status"),
                 "text":bot_message[0].get("text"),
