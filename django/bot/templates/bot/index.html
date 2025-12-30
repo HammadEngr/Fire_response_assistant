@@ -26,11 +26,12 @@
             <div action="" class="chatbot__input-form">
                 {% csrf_token %}
                 <input 
-                    type="text" 
+                    id = "user_msg"
+                    type="text"
                     class="chatbot__input-input" 
                     placeholder="Do you want to report about fire or you need fire education ?" 
                 />
-                <button type="submit" class="chatbot__send-button" id="main-btn">Ask</button>
+                <button type="submit" class="chatbot__send-button" id="send_message_btn">Ask</button>
             </div>
         </div>
     </section>

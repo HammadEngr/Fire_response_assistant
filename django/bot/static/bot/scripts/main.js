@@ -1,97 +1,16 @@
 "use strict";
+import { handleBtnInputs, handleUserInput } from "./handlers.js";
 
-const main_btn = document.getElementById("main-btn");
-const input = document.querySelector(".chatbot__input-input");
-const bot_text_box = document.getElementById("bot-msg-text");
+const user_input = document.getElementById("user_msg");
+
 const bot_btns = document.getElementById("bot-btns");
+const bot_text_box = document.getElementById("bot-msg-text");
+const send_message_btn = document.getElementById("send_message_btn");
 
-main_btn.addEventListener("click", async function (e) {
-  e.preventDefault();
-
-  const user_message = input.value;
-
-  const csrfToken = getCsrfToken();
-  const body_content = JSON.stringify({ user_message });
-
-  // send user message to backend
-  const headers_content = {
-    "Content-Type": "application/json",
-    "X-CSRFToken": csrfToken,
-  };
-  const data = await handleUserRequest(headers_content, body_content);
-  console.log(data);
-
-  if (data.status === "success") {
-    const { response } = data;
-    bot_text_box.innerHTML = response.text;
-    if (response.is_btn) {
-      const btn_markup = response.buttons
-        .map(
-          (btn) =>
-            `<button class="chat_btn" data-payload=${btn.payload}>${btn.title}</button>`
-        )
-        .join("");
-      bot_btns.innerHTML = "";
-      bot_btns.insertAdjacentHTML("beforeend", btn_markup);
-    }
-  }
+// EVENT LISTENERS
+send_message_btn.addEventListener("click", function (e) {
+  handleUserInput(e, bot_text_box, bot_btns, user_input);
 });
-
-//  add event listener to parent div and use event delegation
-bot_btns.addEventListener("click", async function (e) {
-  if (e.target.matches(".chat_btn")) {
-    const payload = e.target.dataset.payload;
-    const csrfToken = getCsrfToken();
-    const body_content = JSON.stringify({ user_message: payload });
-
-    const headers_content = {
-      "Content-Type": "application/json",
-      "X-CSRFToken": csrfToken,
-    };
-    const data = await handleUserRequest(headers_content, body_content);
-    console.log(data);
-  }
+bot_btns.addEventListener("click", function (e) {
+  handleBtnInputs(e);
 });
-
-function getCsrfToken() {
-  const csrfToken = document.cookie
-    .split(";")
-    .find((value) => value.includes("csrftoken"))
-    .split("=")[1];
-
-  return csrfToken;
-}
-
-async function handleUserRequest(headers_content, body_content) {
-  try {
-    const res = await fetch("http://localhost:8000/api/get_response/", {
-      method: "POST",
-      credentials: "same-origin",
-      body: body_content,
-      headers: headers_content,
-    });
-
-    return await res.json();
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
-const showPosition = (position) => {
-  console.log(position);
-  console.log(
-    "Latitude: " +
-      position.coords.latitude +
-      " Longitude: " +
-      position.coords.longitude
-  );
-};
-
-const get_location = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
-};
