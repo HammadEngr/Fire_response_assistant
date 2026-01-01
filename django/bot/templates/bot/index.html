@@ -5,38 +5,59 @@
 {%endblock %} 
 
 {% block content %}
-    <header class="chatbot-header">
-        <h1>Fire Response Assistant</h1>
-    </header>
-    <section class="chatbot-section">
-        <div class="chatbot__chats" id="chat_container">
-            <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
-            <div class="chatbot__chats-bot chatbot__chats-resp" id="bot">
-                <div class="chatbot-response-box">
-                    <p id="bot-msg-text">Hi user</p>
-                    <div class="chat_btns bot-btns">
-                        {% comment %} <button class="chat_btn">hello</button>
-                        <button class="chat_btn">hello</button>
-                        <button class="chat_btn">hello</button> {% endcomment %}
-                    </div>
+    <section class="chatbot-layout">
+        <div class="sidebar-section">
+            <h2 class="sidebar-heading">Quick Actions</h2>
+            <div class="quick-action">
+                <p class="quick-action-heading">Fire Education</p>
+                <div class="quick-btns">
+                    <button class="quick-btn">Basics</button>
+                    <button class="quick-btn">Risk Assessments</button>
+                    <button class="quick-btn">Mitigatoion Steps</button>
+                </div>
+            </div>
+            <div class="quick-action">
+                <p class="quick-action-heading">Fire Incident Report</p>
+                <div class="quick-btns">
+                    <button class="quick-btn">click me</button>
+                    <button class="quick-btn">click me</button>
+                    <button class="quick-btn">click me</button>
+                    <button class="quick-btn">click me</button>
+                    <button class="quick-btn">click me</button>
                 </div>
             </div>
         </div>
-        <div class="chatbot__input-box">
-            <div action="" class="chatbot__input-form">
-                {% csrf_token %}
-                <input 
-                    id = "user_msg"
-                    type="text"
-                    class="chatbot__input-input" 
-                    placeholder="Do you want to report about fire or you need fire education ?" 
-                />
-                <button type="submit" class="chatbot__send-button" id="send_message_btn">Ask</button>
+        <main class="chat-section">
+            <div class="chatbot__chats" id="chat_container">
+                <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
+                <div class="chatbot__chats-bot chatbot__chats-resp" id="bot">
+                    <div class="chatbot-response-box">
+                        <p id="bot-msg-text">Hi user</p>
+                        <div class="chat_btns bot-btns"></div>
+                    </div>
+                </div>
+                <div class="chatbot__chats-user chatbot__chats-resp"><p>Hello Bot</p></div>
+                <div class="chatbot__chats-bot chatbot__chats-resp" id="bot">
+                    <div class="chatbot-response-box">
+                        <p id="bot-msg-text">Hi user</p>
+                        <div class="chat_btns bot-btns"></div>
+                    </div>
+                </div>
+                <div class="chatbot__chats-bot chatbot__chats-resp">
+            
+          </div>
+            </div>    
+            <div class="chatbot__input-box">
+                <div action="" class="chatbot__input-form">
+                    {% csrf_token %}
+                    <input id = "user_msg" type="text" class="chatbot__input-input" placeholder="Do you want to report about fire or you need fire education ?" />
+                    <button type="submit" class="chatbot__send-button" id="send_message_btn">Ask</button>
+                </div>
             </div>
-        </div>
+            
+        </main>
+
     </section>
-    <footer class="chatbot-footer">
-        <p>Fire Emergency Response chatbot to help citizens to rescue, mitigate and general fire safety education.</p>
-        <p>Created By: Hammad Ahmed <span><b>Student Id: Q1106537</b></span>-<span><Address>BSBI Berlin Campus</Address></span></p>
-    </footer>
+        
 {% endblock %}
+        

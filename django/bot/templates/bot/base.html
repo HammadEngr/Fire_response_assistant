@@ -9,6 +9,12 @@
     <script defer type="module" src="{% static 'bot/scripts/main.js' %}"></script>
   </head>
   <body>
-    {% block content %} {% endblock %}
+      <header class="chatbot-header">
+        <h1>Fire Crises Response Assistant</h1>
+      </header>
+        {% block content %} {% endblock %}
+      <footer class="chatbot-footer">
+        <p>Assignment Title: <b>Fire Crises Response Assistant,</b> <span>Made by: <b>Hammad Ahmed, Student ID: Q1106537</b></span> </p>
+      </footer>
   </body>
 </html>

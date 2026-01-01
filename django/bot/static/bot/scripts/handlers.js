@@ -37,6 +37,7 @@ export async function handleUserInput(event, bot_text_box, bot_btns, input) {
       bot_text_box.textContent = response.text;
       renderChat();
     }
+    input.value = "";
   } catch (error) {
     console.log(error);
   }
@@ -107,4 +108,5 @@ function renderChat() {
     .join("");
 
   chat_container.innerHTML = chat_markup;
+  chat_container.scrollIntoView;
 }
