@@ -8,7 +8,7 @@ export async function handleUserInput(event, bot_text_box, bot_btns, input) {
     event.preventDefault();
 
     const user_message = input.value;
-    console.log(user_message.length);
+
     if (!user_message) return;
 
     // update state
