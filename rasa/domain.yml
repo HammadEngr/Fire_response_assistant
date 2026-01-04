@@ -7,29 +7,14 @@ intents:
   # selectable options step 1
   - fire_education
   - fire_incident
-
-  # selectable options step 2
-  - site_house
-  - site_factory
-  - site_building
-  - site_warehouse
-  - site_forest_grassland
-
-  # confirmation of immediate threat step 3
-  - immediate_threat_yes
-
-  - area_kitchen
-  - area_garage
-  - area_living_area
-  - area_electrical
-  - area_gas_pipeline
-  - area_other
+  - inform_fire_site
+  - inform_immediate_threat
 
 entities:
   - education_chapter
   - incident_site
   - incident_area
-  - hazard
+  - immediate_threat
   - report
 
 slots:
@@ -39,6 +24,20 @@ slots:
     mappings:
       - type: from_entity
         entity: education_chapter
+
+  incident_site:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: incident_site
+
+  immediate_threat:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: immediate_threat
 
 responses:
   utter_greet:
@@ -75,49 +74,62 @@ responses:
         - title: "Fire Education"
           payload: "/fire_education"
 
-  utter_immediate_threat_yes:
-    - text: "If you are in immediate danger, please call emergency services right away!"
-
-  utter_fire_entry:
-    - text: "You are reporting a fire at your site. Please provide more details."
-
-  utter_ask_fire_site:
-    - text: "Where is the fire located?"
+  utter_fire_incident_help:
+    - text: "You are asking for a fire help at your site. Provide more details about type of site either by selecting from below options or you can also type."
       buttons:
         - title: "House"
           payload: "/site_house"
-
         - title: "Factory"
           payload: "/site_factory"
-
         - title: "Warehouse"
           payload: "/site_warehouse"
-
         - title: "Building"
           payload: "/site_building"
-
         - title: "Forest or Grassland"
-          payload: "/site_forest_grassland"
+          payload: "/site_forest"
 
-  utter_ask_fire_area:
-    - text: "Which area is affected by the fire?"
+  utter_ask_immediate_threat:
+    - text: "Are you in immediate danger ? Do you see any of these situations ?"
       buttons:
-        - title: "Kitchen"
-          payload: "/area_kitchen"
-        - title: "Garage"
-          payload: "/area_garage"
-        - title: "Living Area"
-          payload: "/area_living_area"
-        - title: "Electrical Room"
-          payload: "/area_electrical"
-        - title: "Near by Gas Pipeline"
-          payload: "/area_gas_pipeline"
-        - title: "Other"
-          payload: "/area_other"
+        - title: "Heavy flames/smoke"
+          payload: "/immediate_threat_heavy_flames"
+        - title: "Burning Embers"
+          payload: "/immediate_threat_burning_embers"
+        - title: "I am entrapped"
+          payload: "/immediate_threat_entrapped"
+        - title: "None"
+          payload: "/immediate_threat_none"
+
+  utter_handle_immediate_threat_house:
+    - text: "House threat found"
+  utter_handle_immediate_threat_factory:
+    - text: "Factory threat found"
+  utter_handle_immediate_threat_wh:
+    - text: "Warehouse threat found"
+  utter_handle_immediate_threat_building:
+    - text: "Building threat found"
+  utter_handle_immediate_threat_forest:
+    - text: "Forest threat found"
+  utter_handle_immediate_threat_general:
+    - text: "General threat found"
+
+  utter_handle_fire_responce_house:
+    - text: "House fire responce"
+  utter_handle_fire_responce_factory:
+    - text: "Factory fire responce"
+  utter_handle_fire_responce_wh:
+    - text: "warehouse fire responce"
+  utter_handle_fire_responce_building:
+    - text: "Building fire responce"
+  utter_handle_fire_responce_forest:
+    - text: "Forest fire responce"
+  utter_handle_fire_responce_general:
+    - text: "General fire responce"
 
 actions:
   - action_handle_fire_education_chapter_choice
+  - action_handle_immediate_threat_yes
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: false
+  carry_over_slots_to_new_session: true

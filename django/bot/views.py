@@ -42,8 +42,8 @@ def handle_user_message(request):
             sender_id = request.session.session_key
 
         # RESETTING TRACKER (only in development phase)
-        if (settings.APP_MODE=="development"):
-            requests.post(f"http://rasa:5005/conversations/{sender_id}/tracker/events",json={"event": "restart"})
+        # if (settings.APP_MODE=="development"):
+        #     requests.post(f"http://rasa:5005/conversations/{sender_id}/tracker/events",json={"event": "restart"})
 
         # RASA REQUEST
         rasa_response = requests.post(RASA_URL, json={

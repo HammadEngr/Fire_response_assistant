@@ -1,8 +1,14 @@
 version: "3.1"
 
 stories:
-  - story: Fire education flow
+  - story: Fire Education Flow
     steps:
       - intent: fire_education
       - action: action_handle_fire_education_chapter_choice
+      - action: action_listen
+
+  - story: Fire Incident Help Flow
+    steps:
+      - intent: fire_incident
+      - action: utter_fire_incident_help
       - action: action_listen

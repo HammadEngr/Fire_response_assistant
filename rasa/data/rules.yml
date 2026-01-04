@@ -16,34 +16,21 @@ rules:
       - intent: fire_education
       - action: action_handle_fire_education_chapter_choice
 
-  - rule: Fire Incident
+  - rule: Fire Incident Help Flow
     steps:
       - intent: fire_incident
-      - action: utter_fire_entry
-      - action: utter_ask_fire_site
+      - action: utter_fire_incident_help
 
-  - rule: Immediate threat yes
+  - rule: Ask Immediate Threat After Site Selection
     steps:
-      - intent: immediate_threat_yes
-      - action: utter_immediate_threat_yes
+      - intent: inform_fire_site
+      - slot_was_set:
+          - incident_site
+      - action: utter_ask_immediate_threat
 
-  - rule: Ask for fire site after reporting fire
+  - rule: Immediate Threat Detected
     steps:
-      - or:
-          - intent: site_house
-          - intent: site_factory
-          - intent: site_building
-          - intent: site_warehouse
-          - intent: site_forest_grassland
-      - action: utter_ask_fire_site
-
-  - rule: Ask for fire area after fire site reported
-    steps:
-      - or:
-          - intent: area_kitchen
-          - intent: area_garage
-          - intent: area_living_area
-          - intent: area_electrical
-          - intent: area_gas_pipeline
-          - intent: area_other
-      - action: utter_ask_fire_area
+      - intent: inform_immediate_threat
+      - slot_was_set:
+          - immediate_threat
+      - action: action_handle_immediate_threat_yes
