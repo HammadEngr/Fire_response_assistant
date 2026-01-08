@@ -13,6 +13,7 @@ def index(request):
 
 def handle_user_message(request):
     try:
+        print("handle_user_message")
         if (request.method != "POST"):
             return JsonResponse({"status":"error", "message" : "invalid method"}, status=405)
         
