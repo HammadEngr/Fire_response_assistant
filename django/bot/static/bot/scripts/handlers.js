@@ -5,6 +5,7 @@ const app_state = [];
 
 export async function handleUserInput(event, bot_text_box, bot_btns, input) {
   try {
+    console.log("==================handle user input====================");
     event.preventDefault();
 
     const user_message = input.value;
