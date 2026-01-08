@@ -24,6 +24,7 @@ export async function handleUserInput(event, bot_text_box, bot_btns, input) {
       "X-CSRFToken": csrfToken,
     };
     const data = await handleRequest(headers_content, body_content);
+    console.log(data);
 
     if (data.status === "success") {
       const { response } = data;
