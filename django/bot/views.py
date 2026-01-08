@@ -3,11 +3,12 @@ import requests
 from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 RASA_URL = "http://rasa:5005/webhooks/rest/webhook"
 
 # Create your views here.
-
+@csrf_exempt
 def index(request):
     return render(request, "bot/index.html")
 
