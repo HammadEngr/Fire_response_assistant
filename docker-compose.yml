@@ -5,8 +5,6 @@ services:
     volumes:
       - ./rasa:/app
 
-    # ports:
-    #   - "5005:5005"
     command: run --enable-api --cors "*" --debug
 
     depends_on:
@@ -17,8 +15,6 @@ services:
     container_name: rasa_actions
     volumes:
       - ./actions:/app
-    # ports:
-    #   - "5055:5055"
 
   web:
     build: ./django
@@ -26,13 +22,10 @@ services:
     env_file:
       - .env
     volumes:
-      # - ./django:/app
       - static_volume:/app/staticfiles
-      - db_volume:/app/db.sqlite3
+      - db_volume:/app/db
     expose:
       - "8000"
-    # ports:
-    #   - "8000:8000"
     depends_on:
       - rasa
 
@@ -49,3 +42,4 @@ services:
 
 volumes:
   static_volume:
+  db_volume:

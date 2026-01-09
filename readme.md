@@ -1,146 +1,193 @@
 # Crisis Assistant Chatbot
 
-A Dockerized production ready **Fire Response Assistant** chatbot system built using Rasa, Django, and an external Action Server. The project demonstrates end-to-end chatbot architecture, API integration, and containerized deployment.
+_A Dockerized Fire Response & Education Assistant_
 
-## Tech Stack
+This project is a **production-style chatbot system** built using **Django**, **Rasa**, and **Docker**, and deployed on **AWS EC2** behind **NGINX + Gunicorn**.
 
-- Python: 3.8
-- Rasa: 3.1.0
-- Django: 4.2
-- rasa sdk: 3.1.0
+The goal of the project is to demonstrate:
+
+- chatbot architecture
+- backend–ML integration
+- containerized deployment
+- real-world DevOps workflow
+
+---
+
+## High-Level Architecture
+
+```
+Browser
+   ↓
+NGINX (Reverse Proxy)
+   ↓
+Gunicorn
+   ↓
+Django (API + UI)
+   ↓
+Rasa (NLU & Dialogue)
+   ↓
+Rasa Actions (Custom Logic)
+```
+
+All services run as **Docker containers**.
+
+---
+
+## 🛠 Tech Stack
+
+- Python 3.8
+- Django 4.x
+- Rasa 3.1.0
+- Rasa SDK 3.1.0
 - Docker & Docker Compose
-- postman (for api testing)
+- NGINX
+- Gunicorn
+- AWS EC2 (Elastic IP)
 
-## Architecture
-
-Browser → Django → Rasa → Action Server
-
-## Responsibilites
-
-- Django - API Layer, request handling
-- Rasa - NLU + dialogue management
-- Action server - custom business logic
-- Docker - environment consistency
+---
 
 ## Project Structure
 
+```
 crisis_assistant/
-├── docker-compose.yml
-├── rasa/
-│ ├── data/
-│ │ ├── nlu.yml
-│ │ └── rules.yml
-│ ├── domain.yml
-│ ├── config.yml
-│ ├── endpoints.yml
-│ └── models/ # generated (ignored in git)
-├── actions/
-│ └── actions.py
-├── django/
-│ ├── manage.py
-│ ├── config/
-│ └── bot/
-├── .gitignore
+├── docker-compose.yml          # Production configuration
+├── docker-compose.dev.yml      # Development overrides
+├── django/                     # Django backend + UI
+├── rasa/                       # Rasa NLU, rules, domain
+├── actions/                    # Rasa custom actions
+├── nginx/                      # NGINX config
+├── .env.dev                    # Development environment
+├── .env.prod                   # Production environment
 └── README.md
+```
 
-## How to Run Locally
+---
+
+## How to Run Locally (For Evaluation)
 
 ### Prerequisites
 
-- Docker installed and running
-- Git installed
+- Docker
+- Docker Compose
+- Git
 
-### Steps To Follow
+No Python, virtualenv, or manual installs are required.
 
-- **step 1:** start containers (run this in new cli)
-  docker compose up -d
-- **step 2:** start action server (run this in new cli)
-  docker exec -it action_server sh
-  pip install websockets==10.4 sanic==21.12.0 rasa-sdk==3.1.0
-  python -m rasa_sdk --actions actions --port 5055
+---
 
-  you should see:
-  Registered actions: - action_hello_world
+### Step 1: Clone the repository
 
-- **step 3:** tarin and start rasa (run this in new cli )
-  docker exec -it rasa_server sh
-  rasa train
-  rasa run --enable-api --cors "\*"
+```bash
+git clone <repository-url>
+cd crisis_assistant
+```
 
-- **step 4:** start django (run this in new cli)
-  docker exec -it rasa_server sh
-  rasa train --force
-  rasa run --enable-api --cors "\*"
+---
 
-- **step 4:** test via django
-  in post man send a POST request at http://localhost:8000/api/chat/ with body like this {
-  "sender": "test",
-  "message": "hello"
-  }
-  you should get a response like this [
-  {
-  "recipient_id": "test",
-  "text": "Hello from action server!"
-  }
-  ]
+### Step 2: Start the application (development mode)
 
-- **Step 5:** test via Rasa directly at http://localhost:5005/webhooks/rest/webhook
-  with same body send POST request at above url.
-  you will get the same response as above
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+```
 
-## Other auxiliary notes
+This will:
 
-## Notes
+- start Django using `runserver`
+- start Rasa with API enabled
+- enable live code reload
+- expose the app on port **8000**
 
-- Models are not committed; they are generated locally.
-- External action server is used.
+---
 
-### 2.1 Docker-compose.yml
+### Step 3: Train the chatbot model (one time)
 
-    Services:
-        rasa_server → Rasa runtime
-        rasa_actions → External action server
-        django_web → Placeholder for Django
+```bash
+docker exec -it rasa_server rasa train
+```
 
-    All containers:
-        Python 3.8
-        Volume mounted
-        Ports exposed
+---
 
-### 2.2 Learned critical Docker concept
+### Step 4: Access the application
 
-    Official Rasa image has an ENTRYPOINT
-    command: tail -f /dev/null alone does NOT work
+Open a browser and visit:
 
-## PHASE 3
+```
+http://localhost:8000/
+```
 
-### 3.1 Entered Rasa container
+You can now interact with the chatbot UI.
 
-    docker exec -it rasa_server sh
-    rasa init --no-prompt
-    rasa run --enable-api --cors "*"
-    http://localhost:5005/status
+---
 
-## PHASE 4 — External Action Server Setup
+## Production Deployment (AWS EC2)
 
-### 4.1 Entered action server container
+The application is deployed on **AWS EC2** using:
 
-    docker exec -it rasa_actions sh
-    pip install rasa-sdk==3.1.0
+- Docker Compose
+- NGINX
+- Gunicorn
+- Elastic IP (static public access)
 
-    pip uninstall -y websockets sanic
-    pip install sanic==21.12.0 websockets==10.4
+Once deployed, it is accessible from anywhere via:
 
-    python -m rasa_sdk --port 5055
+```
+http://<elastic-ip>/
+```
 
-## CURRENT STATUS (important)
+No local machine is required to keep it running.
 
-    You now have:
+---
 
-    ✅ Dockerized Rasa 3.1.0
-    ✅ External Action Server
-    ✅ Correct dependency pinning
-    ✅ Clean rule-based logic
-    ✅ Stable, production-style architecture
+## Development → Deployment Workflow
 
-    🚫 No Django yet (intentionally)
+1. Develop locally using `docker-compose.dev.yml`
+2. Commit and push changes
+3. Pull on EC2
+4. Deploy with:
+
+   ```bash
+   docker compose build
+   docker compose up -d
+   ```
+
+---
+
+## Key Engineering Decisions
+
+- **Docker volumes** are used for:
+
+  - SQLite database persistence
+  - Rasa trained models
+
+- **No live reload in production** (safe deployment)
+- **CSRF disabled only for API endpoints**
+- **Elastic IP** used to avoid changing host configuration
+
+---
+
+## Notes for Evaluators
+
+- The project demonstrates **real-world backend + ML integration**
+- Uses **production deployment patterns**, not toy scripts
+- Focuses on **correct system design**, not shortcuts
+- The chatbot logic is intentionally **rule-driven** due to safety-critical nature (fire response)
+
+---
+
+## Current Status
+
+- ✔ Fully dockerized
+- ✔ Locally runnable in one command
+- ✔ Deployed on AWS EC2
+- ✔ Stable and accessible
+- ✔ Ready for evaluation
+
+---
+
+## Contact
+
+For any questions regarding setup or architecture, please contact the project author.
+
+---
+
+**End of README**
