@@ -28,6 +28,7 @@ services:
     volumes:
       # - ./django:/app
       - static_volume:/app/staticfiles
+      - db_volume:/app/db.sqlite3
     expose:
       - "8000"
     # ports:
