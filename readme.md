@@ -1,4 +1,4 @@
-# Crisis Assistant Chatbot
+# Fire Crisis Assistant Chatbot
 
 _A Dockerized Fire Response & Education Assistant_
 
@@ -33,7 +33,7 @@ All services run as **Docker containers**.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - Python 3.8
 - Django 4.x
@@ -78,7 +78,7 @@ No Python, virtualenv, or manual installs are required.
 ### Step 1: Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/HammadEngr/Fire_response_assistant.git
 cd crisis_assistant
 ```
 
@@ -183,6 +183,29 @@ No local machine is required to keep it running.
 - ✔ Ready for evaluation
 
 ---
+
+## For Django-Html - IMPORTANT
+
+This is important for Django-Html to work, without these lines templates will not work.
+
+- make a settings.json file in django/.vscode and put these lines there.
+  {
+  "files.associations": {
+  "**/\*.html": "html",
+  "**/templates/**/\*.html": "django-html",
+  "**/templates/**/\*": "django-txt",
+  "**/requirements.{txt,in}": "pip-requirements",
+  "\*_/requirements/_.{txt,in}": "pip-requirements"
+  },
+  "emmet.includeLanguages": {
+  "django-html": "html"
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": []
+  }
+
+- make .prettierignore if using prettier as formater and put thi line there.
+  **/templates/**/\*.html
 
 ## Contact
 
