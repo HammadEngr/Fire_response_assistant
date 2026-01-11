@@ -10,12 +10,12 @@ const chat_container = document.getElementById("chat_container");
 
 // EVENT LISTENERS
 send_message_btn.addEventListener("click", function (e) {
-  handleUserInput(e, bot_text_box, bot_btns, user_input);
+  handleUserInput(e, user_input);
 });
 user_input.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    handleUserInput(e, bot_text_box, bot_btns, user_input);
+    handleUserInput(e, user_input);
   }
 });
 chat_container.addEventListener("click", function (e) {

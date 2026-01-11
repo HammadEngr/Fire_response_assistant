@@ -3,7 +3,7 @@ import { getCsrfToken, handleRequest } from "./helpers.js";
 
 const app_state = [];
 
-export async function handleUserInput(event, bot_text_box, bot_btns, input) {
+export async function handleUserInput(event, input) {
   try {
     console.log("==================handle user input====================");
     event.preventDefault();
@@ -36,7 +36,6 @@ export async function handleUserInput(event, bot_text_box, bot_btns, input) {
         buttons: response.is_btn ? response.buttons : [],
       });
 
-      bot_text_box.textContent = response.text;
       renderChat();
     }
     input.value = "";
