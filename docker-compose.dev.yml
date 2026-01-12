@@ -5,11 +5,12 @@ services:
       - .env
     volumes:
       - ./django:/app
-      - ./django/db:/app/db
+      # - ./django/db:/app/db
     ports:
       - "8000:8000"
     depends_on:
       - rasa
+      - db
 
   rasa:
     command: run --enable-api --cors "*" --debug
