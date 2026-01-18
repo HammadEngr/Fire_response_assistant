@@ -1,36 +1,44 @@
 version: "3.1"
 
 rules:
-  - rule: Greet user
+  # ===== BASIC =====
+  - rule: Greet
     steps:
       - intent: greet
       - action: utter_greet
 
-  - rule: Say goodbye
+  - rule: Goodbye
     steps:
       - intent: goodbye
       - action: utter_goodbye
 
-  - rule: Handle fire education flow
+  # ===== ENTRY =====
+  - rule: Start fire report
     steps:
-      - intent: fire_education
-      - action: action_handle_fire_education_chapter_choice
+      - intent: report_fire
+      - action: action_reset_slots
+      - action: utter_fire_reported
+      - action: site_selection_form
+      - active_loop: site_selection_form
 
-  - rule: Fire Incident Help Flow
+  # ===== SITE SELECTION → ROUTE =====
+  - rule: Site selection done
+    condition:
+      - active_loop: site_selection_form
     steps:
-      - intent: fire_incident
-      - action: utter_fire_incident_help
-
-  - rule: Ask Immediate Threat After Site Selection
-    steps:
-      - intent: inform_fire_site
+      - action: site_selection_form
+      - active_loop: null
       - slot_was_set:
-          - incident_site
-      - action: utter_ask_immediate_threat
+          - requested_slot: null
+      - action: action_route_after_site_selection
 
-  - rule: Immediate Threat Detected
+  # ===== HOUSE FORM → SUBMIT =====
+  - rule: House fire form done
+    condition:
+      - active_loop: house_fire_form
     steps:
-      - intent: inform_immediate_threat
+      - action: house_fire_form
+      - active_loop: null
       - slot_was_set:
-          - immediate_threat
-      - action: action_handle_immediate_threat_yes
+          - requested_slot: null
+      - action: action_submit_fire_assessment

@@ -4,6 +4,9 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import logging
+
+logger = logging.getLogger(__name__)
 
 RASA_URL = "http://rasa:5005/webhooks/rest/webhook"
 
@@ -31,7 +34,7 @@ def handle_user_message(request):
         if len(user_message) > 500:
             return JsonResponse({"status":"error","message":"Message too long"})
         
-        print("======== user message =========", len(user_message))
+        # print("======== user message =========", len(user_message))
 
         # FOR DEBUGGING ONLY
         # parse_response = requests.post("http://rasa:5005/model/parse", json={"text":user_message}).json()
@@ -53,32 +56,62 @@ def handle_user_message(request):
             "message": user_message
         })
 
+        if rasa_response.status_code != 200:
+            return JsonResponse({
+            "status": "error",
+            "message": "Assistant service unavailable"
+        }, status=503)
+
+        logger.info(f"rasa====={rasa_response}")
+
         bot_message = rasa_response.json()
-        bot_final_message = None
+        logger.info(f"bot_message---{bot_message}")
 
-        print("========== bot msg ==========",bot_message[0])
+        if not bot_message or not isinstance(bot_message, list):
+            return JsonResponse({
+                "status": "error",
+                "message": "No response from assistant"
+            }, status=502)
 
-        # REFACTORING BOT MESSAGE ON PURPOSE
-        if bot_message and bot_message[0].get("buttons"):
-            bot_final_message = {
-                "sender":"bot",
-                "sender_id":sender_id,
-                "status":bot_message[0].get("status"),
-                "text":bot_message[0].get("text"),
-                "is_btn": True,
-                "buttons":bot_message[0].get("buttons")
-            }
-        else:
-            bot_final_message = {
-                "sender":"bot",
-                "sender_id": sender_id,
-                "status":bot_message[0].get("status"),
-                "text":bot_message[0].get("text"),
-                "is_btn":False,
-                "buttons":[]
-                }
+        # Process ALL messages, not just first one
+        all_messages = []
 
-        return JsonResponse({"status": "success","response": bot_final_message})
+        for msg in bot_message:
+            if msg.get("custom"):
+                custom_data = msg["custom"]
+                all_messages.append({
+                    "sender": "bot",
+                    "sender_id": sender_id,
+                    "message_type": "custom",
+                    "data": custom_data,
+                    "text": custom_data.get("heading", "Emergency Instructions"),
+                    "is_btn": False,
+                    "buttons": []
+                })
+
+            elif msg.get("buttons"):
+                all_messages.append({
+                    "sender": "bot",
+                    "sender_id": sender_id,
+                    "message_type": "buttons",
+                    "text": msg.get("text", ""),
+                    "is_btn": True,
+                    "buttons": msg.get("buttons")
+                })
+
+            else:
+                all_messages.append({
+                    "sender": "bot",
+                    "sender_id": sender_id,
+                    "message_type": "text",
+                    "text": msg.get("text", ""),
+                    "is_btn": False,
+                    "buttons": []
+                })
+
+        logger.info(all_messages)
+
+        return JsonResponse({"status": "success", "response": all_messages})
     except Exception as e:
         print(e)
-        return JsonResponse({"status":"error","message":"Internal server error"})
+        return JsonResponse({"status":"error","message":str(e)})

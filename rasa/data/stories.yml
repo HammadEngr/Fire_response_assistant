@@ -1,14 +1,224 @@
-version: "3.1"
+# version: "3.1"
 
-stories:
-  - story: Fire Education Flow
-    steps:
-      - intent: fire_education
-      - action: action_handle_fire_education_chapter_choice
-      - action: action_listen
+# stories:
+#   # ========== HOUSE - CRITICAL ==========
+#   - story: house fire critical
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: house
+#       - slot_was_set:
+#           - house_location: kitchen
+#       - slot_was_set:
+#           - is_critical: "yes"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
 
-  - story: Fire Incident Help Flow
-    steps:
-      - intent: fire_incident
-      - action: utter_fire_incident_help
-      - action: action_listen
+#   # ========== HOUSE - HIGH ==========
+#   - story: house fire high risk
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: house
+#       - slot_was_set:
+#           - house_location: garage
+#       - slot_was_set:
+#           - is_critical: "no"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== HOUSE - RISING ==========
+#   - story: house fire rising risk
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: house
+#       - slot_was_set:
+#           - house_location: electrical
+#       - slot_was_set:
+#           - is_critical: "no"
+#       - slot_was_set:
+#           - is_high: "no"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== HOUSE - LOW ==========
+#   - story: house fire low risk
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: house
+#       - slot_was_set:
+#           - house_location: bedroom
+#       - slot_was_set:
+#           - is_critical: "no"
+#       - slot_was_set:
+#           - is_high: "no"
+#       - slot_was_set:
+#           - is_rising: "no"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== BUILDING - CRITICAL ==========
+#   - story: building fire critical
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: building
+#       - slot_was_set:
+#           - is_critical: "yes"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== FACTORY INSIDE WORKER ==========
+#   - story: factory inside worker critical
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: factory
+#       - slot_was_set:
+#           - factory_location: inside
+#       - slot_was_set:
+#           - factory_role: worker
+#       - slot_was_set:
+#           - is_critical: "yes"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== FACTORY INSIDE VISITOR ==========
+#   - story: factory inside visitor
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: factory
+#       - slot_was_set:
+#           - factory_location: inside
+#       - slot_was_set:
+#           - factory_role: visitor
+#       - slot_was_set:
+#           - is_critical: "no"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== FACTORY OUTSIDE ==========
+#   - story: factory outside
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: factory
+#       - slot_was_set:
+#           - factory_location: outside
+#       - slot_was_set:
+#           - is_critical: "yes"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== WAREHOUSE LARGE ==========
+#   - story: warehouse large
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: warehouse
+#       - slot_was_set:
+#           - warehouse_size: large
+#       - slot_was_set:
+#           - is_critical: "no"
+#       - slot_was_set:
+#           - is_high: "no"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== WAREHOUSE SMALL ==========
+#   - story: warehouse small chemicals
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: warehouse
+#       - slot_was_set:
+#           - warehouse_size: small
+#       - slot_was_set:
+#           - warehouse_material: chemicals
+#       - slot_was_set:
+#           - is_critical: "yes"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment
+
+#   # ========== FOREST ==========
+#   - story: forest fire
+#     steps:
+#       - intent: report_fire
+#       - action: utter_fire_reported
+#       - action: fire_assessment_form
+#       - active_loop: fire_assessment_form
+#       - slot_was_set:
+#           - site_type: forest
+#       - slot_was_set:
+#           - is_critical: "no"
+#       - slot_was_set:
+#           - is_high: "yes"
+#       - slot_was_set:
+#           - is_rising: "yes"
+#       - active_loop: null
+#       - action: action_submit_fire_assessment

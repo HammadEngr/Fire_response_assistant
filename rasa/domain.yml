@@ -3,133 +3,205 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-
-  # selectable options step 1
-  - fire_education
-  - fire_incident
-  - inform_fire_site
-  - inform_immediate_threat
+  - report_fire
+  - inform
+  - affirm
+  - deny
 
 entities:
-  - education_chapter
-  - incident_site
-  - incident_area
-  - immediate_threat
-  - report
+  - site_type
+  - house_location
+  - is_critical
+  - is_high
+  - is_rising
 
 slots:
-  education_chapter:
+  # ===== SITE SELECTION =====
+  site_type:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: education_chapter
+        entity: site_type
+        conditions:
+          - active_loop: site_selection_form
+            requested_slot: site_type
 
-  incident_site:
+  # ===== HOUSE =====
+  house_location:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: incident_site
+        entity: house_location
+        conditions:
+          - active_loop: house_fire_form
+            requested_slot: house_location
 
-  immediate_threat:
+  # ===== RISK QUESTIONS (shared across multiple forms) =====
+  is_critical:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: immediate_threat
+      - type: from_intent
+        intent: affirm
+        value: yes
+        conditions:
+          - active_loop: house_fire_form
+            requested_slot: is_critical
+      - type: from_intent
+        intent: deny
+        value: no
+        conditions:
+          - active_loop: house_fire_form
+            requested_slot: is_critical
 
+  is_high:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: yes
+        conditions:
+          - active_loop: house_fire_form
+            requested_slot: is_high
+      - type: from_intent
+        intent: deny
+        value: no
+        conditions:
+          - active_loop: house_fire_form
+            requested_slot: is_high
+
+  is_rising:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: yes
+        conditions:
+          - active_loop: house_fire_form
+            requested_slot: is_rising
+      - type: from_intent
+        intent: deny
+        value: no
+        conditions:
+          - active_loop: house_fire_form
+            requested_slot: is_rising
+
+  # ===== INTERNAL =====
+  requested_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+# ===== FORMS =====
+forms:
+  # Entry form
+  site_selection_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - site_type
+
+  # House
+  house_fire_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - house_location
+      - is_critical
+      - is_high
+      - is_rising
+
+# ===== RESPONSES =====
 responses:
+  # Greetings
   utter_greet:
-    - text: "Hello! This is fire emergency assistance service.
-        You can get help by reporting a fire or you can ask for fire safety education in general."
+    - text: "Hello! This is Fire Emergency Assistance. Say 'fire' to report an emergency."
 
   utter_goodbye:
-    - text: "Goodbye! Stay safe."
+    - text: "Stay safe! Goodbye."
 
-  utter_fire_education:
-    - text: "Do you want basic fire education or something more ? Select any of the option"
+  utter_fire_reported:
+    - text: "🚨 Fire Emergency Acknowledged! Stay calm. I need some quick information."
+
+  # ===== SITE SELECTION =====
+  utter_ask_site_type:
+    - text: "What type of location is on fire?"
       buttons:
-        - title: "Fire Basics"
-          payload: "/fire_basics"
+        - title: "🏠 House"
+          payload: '/inform{{"site_type": "house"}}'
+        - title: "🏢 Building (Mall, Office, Hospital)"
+          payload: '/inform{{"site_type": "building"}}'
+        - title: "🏭 Factory / Industry"
+          payload: '/inform{{"site_type": "factory"}}'
+        - title: "🏬 Warehouse"
+          payload: '/inform{{"site_type": "warehouse"}}'
+        - title: "🌲 Forest / Grassland"
+          payload: '/inform{{"site_type": "forest"}}'
 
-        - title: "Mitigation Steps"
-          payload: "/fire_mitigation"
-
-        - title: "Risk Assesment"
-          payload: "/risk_assesment"
-
-  utter_fire_basics:
-    - text: "Fire basics"
-
-  utter_fire_mitigation:
-    - text: "Fire mitigation"
-
-  utter_fire_risk_assessment_steps:
-    - text: "Fire risk assessment"
-
-  utter_general_education:
-    - text: "Fire general education"
+  # ===== HOUSE =====
+  utter_ask_house_location:
+    - text: "Where in the house is the fire?"
       buttons:
-        - title: "Fire Education"
-          payload: "/fire_education"
+        - title: "🍳 Kitchen"
+          payload: '/inform{{"house_location": "kitchen"}}'
+        - title: "⚡ Electrical / Technical Room"
+          payload: '/inform{{"house_location": "electrical"}}'
+        - title: "🛏️ Bedroom / Living Area"
+          payload: '/inform{{"house_location": "bedroom"}}'
+        - title: "🚗 Garage"
+          payload: '/inform{{"house_location": "garage"}}'
+        - title: "🔥 Near Gas Pipeline / Cylinder"
+          payload: '/inform{{"house_location": "gas_area"}}'
+        - title: "❓ Other"
+          payload: '/inform{{"house_location": "other"}}'
 
-  utter_fire_incident_help:
-    - text: "You are asking for a fire help at your site. Provide more details about type of site either by selecting from below options or you can also type."
+  utter_ask_is_critical:
+    - text: "🔴 Are you experiencing any of these CRITICAL situations?\n\n
+        • Heavy/Black Smoke\n
+        • Cannot Breathe / Choking\n
+        • Trapped / Exit Blocked\n
+        • Someone Injured\n
+        • Explosion / Cylinder Burst"
       buttons:
-        - title: "House"
-          payload: "/site_house"
-        - title: "Factory"
-          payload: "/site_factory"
-        - title: "Warehouse"
-          payload: "/site_warehouse"
-        - title: "Building"
-          payload: "/site_building"
-        - title: "Forest or Grassland"
-          payload: "/site_forest"
+        - title: "✅ Yes"
+          payload: '/inform{{"is_critical": "yes"}}'
+        - title: "❌ No"
+          payload: '/inform{{"is_critical": "no"}}'
 
-  utter_ask_immediate_threat:
-    - text: "Are you in immediate danger ? Do you see any of these situations ?"
+  utter_ask_is_high:
+    - text: "🟠 Do you see any of these?\n\n• Visible Flames\n• Fire Spreading\n• Burning Embers / Sparks Flying"
       buttons:
-        - title: "Heavy flames/smoke"
-          payload: "/immediate_threat_heavy_flames"
-        - title: "Burning Embers"
-          payload: "/immediate_threat_burning_embers"
-        - title: "I am entrapped"
-          payload: "/immediate_threat_entrapped"
-        - title: "None"
-          payload: "/immediate_threat_none"
+        - title: "✅ Yes"
+          payload: '/inform{{"is_high": "yes"}}'
+        - title: "❌ No"
+          payload: '/inform{{"is_high": "no"}}'
 
-  utter_handle_immediate_threat_house:
-    - text: "House threat found"
-  utter_handle_immediate_threat_factory:
-    - text: "Factory threat found"
-  utter_handle_immediate_threat_wh:
-    - text: "Warehouse threat found"
-  utter_handle_immediate_threat_building:
-    - text: "Building threat found"
-  utter_handle_immediate_threat_forest:
-    - text: "Forest threat found"
-  utter_handle_immediate_threat_general:
-    - text: "General threat found"
-
-  utter_handle_fire_responce_house:
-    - text: "House fire responce"
-  utter_handle_fire_responce_factory:
-    - text: "Factory fire responce"
-  utter_handle_fire_responce_wh:
-    - text: "warehouse fire responce"
-  utter_handle_fire_responce_building:
-    - text: "Building fire responce"
-  utter_handle_fire_responce_forest:
-    - text: "Forest fire responce"
-  utter_handle_fire_responce_general:
-    - text: "General fire responce"
+  utter_ask_is_rising:
+    - text: "🟡 Do you notice any of these?\n\n• Light Smoke\n• Electric Sparks\n• Pungent Gas Smell"
+      buttons:
+        - title: "✅ Yes"
+          payload: '/inform{{"is_rising": "yes"}}'
+        - title: "❌ No (Early Stage / No Smoke)"
+          payload: '/inform{{"is_rising": "no"}}'
 
 actions:
-  - action_handle_fire_education_chapter_choice
-  - action_handle_immediate_threat_yes
+  - action_reset_slots
+  - action_submit_fire_assessment
+  - action_route_after_site_selection
+  - action_route_after_factory_location
+  - action_route_after_warehouse_size
+  - validate_house_fire_form
+  - validate_factory_outside_form
+  - validate_warehouse_small_form
+  - validate_forest_fire_form
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false

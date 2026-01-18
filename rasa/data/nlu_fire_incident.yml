@@ -1,30 +1,78 @@
 version: "3.1"
 
 nlu:
-  - intent: fire_incident
+  # ===== GREETINGS =====
+  - intent: greet
     examples: |
-      - fire accident occured
-      - fire broke out in building
-      - there is a fire right now
-      - fire emergency help
-      - urget fire situation
-      - fire alarm triggered
+      - hello
+      - hi
+      - hey
+      - good morning
+      - good afternoon
+      - good evening
 
-  - intent: inform_fire_site
+  - intent: goodbye
     examples: |
-      - [house](incident_site)
-      - [factory](incident_site)
-      - [warehouse](incident_site)
-      - [building](incident_site)
-      - fire in my [house](incident_site)
-      - fire in the [factory](incident_site)
-      - fire in the [building](incident_site)
-      - fire in the [warehouse](incident_site)
-      - fire in the [store room](incident_site)
-      - fire in the [forest](incident_site)
-      - fire in the [farms](incident_site)
-      - fire in the [garden](incident_site)
+      - bye
+      - goodbye
+      - see you
+      - take care
 
+  # ===== FIRE REPORT =====
+  - intent: report_fire
+    examples: |
+      - fire
+      - fire incident
+      - there is a fire
+      - fire emergency
+      - fire help
+      - help fire
+      - fire broke out
+      - something is on fire
+      - fire accident
+      - report fire
+      - i want to report a fire
+      - urgent fire
+      - fire started
+      - house on fire
+      - building on fire
+      - there's a fire here
+      - fire fire fire
+      - emergency fire
+      - need help fire
+
+  # ===== INFORM INTENT =====
+  - intent: inform
+    examples: |
+      - [house](site_type)
+      - [building](site_type)
+      - [factory](site_type)
+      - [warehouse](site_type)
+      - [forest](site_type)
+      - [kitchen](house_location)
+      - [electrical](house_location)
+      - [bedroom](house_location)
+      - [garage](house_location)
+      - [gas_area](house_location)
+      - [other](house_location)
+      - yes
+      - no
+      - yeah
+      - nope
+
+  - intent: affirm
+    examples: |
+      - yes
+      - yeah
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - nope
+      - negative
+
+  # ===== SYNONYMS =====
   - synonym: house
     examples: |
       - home
@@ -32,120 +80,17 @@ nlu:
       - flat
       - residence
 
-  - synonym: factory
+  - synonym: yes
     examples: |
-      - industry
-      - plant
-      - manufacturing unit
-      - production facility
-      - industrial plant
+      - yeah
+      - yep
+      - correct
+      - sure
+      - ok
 
-  - synonym: warehouse
+  - synonym: no
     examples: |
-      - storage facility
-      - storage building
-      - godown
-      - distribution center
-      - logistic center
-      - depot
-
-  - synonym: building
-    examples: |
-      - commercial building
-      - complex
-      - public building
-      - structure
-      - plaza
-      - shopping mall
-      - cinema
-      - auditorium
-      - tower
-      - hospital
-      - school
-      - university
-      - museum
-      - library
-
-  - synonym: forest
-    examples: |
-      - garden
-      - farms
-      - fields
-      - woodland
-      - jungle
-      - grassland
-      - meadows
-
-  - intent: inform_immediate_threat
-    examples: |
-      - i see [heavy fire](immediate_threat)
-      - there is a [big fire](immediate_threat)
-      - the fire is [out of control](immediate_threat)
-      - there is [thick smoke](immediate_threat)
-      - i see [black smoke](immediate_threat)
-      - i cannot breathe because of [smoke](immediate_threat)
-      - i see [big flames](immediate_threat)
-      - [tall flames](immediate_threat) everywhere
-      - there are [burning embers](immediate_threat)
-      - [sparks flying](immediate_threat)
-      - i am [trapped](immediate_threat)
-      - i am [stuck inside](immediate_threat)
-      - i [cannot get out](immediate_threat)
-      - [none](immediate_threat)
-      - [no threat](immediate_threat)
-      - [none of the above](immediate_threat)
-
-  - synonym: heavy fire
-    examples: |
-      - big fire
-      - large fire
-      - intense fire
-      - massive fire
-      - raging fire
-      - fire is spreading fast
-      - fire out of control
-      - fire everywhere
-
-  - synonym: heavy smoke
-    examples: |
-      - thick smoke
-      - dense smoke
-      - black smoke
-      - smoke everywhere
-      - lots of smoke
-      - cannot breathe
-
-  - synonym: heavy flames
-    examples: |
-      - big flames
-      - high flames
-      - tall flames
-      - flames everywhere
-      - flames spreading
-
-  - synonym: burning embers
-    examples: |
-      - hot embers
-      - sparks flying
-      - flying sparks
-      - burning sparks
-      - hot ashes
-
-  - synonym: entrapped
-    examples: |
-      - trapped
-      - stuck inside
-      - cannot get out
-      - no exit
-      - exits blocked
-      - doors blocked
-      - doors closed
-      - path blocked
-      - surrounded by fire
-      - locked inside
-
-  - synonym: none
-    examples: |
-      - no immediate threat
-      - none of the above
-      - no
+      - nope
+      - not really
+      - negative
+      - none

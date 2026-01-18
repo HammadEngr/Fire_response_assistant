@@ -21,12 +21,16 @@ services:
 
     depends_on:
       - actions
+    networks:
+      - backend
 
   actions:
     build: ./actions
     container_name: rasa_actions
     volumes:
       - ./actions:/app
+    networks:
+      - backend
 
   web:
     build: ./django
@@ -34,6 +38,7 @@ services:
     env_file:
       - .env
     volumes:
+      - ./django:/app
       - static_volume:/app/staticfiles
       # - db_volume:/app/db
     expose:
@@ -54,6 +59,8 @@ services:
       - static_volume:/app/staticfiles
     depends_on:
       - web
+    networks:
+      - backend
 
 volumes:
   static_volume:

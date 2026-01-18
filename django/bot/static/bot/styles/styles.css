@@ -181,8 +181,10 @@ body {
 .chat_btns {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   gap: var(--flex-gap);
+  flex-wrap: wrap;
+  width: 600px;
 }
 .chat_btn {
   width: fit-content;
@@ -193,6 +195,7 @@ body {
   cursor: pointer;
   background-color: var(--bg-tertiary);
   color: var(--text-primary);
+  padding: 0 10px;
 }
 .chat_btn:hover {
   background-color: var(--hover);
