@@ -86,3 +86,36 @@ rules:
       - slot_was_set:
           - requested_slot: null
       - action: action_submit_fire_assessment
+
+  # ===== WAREHOUSE SIZE → ROUTE =====
+  - rule: Warehouse size done
+    condition:
+      - active_loop: warehouse_size_form
+    steps:
+      - action: warehouse_size_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_route_after_warehouse_size
+
+  # ===== WAREHOUSE SMALL → SUBMIT =====
+  - rule: Warehouse small form done
+    condition:
+      - active_loop: warehouse_small_form
+    steps:
+      - action: warehouse_small_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_submit_fire_assessment
+
+  - rule: out of scope
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  - rule: Restart conversation
+    steps:
+      - intent: restart
+      - action: action_restart
+      - action: utter_greet

@@ -9,6 +9,8 @@ intents:
   - deny
   - pos_inside
   - pos_outside
+  - out_of_scope
+  - restart
 
 entities:
   - site_type
@@ -16,6 +18,8 @@ entities:
   - building_location
   - factory_location
   - factory_role
+  - warehouse_size
+  - warehouse_material
   - is_critical
   - is_high
   - is_rising
@@ -87,6 +91,34 @@ slots:
           - active_loop: factory_inside_form
             requested_slot: factory_role
 
+    # ===== WAREHOUSE =====
+  warehouse_size:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: yes
+        conditions:
+          - active_loop: warehouse_size_form
+            requested_slot: warehouse_size
+      - type: from_intent
+        intent: deny
+        value: no
+        conditions:
+          - active_loop: warehouse_size_form
+            requested_slot: warehouse_size
+
+  warehouse_material:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: warehouse_material
+        conditions:
+          - active_loop: warehouse_small_form
+            requested_slot: warehouse_material
+
   # ===== SHARED RISK QUESTIONS =====
   is_critical:
     type: text
@@ -100,6 +132,8 @@ slots:
             requested_slot: is_critical
           - active_loop: factory_outside_form
             requested_slot: is_critical
+          - active_loop: warehouse_small_form
+            requested_slot: is_critical
       - type: from_intent
         intent: deny
         value: no
@@ -107,6 +141,8 @@ slots:
           - active_loop: house_fire_form
             requested_slot: is_critical
           - active_loop: factory_outside_form
+            requested_slot: is_critical
+          - active_loop: warehouse_small_form
             requested_slot: is_critical
 
   is_high:
@@ -121,6 +157,8 @@ slots:
             requested_slot: is_high
           - active_loop: factory_outside_form
             requested_slot: is_high
+          - active_loop: warehouse_small_form
+            requested_slot: is_high
       - type: from_intent
         intent: deny
         value: no
@@ -128,6 +166,8 @@ slots:
           - active_loop: house_fire_form
             requested_slot: is_high
           - active_loop: factory_outside_form
+            requested_slot: is_high
+          - active_loop: warehouse_small_form
             requested_slot: is_high
 
   is_rising:
@@ -142,6 +182,8 @@ slots:
             requested_slot: is_rising
           - active_loop: factory_outside_form
             requested_slot: is_rising
+          - active_loop: warehouse_small_form
+            requested_slot: is_rising
       - type: from_intent
         intent: deny
         value: no
@@ -149,6 +191,8 @@ slots:
           - active_loop: house_fire_form
             requested_slot: is_rising
           - active_loop: factory_outside_form
+            requested_slot: is_rising
+          - active_loop: warehouse_small_form
             requested_slot: is_rising
 
   requested_slot:
@@ -204,6 +248,29 @@ forms:
       - greet
       - goodbye
     required_slots:
+      - is_critical
+      - is_high
+      - is_rising
+
+  warehouse_size_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - warehouse_size
+
+  warehouse_large_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots: []
+
+  warehouse_small_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - warehouse_material
       - is_critical
       - is_high
       - is_rising
@@ -276,6 +343,35 @@ responses:
         - title: "👤 Visitor"
           payload: '/inform{{"factory_role": "visitor"}}'
 
+  # ===== WAREHOUSE =====
+  utter_ask_warehouse_size:
+    - text: "Is this a large facility with a safety department?"
+      buttons:
+        - title: "✅ Yes (Large / Has Safety Team)"
+          payload: '/affirm{{"warehouse_size": "yes"}}'
+        - title: "❌ No (Small / No Safety Team)"
+          payload: '/deny{{"warehouse_size": "no"}}'
+
+  utter_ask_warehouse_material:
+    - text: "What is primarily stored in this warehouse?"
+      buttons:
+        - title: "👕 Garments & Synthetic Fibers"
+          payload: '/inform{{"warehouse_material": "garments"}}'
+        - title: "⚡ Electrical & Electronics"
+          payload: '/inform{{"warehouse_material": "electrical"}}'
+        - title: "🚗 Mechanical & Automobiles"
+          payload: '/inform{{"warehouse_material": "mechanical"}}'
+        - title: "📦 Wood / Paper / Cardboard"
+          payload: '/inform{{"warehouse_material": "wood"}}'
+        - title: "🏺 Ceramics & Glass"
+          payload: '/inform{{"warehouse_material": "ceramics"}}'
+        - title: "🛞 Rubber / Tires / Plastics"
+          payload: '/inform{{"warehouse_material": "rubber"}}'
+        - title: "🧪 Chemicals"
+          payload: '/inform{{"warehouse_material": "chemicals"}}'
+        - title: "❓ Mixed / Don't Know"
+          payload: '/inform{{"warehouse_material": "mixed"}}'
+
   # ===== SHARED RISK RESPONES ======
   utter_ask_is_critical:
     - text: "🔴 Are you experiencing any of these CRITICAL situations?\n\n
@@ -306,17 +402,28 @@ responses:
         - title: "❌ No (Early Stage / No Smoke)"
           payload: '/inform{{"is_rising": "no"}}'
 
+  utter_out_of_scope:
+    - text: "Sorry, I can only help with fire emergencies. Type 'fire' to report one."
+
+  utter_default:
+    - text: "I'm sorry, I didn't understand that. Type 'fire' to report a fire emergency."
+
+  utter_please_rephrase:
+    - text: "I didn't quite get that. Could you rephrase?"
+
 actions:
   - action_reset_slots
   - action_submit_fire_assessment
   - action_route_after_site_selection
   - action_route_after_factory_location
   - action_route_after_warehouse_size
+  - validate_site_selection_form
   - validate_house_fire_form
   - validate_building_location_form
   - validate_factory_outside_form
   - validate_warehouse_small_form
   - validate_forest_fire_form
+  - action_default_fallback
 
 session_config:
   session_expiration_time: 60

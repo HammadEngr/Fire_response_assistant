@@ -57,6 +57,14 @@ nlu:
       - [other](house_location)
       - [worker](factory_role)
       - [visitor](factory_role)
+      - [garments](warehouse_material)
+      - [electrical](warehouse_material)
+      - [mechanical](warehouse_material)
+      - [wood](warehouse_material)
+      - [ceramics](warehouse_material)
+      - [rubber](warehouse_material)
+      - [chemicals](warehouse_material)
+      - [mixed](warehouse_material)
 
   - intent: affirm
     examples: |
@@ -105,6 +113,27 @@ nlu:
       - outdoors
       - out here
 
+  - intent: out_of_scope
+    examples: |
+      - what's the weather
+      - tell me a joke
+      - who are you
+      - asdfgh
+      - random text
+      - blah blah
+      - I don't know
+      - something else
+      - xyz
+
+  - intent: restart
+    examples: |
+      - restart
+      - start over
+      - reset
+      - begin again
+      - fire
+      - emergency
+
   # ===== SYNONYMS =====
   - synonym: house
     examples: |
@@ -127,6 +156,12 @@ nlu:
       - industry
       - plant
       - manufacturing
+
+  - synonym: warehouse
+    examples: |
+      - storage
+      - godown
+      - depot
 
   - synonym: yes
     examples: |
