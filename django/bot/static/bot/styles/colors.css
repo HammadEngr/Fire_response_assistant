@@ -2,14 +2,15 @@
   /* --bg-primary: #181818; */
   --bg-primary: #2b2a27;
   /* --bg-primary: white; */
-  --bg-secondary: #212121;
+  /* --bg-secondary: #212121; */
+  --bg-secondary: #2b2a27;
   --bg-tertiary: #303030;
   --bg-chat-btn: #6a6a6a;
 
   --hover: #272727;
   --accent: #181818;
 
-  --border-color: rgba(78, 78, 78, 1);
+  --border-color: #46443f;
 
   --text-primary: #fff;
   --text-secondary: #f3f3f3;

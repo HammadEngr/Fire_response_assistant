@@ -38,7 +38,7 @@ slots:
           - active_loop: house_fire_form
             requested_slot: house_location
 
-  # ===== RISK QUESTIONS (shared across multiple forms) =====
+  # ===== SHARED RISK QUESTIONS =====
   is_critical:
     type: text
     influence_conversation: true
@@ -90,7 +90,6 @@ slots:
           - active_loop: house_fire_form
             requested_slot: is_rising
 
-  # ===== INTERNAL =====
   requested_slot:
     type: text
     influence_conversation: false
@@ -162,6 +161,7 @@ responses:
         - title: "❓ Other"
           payload: '/inform{{"house_location": "other"}}'
 
+  # ===== SHARED RISK RESPONES ======
   utter_ask_is_critical:
     - text: "🔴 Are you experiencing any of these CRITICAL situations?\n\n
         • Heavy/Black Smoke\n
