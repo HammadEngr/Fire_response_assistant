@@ -53,3 +53,36 @@ rules:
       - slot_was_set:
           - requested_slot: null
       - action: action_submit_fire_assessment
+
+    # ===== FACTORY LOCATION → ROUTE =====
+  - rule: Factory location done
+    condition:
+      - active_loop: factory_location_form
+    steps:
+      - action: factory_location_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_route_after_factory_location
+
+  # ===== FACTORY INSIDE → SUBMIT =====
+  - rule: Factory inside form done
+    condition:
+      - active_loop: factory_inside_form
+    steps:
+      - action: factory_inside_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_submit_fire_assessment
+
+    # ===== FACTORY OUTSIDE → SUBMIT =====
+  - rule: Factory outside form done
+    condition:
+      - active_loop: factory_outside_form
+    steps:
+      - action: factory_outside_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_submit_fire_assessment

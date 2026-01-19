@@ -12,6 +12,8 @@ entities:
   - site_type
   - house_location
   - building_location
+  - factory_location
+  - factory_role
   - is_critical
   - is_high
   - is_rising
@@ -49,6 +51,26 @@ slots:
           - active_loop: building_location_form
             requested_slot: building_location
 
+  factory_location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: factory_location
+        conditions:
+          - active_loop: factory_location_form
+            requested_slot: factory_location
+
+  factory_role:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: factory_role
+        conditions:
+          - active_loop: factory_inside_form
+            requested_slot: factory_role
+
   # ===== SHARED RISK QUESTIONS =====
   is_critical:
     type: text
@@ -60,11 +82,15 @@ slots:
         conditions:
           - active_loop: house_fire_form
             requested_slot: is_critical
+          - active_loop: factory_outside_form
+            requested_slot: is_critical
       - type: from_intent
         intent: deny
         value: no
         conditions:
           - active_loop: house_fire_form
+            requested_slot: is_critical
+          - active_loop: factory_outside_form
             requested_slot: is_critical
 
   is_high:
@@ -77,11 +103,15 @@ slots:
         conditions:
           - active_loop: house_fire_form
             requested_slot: is_high
+          - active_loop: factory_outside_form
+            requested_slot: is_high
       - type: from_intent
         intent: deny
         value: no
         conditions:
           - active_loop: house_fire_form
+            requested_slot: is_high
+          - active_loop: factory_outside_form
             requested_slot: is_high
 
   is_rising:
@@ -94,11 +124,15 @@ slots:
         conditions:
           - active_loop: house_fire_form
             requested_slot: is_rising
+          - active_loop: factory_outside_form
+            requested_slot: is_rising
       - type: from_intent
         intent: deny
         value: no
         conditions:
           - active_loop: house_fire_form
+            requested_slot: is_rising
+          - active_loop: factory_outside_form
             requested_slot: is_rising
 
   requested_slot:
@@ -134,6 +168,29 @@ forms:
       - goodbye
     required_slots:
       - building_location
+
+  factory_location_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - factory_location
+
+  factory_inside_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - factory_role
+
+  factory_outside_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - is_critical
+      - is_high
+      - is_rising
 
 # ===== RESPONSES =====
 responses:
@@ -186,6 +243,14 @@ responses:
           payload: '/inform{{"building_location": "inside"}}'
         - title: "🚪 Outside the Building"
           payload: '/inform{{"building_location": "outside"}}'
+
+  utter_ask_factory_location:
+    - text: "Where are you right now?"
+      buttons:
+        - title: "🏭 Inside the Factory"
+          payload: '/inform{{"factory_location": "inside"}}'
+        - title: "🚪 Outside the Factory"
+          payload: '/inform{{"factory_location": "outside"}}'
 
   # ===== SHARED RISK RESPONES ======
   utter_ask_is_critical:

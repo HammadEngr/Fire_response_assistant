@@ -57,6 +57,8 @@ nlu:
       - [other](house_location)
       - [inside](building_location)
       - [outside](building_location)
+      - [inside](factory_location)
+      - [outside](factory_location)
       - yes
       - no
       - yeah
@@ -90,6 +92,12 @@ nlu:
       - school
       - cinema
       - hotel
+
+  - synonym: factory
+    examples: |
+      - industry
+      - plant
+      - manufacturing
 
   - synonym: yes
     examples: |
