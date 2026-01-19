@@ -13,24 +13,18 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    restart: unless-stopped
-
-    # ports:
-    #   - "5432:5432"
 
   rasa:
     image: rasa/rasa:3.1.0
     container_name: rasa_server
-    user: "1000:1000"
+
     volumes:
       - ./rasa:/app
-
     command: run --enable-api --cors "*" --debug
     depends_on:
       - actions
     networks:
       - backend
-    restart: unless-stopped
 
   actions:
     build: ./actions
@@ -39,50 +33,25 @@ services:
       - ./actions:/app
     networks:
       - backend
-    restart: unless-stopped
 
   web:
-    build: ./django
+    build:
+      context: ./django
+      dockerfile: Dockerfile
     container_name: django_web
     env_file:
       - .env
     volumes:
       - ./django:/app
-      - static_volume:/app/staticfiles
-      # - db_volume:/app/db
-    expose:
-      - "8000"
-    command: >
-      sh -c "python manage.py collectstatic --noinput &&
-             python manage.py migrate &&
-             gunicorn --bind 0.0.0.0:8000 --workers 3 config.wsgi:application"
     depends_on:
       db:
         condition: service_healthy
-      rasa:
-        condition: service_started
     networks:
       - backend
-    restart: unless-stopped
-
-  nginx:
-    image: nginx:alpine
-    container_name: nginx_proxy
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - static_volume:/app/staticfiles
-    depends_on:
-      - web
-    networks:
-      - backend
-    restart: unless-stopped
 
 volumes:
-  static_volume:
   postgres_data:
-  # db_volume:
+  static_volume:
 
 networks:
   backend:

@@ -7,6 +7,8 @@ intents:
   - inform
   - affirm
   - deny
+  - pos_inside
+  - pos_outside
 
 entities:
   - site_type
@@ -45,8 +47,15 @@ slots:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: building_location
+      - type: from_intent
+        intent: pos_inside
+        value: inside
+        conditions:
+          - active_loop: building_location_form
+            requested_slot: building_location
+      - type: from_intent
+        intent: pos_outside
+        value: outside
         conditions:
           - active_loop: building_location_form
             requested_slot: building_location
@@ -55,8 +64,15 @@ slots:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: factory_location
+      - type: from_intent
+        intent: pos_inside
+        value: inside
+        conditions:
+          - active_loop: factory_location_form
+            requested_slot: factory_location
+      - type: from_intent
+        intent: pos_outside
+        value: outside
         conditions:
           - active_loop: factory_location_form
             requested_slot: factory_location
@@ -251,6 +267,14 @@ responses:
           payload: '/inform{{"factory_location": "inside"}}'
         - title: "🚪 Outside the Factory"
           payload: '/inform{{"factory_location": "outside"}}'
+
+  utter_ask_factory_role:
+    - text: "Are you a worker or visitor?"
+      buttons:
+        - title: "👷 Factory Staff / Worker"
+          payload: '/inform{{"factory_role": "worker"}}'
+        - title: "👤 Visitor"
+          payload: '/inform{{"factory_role": "visitor"}}'
 
   # ===== SHARED RISK RESPONES ======
   utter_ask_is_critical:

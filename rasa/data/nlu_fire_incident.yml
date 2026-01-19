@@ -55,26 +55,55 @@ nlu:
       - [garage](house_location)
       - [gas_area](house_location)
       - [other](house_location)
-      - [inside](building_location)
-      - [outside](building_location)
-      - [inside](factory_location)
-      - [outside](factory_location)
-      - yes
-      - no
-      - yeah
-      - nope
+      - [worker](factory_role)
+      - [visitor](factory_role)
 
   - intent: affirm
     examples: |
       - yes
       - yeah
+      - yep
       - correct
+      - right
+      - true
+      - that's right
+      - affirmative
+      - uh huh
+      - sure
 
   - intent: deny
     examples: |
       - no
       - nope
       - negative
+      - nah
+      - not really
+      - I don't think so
+      - incorrect
+      - wrong
+      - uh uh
+
+  - intent: pos_inside
+    examples: |
+      - inside
+      - in
+      - I am inside
+      - I'm inside
+      - inside the building
+      - inside the factory
+      - indoors
+      - in here
+
+  - intent: pos_outside
+    examples: |
+      - outside
+      - out
+      - I am outside
+      - I'm outside
+      - outside the building
+      - outside the factory
+      - outdoors
+      - out here
 
   # ===== SYNONYMS =====
   - synonym: house

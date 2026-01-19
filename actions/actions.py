@@ -99,6 +99,10 @@ class ValidateFactoryLocationForm(RiskFormValidationMixin, FormValidationAction)
     def name(self) -> Text:
         print("==DEBUG== validate_factory_location_form TRIGGERED")
         return "validate_factory_location_form"
+    
+class ValidateFactoryInsideForm(RiskFormValidationMixin, FormValidationAction):
+    def name(self) -> Text:
+        return "validate_factory_inside_form"
 
 class ValidateFactoryOutsideForm(RiskFormValidationMixin, FormValidationAction):
     def name(self) -> Text:
@@ -143,6 +147,29 @@ class ActionRouteAfterSiteSelection(Action):
         else:
             dispatcher.utter_message(text="Unknown site type. Please try again.")
             return [FollowupAction("site_selection_form")]
+        
+class ActionRouteAfterFactoryLocation(Action):
+    """Route to inside or outside factory form."""
+
+    def name(self) -> Text:
+        return "action_route_after_factory_location"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        
+        factory_location = tracker.get_slot("factory_location")
+        
+        if factory_location == "inside":
+            return [FollowupAction("factory_inside_form")]
+        elif factory_location == "outside":
+            return [FollowupAction("factory_outside_form")]
+        else:
+            dispatcher.utter_message(text="Unknown location. Please try again.")
+            return [FollowupAction("factory_location_form")]
 
 
 # ============================================================

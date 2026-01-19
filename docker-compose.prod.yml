@@ -1,0 +1,38 @@
+services:
+  db:
+    restart: unless-stopped
+
+  rasa:
+    user: "1000:1000"
+    restart: unless-stopped
+
+  actions:
+    restart: unless-stopped
+
+  web:
+    expose:
+      - "8000"
+    volumes:
+      - ./django:/app
+      - static_volume:/app/staticfiles
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             gunicorn --bind 0.0.0.0:8000 --workers 3 config.wsgi:application"
+    restart: unless-stopped
+    environment:
+      - DJANGO_DEBUG=False
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - static_volume:/app/staticfiles
+    depends_on:
+      - web
+    networks:
+      - backend
+    restart: unless-stopped
