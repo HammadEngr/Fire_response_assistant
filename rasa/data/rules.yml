@@ -1,7 +1,6 @@
 version: "3.1"
 
 rules:
-  # ===== BASIC =====
   - rule: Greet
     steps:
       - intent: greet
@@ -12,7 +11,7 @@ rules:
       - intent: goodbye
       - action: utter_goodbye
 
-  # ===== ENTRY =====
+  # ENTRY POINT
   - rule: Start fire report
     steps:
       - intent: report_fire
@@ -21,7 +20,7 @@ rules:
       - action: site_selection_form
       - active_loop: site_selection_form
 
-  # ===== SITE SELECTION → ROUTE =====
+  # SITE SELECTION
   - rule: Site selection done
     condition:
       - active_loop: site_selection_form
@@ -32,7 +31,7 @@ rules:
           - requested_slot: null
       - action: action_route_after_site_selection
 
-  # ===== HOUSE FORM → SUBMIT =====
+  # HOUSE FORM
   - rule: House fire form done
     condition:
       - active_loop: house_fire_form
@@ -43,7 +42,7 @@ rules:
           - requested_slot: null
       - action: action_submit_fire_assessment
 
-    # ===== BUILDING LOCATION → SUBMIT (no more routing, direct submit) =====
+    # BUILDING LOCATION
   - rule: Building location done
     condition:
       - active_loop: building_location_form
@@ -54,7 +53,7 @@ rules:
           - requested_slot: null
       - action: action_submit_fire_assessment
 
-    # ===== FACTORY LOCATION → ROUTE =====
+    # FACTORY LOCATION
   - rule: Factory location done
     condition:
       - active_loop: factory_location_form
@@ -65,7 +64,7 @@ rules:
           - requested_slot: null
       - action: action_route_after_factory_location
 
-  # ===== FACTORY INSIDE → SUBMIT =====
+  # FACTORY INSIDE
   - rule: Factory inside form done
     condition:
       - active_loop: factory_inside_form
@@ -76,7 +75,7 @@ rules:
           - requested_slot: null
       - action: action_submit_fire_assessment
 
-    # ===== FACTORY OUTSIDE → SUBMIT =====
+    # FACTORY OUTSIDE
   - rule: Factory outside form done
     condition:
       - active_loop: factory_outside_form
@@ -87,7 +86,7 @@ rules:
           - requested_slot: null
       - action: action_submit_fire_assessment
 
-  # ===== WAREHOUSE SIZE → ROUTE =====
+  # WAREHOUSE SIZE
   - rule: Warehouse size done
     condition:
       - active_loop: warehouse_size_form
@@ -98,12 +97,23 @@ rules:
           - requested_slot: null
       - action: action_route_after_warehouse_size
 
-  # ===== WAREHOUSE SMALL → SUBMIT =====
+  # WAREHOUSE SMALL
   - rule: Warehouse small form done
     condition:
       - active_loop: warehouse_small_form
     steps:
       - action: warehouse_small_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_submit_fire_assessment
+
+    # FOREST
+  - rule: Forest fire form done
+    condition:
+      - active_loop: forest_fire_form
+    steps:
+      - action: forest_fire_form
       - active_loop: null
       - slot_was_set:
           - requested_slot: null

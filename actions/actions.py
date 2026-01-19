@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet, FollowupAction
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import UserUtteranceReverted
 
-# Import all responses from separate file
+# RESPONSES
 from responses import (
     HOUSE_KITCHEN, HOUSE_ELECTRICAL, HOUSE_BEDROOM, HOUSE_GARAGE, HOUSE_GAS, HOUSE_OTHER,
     BUILDING_INSIDE, BUILDING_OUTSIDE,
@@ -14,12 +14,9 @@ from responses import (
     FOREST, DEFAULT_RESPONSE
 )
 
-
-# ============================================================
-# HELPER FUNCTION
-# ============================================================
+# RISK LEVEL HELPER FUNCTION
 def get_risk_level(is_critical: str, is_high: str, is_rising: str) -> str:
-    """Determine risk level from yes/no answers."""
+    # Determine risk level from yes/no answers
     if is_critical == "yes":
         return "critical"
     elif is_high == "yes":
@@ -29,13 +26,10 @@ def get_risk_level(is_critical: str, is_high: str, is_rising: str) -> str:
     else:
         return "low"
 
-
-# ============================================================
-# FORM VALIDATION - SHARED MIXIN
-# ============================================================
+# FORM VALIDATION HELPER
 class RiskFormValidationMixin:
-    """Shared validation logic for forms with risk questions."""
-
+    
+    #Shared validation logic
     def validate_house_location(
             self, slot_value:Any,
             dispatcher: CollectingDispatcher,
@@ -83,9 +77,7 @@ class RiskFormValidationMixin:
         return {"is_rising": slot_value}
 
 
-# ============================================================
 # FORM VALIDATION CLASSES
-# ============================================================
 class ValidateSiteSelectionForm(RiskFormValidationMixin, FormValidationAction):
     def name(self) -> Text:
         return "validate_site_selection_form"
@@ -194,13 +186,10 @@ class ValidateForestFireForm(RiskFormValidationMixin, FormValidationAction):
     def name(self) -> Text:
         return "validate_forest_fire_form"
 
-
-# ============================================================
-# ROUTING ACTIONS
-# ============================================================
+# ROUTING ACTIONS AFTER EACH FORM
 class ActionRouteAfterSiteSelection(Action):
-    """Route to appropriate form based on site_type."""
 
+    # Route to appropriate form based on site_type
     def name(self) -> Text:
         return "action_route_after_site_selection"
 
@@ -222,12 +211,15 @@ class ActionRouteAfterSiteSelection(Action):
             return [FollowupAction("factory_location_form")]
         elif site_type == "warehouse":
             return [FollowupAction("warehouse_size_form")]
+        elif site_type == "forest":
+            return [FollowupAction("forest_fire_form")]
         else:
             dispatcher.utter_message(text="Unknown site type. Please try again.")
             return [FollowupAction("site_selection_form")]
         
 class ActionRouteAfterFactoryLocation(Action):
-    """Route to inside or outside factory form."""
+
+    # Route to inside or outside factory form
 
     def name(self) -> Text:
         return "action_route_after_factory_location"
@@ -250,7 +242,8 @@ class ActionRouteAfterFactoryLocation(Action):
             return [FollowupAction("factory_location_form")]
         
 class ActionRouteAfterWarehouseSize(Action):
-    """Route to small warehouse form or submit for large."""
+
+    # Route to small warehouse form or submit for large
 
     def name(self) -> Text:
         return "action_route_after_warehouse_size"
@@ -273,12 +266,8 @@ class ActionRouteAfterWarehouseSize(Action):
             return [FollowupAction("warehouse_size_form")]
 
 
-# ============================================================
-# MAIN SUBMIT ACTION
-# ============================================================
+# SUBMIT FIRE ASSESSMENT
 class ActionSubmitFireAssessment(Action):
-    """Process form data and provide appropriate response."""
-    print(f"==DEBUG== ActionSubmitFireAssessment Trigerred")
 
     def name(self) -> Text:
         return "action_submit_fire_assessment"
@@ -309,7 +298,6 @@ class ActionSubmitFireAssessment(Action):
             warehouse_material,
             is_critical, is_high, is_rising
         )
-        print(f"==DEBUG={building_location}={response}")
 
         # Send response
         dispatcher.utter_message(text=response)
@@ -335,7 +323,7 @@ class ActionSubmitFireAssessment(Action):
         is_critical, is_high, is_rising
     ) -> str:
 
-        # ----- HOUSE -----
+        # HOUSE
         if site_type == "house":
             risk = get_risk_level(is_critical, is_high, is_rising)
             print(f"DEBUG==risk={risk}, house_location={house_location}")
@@ -351,14 +339,14 @@ class ActionSubmitFireAssessment(Action):
             print(f"DEBUG===responses={responses}")
             return responses.get(risk, "Emergency! Call 112.")
         
-        # -------- BUILDING -----------
+        # BUILDINGS
         elif site_type == "building":
             if building_location == "inside":
                 return BUILDING_INSIDE
             else:
                 return BUILDING_OUTSIDE
         
-        # -------- FACTORY -----------
+        # FACTORY
         elif site_type == "factory":
             if factory_location == "inside":
                 if factory_role == "visitor":
@@ -378,15 +366,17 @@ class ActionSubmitFireAssessment(Action):
                     WAREHOUSE_SMALL["mixed"]
                 )
                 return material_responses.get(risk, material_responses.get("low"))
+            
+        # FOREST
+        elif site_type == "forest":
+            risk = get_risk_level(is_critical, is_high, is_rising)
+            return FOREST.get(risk, FOREST["low"])
 
-
-        # ----- DEFAULT -----
+        # DEFAULT
         else:
             return DEFAULT_RESPONSE
         
 class ActionResetSlots(Action):
-
-    """Reset all slots at the start of every fire report."""
 
     def name(self) -> Text:
         return "action_reset_slots"
@@ -421,9 +411,8 @@ class ActionDefaultFallback(Action):
         domain: dict
     ) -> list:
         
-        # Send a helpful message
         dispatcher.utter_message(
-            text="I'm sorry, I didn't understand that. "
+            text="I am sorry, I didn't understand. "
                  "Type 'fire' to report a fire emergency or 'hi' to start over."
         )
         

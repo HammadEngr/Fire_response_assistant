@@ -25,7 +25,7 @@ entities:
   - is_rising
 
 slots:
-  # ===== SITE SELECTION =====
+  # SITE SELECTION
   site_type:
     type: text
     influence_conversation: true
@@ -36,7 +36,7 @@ slots:
           - active_loop: site_selection_form
             requested_slot: site_type
 
-  # ===== HOUSE =====
+  # HOUSE
   house_location:
     type: text
     influence_conversation: true
@@ -91,7 +91,6 @@ slots:
           - active_loop: factory_inside_form
             requested_slot: factory_role
 
-    # ===== WAREHOUSE =====
   warehouse_size:
     type: text
     influence_conversation: true
@@ -119,7 +118,7 @@ slots:
           - active_loop: warehouse_small_form
             requested_slot: warehouse_material
 
-  # ===== SHARED RISK QUESTIONS =====
+  # SHARED RISK QUESTIONS
   is_critical:
     type: text
     influence_conversation: true
@@ -134,6 +133,8 @@ slots:
             requested_slot: is_critical
           - active_loop: warehouse_small_form
             requested_slot: is_critical
+          - active_loop: forest_fire_form
+            requested_slot: is_critical
       - type: from_intent
         intent: deny
         value: no
@@ -143,6 +144,8 @@ slots:
           - active_loop: factory_outside_form
             requested_slot: is_critical
           - active_loop: warehouse_small_form
+            requested_slot: is_critical
+          - active_loop: forest_fire_form
             requested_slot: is_critical
 
   is_high:
@@ -159,6 +162,8 @@ slots:
             requested_slot: is_high
           - active_loop: warehouse_small_form
             requested_slot: is_high
+          - active_loop: forest_fire_form
+            requested_slot: is_high
       - type: from_intent
         intent: deny
         value: no
@@ -168,6 +173,8 @@ slots:
           - active_loop: factory_outside_form
             requested_slot: is_high
           - active_loop: warehouse_small_form
+            requested_slot: is_high
+          - active_loop: forest_fire_form
             requested_slot: is_high
 
   is_rising:
@@ -184,6 +191,8 @@ slots:
             requested_slot: is_rising
           - active_loop: warehouse_small_form
             requested_slot: is_rising
+          - active_loop: forest_fire_form
+            requested_slot: is_rising
       - type: from_intent
         intent: deny
         value: no
@@ -194,6 +203,8 @@ slots:
             requested_slot: is_rising
           - active_loop: warehouse_small_form
             requested_slot: is_rising
+          - active_loop: forest_fire_form
+            requested_slot: is_rising
 
   requested_slot:
     type: text
@@ -201,7 +212,7 @@ slots:
     mappings:
       - type: custom
 
-# ===== FORMS =====
+# FORMS
 forms:
   # Entry form
   site_selection_form:
@@ -275,9 +286,16 @@ forms:
       - is_high
       - is_rising
 
-# ===== RESPONSES =====
+  forest_fire_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - is_critical
+      - is_high
+      - is_rising
+
 responses:
-  # Greetings
   utter_greet:
     - text: "Hello! This is Fire Emergency Assistance. Say 'fire' to report an emergency."
 
@@ -287,7 +305,6 @@ responses:
   utter_fire_reported:
     - text: "🚨 Fire Emergency Acknowledged! Stay calm. I need some quick information."
 
-  # ===== SITE SELECTION =====
   utter_ask_site_type:
     - text: "What type of location is on fire?"
       buttons:
@@ -302,7 +319,6 @@ responses:
         - title: "🌲 Forest / Grassland"
           payload: '/inform{{"site_type": "forest"}}'
 
-  # ===== HOUSE =====
   utter_ask_house_location:
     - text: "Where in the house is the fire?"
       buttons:
@@ -343,7 +359,6 @@ responses:
         - title: "👤 Visitor"
           payload: '/inform{{"factory_role": "visitor"}}'
 
-  # ===== WAREHOUSE =====
   utter_ask_warehouse_size:
     - text: "Is this a large facility with a safety department?"
       buttons:
@@ -372,7 +387,6 @@ responses:
         - title: "❓ Mixed / Don't Know"
           payload: '/inform{{"warehouse_material": "mixed"}}'
 
-  # ===== SHARED RISK RESPONES ======
   utter_ask_is_critical:
     - text: "🔴 Are you experiencing any of these CRITICAL situations?\n\n
         • Heavy/Black Smoke\n
