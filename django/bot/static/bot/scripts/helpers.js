@@ -1,8 +1,8 @@
 export async function handleRequest(headers_content, body_content) {
   try {
-    // const apiEndpont = "/api/get_response/";
+    const apiEndpont = "/api/get_response/";
     // const apiEndpont = "http://13.50.248.208/api/get_response/";
-    const apiEndpont = "http://localhost/api/get_response/";
+    // const apiEndpont = "http://localhost/api/get_response/";
     // const apiEndpont = "http://localhost:8000/api/get_response/";
     const res = await fetch(apiEndpont, {
       method: "POST",
@@ -33,7 +33,7 @@ const showPosition = (position) => {
     "Latitude: " +
       position.coords.latitude +
       " Longitude: " +
-      position.coords.longitude
+      position.coords.longitude,
   );
 };
 
