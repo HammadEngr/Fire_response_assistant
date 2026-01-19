@@ -21,6 +21,7 @@ services:
   rasa:
     image: rasa/rasa:3.1.0
     container_name: rasa_server
+    user: "1000:1000"
     volumes:
       - ./rasa:/app
 
