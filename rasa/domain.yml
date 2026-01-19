@@ -11,6 +11,7 @@ intents:
 entities:
   - site_type
   - house_location
+  - building_location
   - is_critical
   - is_high
   - is_rising
@@ -37,6 +38,16 @@ slots:
         conditions:
           - active_loop: house_fire_form
             requested_slot: house_location
+
+  building_location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: building_location
+        conditions:
+          - active_loop: building_location_form
+            requested_slot: building_location
 
   # ===== SHARED RISK QUESTIONS =====
   is_critical:
@@ -117,6 +128,13 @@ forms:
       - is_high
       - is_rising
 
+  building_location_form:
+    ignored_intents:
+      - greet
+      - goodbye
+    required_slots:
+      - building_location
+
 # ===== RESPONSES =====
 responses:
   # Greetings
@@ -161,6 +179,14 @@ responses:
         - title: "❓ Other"
           payload: '/inform{{"house_location": "other"}}'
 
+  utter_ask_building_location:
+    - text: "Where are you right now?"
+      buttons:
+        - title: "🏢 Inside the Building"
+          payload: '/inform{{"building_location": "inside"}}'
+        - title: "🚪 Outside the Building"
+          payload: '/inform{{"building_location": "outside"}}'
+
   # ===== SHARED RISK RESPONES ======
   utter_ask_is_critical:
     - text: "🔴 Are you experiencing any of these CRITICAL situations?\n\n
@@ -198,6 +224,7 @@ actions:
   - action_route_after_factory_location
   - action_route_after_warehouse_size
   - validate_house_fire_form
+  - validate_building_location_form
   - validate_factory_outside_form
   - validate_warehouse_small_form
   - validate_forest_fire_form

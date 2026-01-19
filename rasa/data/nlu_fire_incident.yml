@@ -55,6 +55,8 @@ nlu:
       - [garage](house_location)
       - [gas_area](house_location)
       - [other](house_location)
+      - [inside](building_location)
+      - [outside](building_location)
       - yes
       - no
       - yeah
@@ -79,6 +81,15 @@ nlu:
       - apartment
       - flat
       - residence
+
+  - synonym: building
+    examples: |
+      - office
+      - mall
+      - hospital
+      - school
+      - cinema
+      - hotel
 
   - synonym: yes
     examples: |

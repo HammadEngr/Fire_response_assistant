@@ -42,3 +42,14 @@ rules:
       - slot_was_set:
           - requested_slot: null
       - action: action_submit_fire_assessment
+
+    # ===== BUILDING LOCATION → SUBMIT (no more routing, direct submit) =====
+  - rule: Building location done
+    condition:
+      - active_loop: building_location_form
+    steps:
+      - action: building_location_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_submit_fire_assessment

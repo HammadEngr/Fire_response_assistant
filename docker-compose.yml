@@ -6,10 +6,17 @@ services:
       - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
     networks:
       - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+    # ports:
+    #   - "5432:5432"
 
   rasa:
     image: rasa/rasa:3.1.0
@@ -18,11 +25,11 @@ services:
       - ./rasa:/app
 
     command: run --enable-api --cors "*" --debug
-
     depends_on:
       - actions
     networks:
       - backend
+    restart: unless-stopped
 
   actions:
     build: ./actions
@@ -31,6 +38,7 @@ services:
       - ./actions:/app
     networks:
       - backend
+    restart: unless-stopped
 
   web:
     build: ./django
@@ -43,11 +51,18 @@ services:
       # - db_volume:/app/db
     expose:
       - "8000"
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             gunicorn --bind 0.0.0.0:8000 --workers 3 config.wsgi:application"
     depends_on:
-      - rasa
-      - db
+      db:
+        condition: service_healthy
+      rasa:
+        condition: service_started
     networks:
       - backend
+    restart: unless-stopped
 
   nginx:
     image: nginx:alpine
@@ -61,6 +76,7 @@ services:
       - web
     networks:
       - backend
+    restart: unless-stopped
 
 volumes:
   static_volume:

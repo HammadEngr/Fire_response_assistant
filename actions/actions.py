@@ -90,6 +90,11 @@ class ValidateHouseFireForm(RiskFormValidationMixin, FormValidationAction):
         print(f"==DEBUG== validate_house_fire_form TRIGGERED")
         return "validate_house_fire_form"
 
+class ValidateBuildingLoactionForm(RiskFormValidationMixin, FormValidationAction):
+    def name(self) -> Text:
+        print("==DEBUG== validate_building_location_form TRIGGERED")
+        return "validate_building_location_form"
+
 
 class ValidateFactoryOutsideForm(RiskFormValidationMixin, FormValidationAction):
     def name(self) -> Text:
@@ -126,6 +131,9 @@ class ActionRouteAfterSiteSelection(Action):
         
         if site_type == "house":
             return [FollowupAction("house_fire_form")]
+        elif site_type == "building":
+            print(f"==DEBUG==action_route_after_site_selection")
+            return [FollowupAction("building_location_form")]
         else:
             dispatcher.utter_message(text="Unknown site type. Please try again.")
             return [FollowupAction("site_selection_form")]
@@ -151,16 +159,17 @@ class ActionSubmitFireAssessment(Action):
         # Get all slots
         site_type = tracker.get_slot("site_type")
         house_location = tracker.get_slot("house_location")
+        building_location = tracker.get_slot("building_location")
         is_critical = tracker.get_slot("is_critical")
         is_high = tracker.get_slot("is_high")
         is_rising = tracker.get_slot("is_rising")
 
         # Get response
         response = self._get_response(
-            site_type, house_location, 
+            site_type, house_location, building_location,
             is_critical, is_high, is_rising
         )
-        print(f"==DEBUG=={response}")
+        print(f"==DEBUG={building_location}={response}")
 
         # Send response
         dispatcher.utter_message(text=response)
@@ -170,13 +179,14 @@ class ActionSubmitFireAssessment(Action):
         return [
             SlotSet("site_type", None),
             SlotSet("house_location", None),
+            SlotSet("building_location", None),
             SlotSet("is_critical", None),
             SlotSet("is_high", None),
             SlotSet("is_rising", None)
         ]
 
     def _get_response(
-        self, site_type, house_location,
+        self, site_type, house_location, building_location,
         is_critical, is_high, is_rising
     ) -> str:
 
@@ -195,6 +205,11 @@ class ActionSubmitFireAssessment(Action):
             responses = location_map.get(house_location, HOUSE_OTHER)
             print(f"DEBUG===responses={responses}")
             return responses.get(risk, "Emergency! Call 112.")
+        elif site_type == "building":
+            if building_location == "inside":
+                return BUILDING_INSIDE
+            else:
+                return BUILDING_OUTSIDE
 
         # ----- DEFAULT -----
         else:
@@ -215,6 +230,7 @@ class ActionResetSlots(Action):
         return [
             SlotSet("site_type", None),
             SlotSet("house_location", None),
+            SlotSet("building_location", None),
             SlotSet("is_critical", None),
             SlotSet("is_high", None),
             SlotSet("is_rising", None)
