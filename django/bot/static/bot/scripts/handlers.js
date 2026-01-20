@@ -138,7 +138,7 @@ export async function handleUserInput(event, input) {
       "X-CSRFToken": csrfToken,
     };
     const data = await handleRequest(headers_content, body_content);
-    console.log(data);
+    // console.log(data);
 
     if (data.status === "success") {
       const { response } = data;
@@ -179,6 +179,7 @@ export async function handleBtnInputs(event) {
     if (!btn) return;
 
     const payload = btn.dataset.payload;
+    console.log(payload);
     const btnText = btn.textContent.trim();
 
     // Add user's button selection to state
@@ -253,9 +254,9 @@ function renderChat() {
           btn_markup = entry.buttons
             .map(
               (btn) =>
-                `<button class="chat_btn" data-payload="${btn.payload}">
+                `<button class="chat_btn" data-payload='${btn.payload}'>
                   ${btn.title}
-                </button>`
+                </button>`,
             )
             .join("");
         }

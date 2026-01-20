@@ -17,7 +17,6 @@ def index(request):
 
 def handle_user_message(request):
     try:
-        print("handle_user_message")
         if (request.method != "POST"):
             return JsonResponse({"status":"error", "message" : "invalid method"}, status=405)
         
@@ -33,8 +32,6 @@ def handle_user_message(request):
             return JsonResponse({"status":"error", "message":"user message must be a string"}, status=400)
         if len(user_message) > 500:
             return JsonResponse({"status":"error","message":"Message too long"})
-        
-        # print("======== user message =========", len(user_message))
 
         # FOR DEBUGGING ONLY
         # parse_response = requests.post("http://rasa:5005/model/parse", json={"text":user_message}).json()
@@ -49,6 +46,11 @@ def handle_user_message(request):
         # RESETTING TRACKER (only in development phase)
         # if (settings.APP_MODE=="development"):
         #     requests.post(f"http://rasa:5005/conversations/{sender_id}/tracker/events",json={"event": "restart"})
+
+        logger.info(f"Sending to Rasa - Sender: {sender_id}, Message: {user_message}")
+        parse_response = requests.post("http://rasa:5005/model/parse", json={"text": user_message}).json()
+        logger.info(f"Parse result - Intent: {parse_response.get('intent')}, Entities: {parse_response.get('entities')}")
+
 
         # RASA REQUEST
         rasa_response = requests.post(RASA_URL, json={
@@ -73,7 +75,6 @@ def handle_user_message(request):
                 "message": "No response from assistant"
             }, status=502)
 
-        # Process ALL messages, not just first one
         all_messages = []
 
         for msg in bot_message:

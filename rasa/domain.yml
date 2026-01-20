@@ -339,17 +339,17 @@ responses:
     - text: "Where are you right now?"
       buttons:
         - title: "🏢 Inside the Building"
-          payload: '/inform{{"building_location": "inside"}}'
+          payload: '/pos_inside{{"building_location": "inside"}}'
         - title: "🚪 Outside the Building"
-          payload: '/inform{{"building_location": "outside"}}'
+          payload: '/pos_outside{{"building_location": "outside"}}'
 
   utter_ask_factory_location:
     - text: "Where are you right now?"
       buttons:
         - title: "🏭 Inside the Factory"
-          payload: '/inform{{"factory_location": "inside"}}'
+          payload: '/pos_inside{{"factory_location": "inside"}}'
         - title: "🚪 Outside the Factory"
-          payload: '/inform{{"factory_location": "outside"}}'
+          payload: '/pos_outside{{"factory_location": "outside"}}'
 
   utter_ask_factory_role:
     - text: "Are you a worker or visitor?"
@@ -396,25 +396,25 @@ responses:
         • Explosion / Cylinder Burst"
       buttons:
         - title: "✅ Yes"
-          payload: '/inform{{"is_critical": "yes"}}'
+          payload: '/affirm{{"is_critical": "yes"}}'
         - title: "❌ No"
-          payload: '/inform{{"is_critical": "no"}}'
+          payload: '/deny{{"is_critical": "no"}}'
 
   utter_ask_is_high:
     - text: "🟠 Do you see any of these?\n\n• Visible Flames\n• Fire Spreading\n• Burning Embers / Sparks Flying"
       buttons:
         - title: "✅ Yes"
-          payload: '/inform{{"is_high": "yes"}}'
+          payload: '/affirm{{"is_high": "yes"}}'
         - title: "❌ No"
-          payload: '/inform{{"is_high": "no"}}'
+          payload: '/deny{{"is_high": "no"}}'
 
   utter_ask_is_rising:
     - text: "🟡 Do you notice any of these?\n\n• Light Smoke\n• Electric Sparks\n• Pungent Gas Smell"
       buttons:
         - title: "✅ Yes"
-          payload: '/inform{{"is_rising": "yes"}}'
+          payload: '/affirm{{"is_rising": "yes"}}'
         - title: "❌ No (Early Stage / No Smoke)"
-          payload: '/inform{{"is_rising": "no"}}'
+          payload: '/deny{{"is_rising": "no"}}'
 
   utter_out_of_scope:
     - text: "Sorry, I can only help with fire emergencies. Type 'fire' to report one."
