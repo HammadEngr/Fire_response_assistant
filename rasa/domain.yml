@@ -388,12 +388,12 @@ responses:
           payload: '/inform{{"warehouse_material": "mixed"}}'
 
   utter_ask_is_critical:
-    - text: "🔴 Are you experiencing any of these CRITICAL situations?\n\n
-        • Heavy/Black Smoke\n
-        • Cannot Breathe / Choking\n
-        • Trapped / Exit Blocked\n
-        • Someone Injured\n
-        • Explosion / Cylinder Burst"
+    - text: "🔴 Are you experiencing any of these CRITICAL situations?
+        - Heavy/Black Smoke
+        - Cannot Breathe / Choking
+        - Trapped / Exit Blocked
+        - Someone Injured
+        - Explosion / Cylinder Burst"
       buttons:
         - title: "✅ Yes"
           payload: '/affirm{{"is_critical": "yes"}}'
