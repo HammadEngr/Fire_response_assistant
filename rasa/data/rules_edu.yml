@@ -1,0 +1,207 @@
+version: "3.1"
+
+rules:
+  - rule: Start education
+    steps:
+      - intent: fire_education
+      - action: utter_education_menu
+
+  - rule: Back to main menu
+    steps:
+      - intent: edu_back_main
+      - action: utter_education_menu
+
+  # FIRE BASICS MODULE
+  - rule: Fire basics menu
+    steps:
+      - intent: edu_fire_basics
+      - action: utter_fire_basics_menu
+
+  - rule: Back to fire basics
+    steps:
+      - intent: edu_back_basics
+      - action: utter_fire_basics_menu
+
+  - rule: What is fire
+    steps:
+      - intent: edu_what_is_fire
+      - action: utter_what_is_fire
+
+  - rule: Fire triangle
+    steps:
+      - intent: edu_fire_triangle
+      - action: utter_fire_triangle
+
+  - rule: Fire classification
+    steps:
+      - intent: edu_fire_classification
+      - action: utter_fire_classification
+
+  - rule: Fire spread
+    steps:
+      - intent: edu_fire_spread
+      - action: utter_fire_spread
+
+  - rule: Fire consequences
+    steps:
+      - intent: edu_fire_consequences
+      - action: utter_fire_consequences
+
+  # RISK ASSESSMENTS
+  - rule: Risk assessment menu
+    steps:
+      - intent: edu_risk_assessment
+      - action: utter_risk_assessment_menu
+
+  - rule: RA why
+    steps:
+      - intent: edu_ra_why
+      - action: utter_ra_why
+
+  - rule: RA step 1
+    steps:
+      - intent: edu_ra_step1
+      - action: utter_ra_step1
+
+  - rule: RA step 2
+    steps:
+      - intent: edu_ra_step2
+      - action: utter_ra_step2
+
+  - rule: RA step 3
+    steps:
+      - intent: edu_ra_step3
+      - action: utter_ra_step3
+
+  - rule: RA step 4
+    steps:
+      - intent: edu_ra_step4
+      - action: utter_ra_step4
+
+  - rule: RA step 5
+    steps:
+      - intent: edu_ra_step5
+      - action: utter_ra_step5
+
+  # PREVENTIONS
+  - rule: Prevention menu
+    steps:
+      - intent: edu_prevention
+      - action: utter_prevention_menu
+
+  - rule: Prevention combustibles
+    steps:
+      - intent: edu_prev_combustibles
+      - action: utter_prev_combustibles
+
+  - rule: Prevention ignition
+    steps:
+      - intent: edu_prev_ignition
+      - action: utter_prev_ignition
+
+  - rule: Prevention hot work
+    steps:
+      - intent: edu_prev_hotwork
+      - action: utter_prev_hotwork
+
+  - rule: Prevention housekeeping
+    steps:
+      - intent: edu_prev_housekeeping
+      - action: utter_prev_housekeeping
+
+  - rule: Prevention flammable liquids
+    steps:
+      - intent: edu_prev_flammable_liquids
+      - action: utter_prev_flammable_liquids
+
+  - rule: Prevention structural
+    steps:
+      - intent: edu_prev_structural
+      - action: utter_prev_structural
+
+  - rule: Prevention ATEX
+    steps:
+      - intent: edu_prev_atex
+      - action: utter_prev_atex
+
+  # ALARM AND FIREFIGHTING
+  - rule: Alarm firefighting menu
+    steps:
+      - intent: edu_alarm_firefighting
+      - action: utter_alarm_firefighting_menu
+
+  - rule: AF detection
+    steps:
+      - intent: edu_af_detection
+      - action: utter_af_detection
+
+  - rule: AF detectors
+    steps:
+      - intent: edu_af_detectors
+      - action: utter_af_detectors
+
+  - rule: AF extinguishers
+    steps:
+      - intent: edu_af_extinguishers
+      - action: utter_af_extinguishers
+
+  - rule: AF limitations
+    steps:
+      - intent: edu_af_limitations
+      - action: utter_af_limitations
+
+  - rule: AF other equipment
+    steps:
+      - intent: edu_af_other_equipment
+      - action: utter_af_other_equipment
+
+  - rule: AF siting maintenance
+    steps:
+      - intent: edu_af_siting_maintenance
+      - action: utter_af_siting_maintenance
+
+  - rule: AF fire service
+    steps:
+      - intent: edu_af_fire_service
+      - action: utter_af_fire_service
+
+  # EVACUATIONS
+  - rule: Evacuation menu
+    steps:
+      - intent: edu_evacuation
+      - action: utter_evacuation_menu
+
+  - rule: Evac means
+    steps:
+      - intent: edu_evac_means
+      - action: utter_evac_means
+
+  - rule: Evac stairs doors
+    steps:
+      - intent: edu_evac_stairs_doors
+      - action: utter_evac_stairs_doors
+
+  - rule: Evac lighting signs
+    steps:
+      - intent: edu_evac_lighting_signs
+      - action: utter_evac_lighting_signs
+
+  - rule: Evac assembly
+    steps:
+      - intent: edu_evac_assembly
+      - action: utter_evac_assembly
+
+  - rule: Evac marshals
+    steps:
+      - intent: edu_evac_marshals
+      - action: utter_evac_marshals
+
+  - rule: Evac disabled
+    steps:
+      - intent: edu_evac_disabled
+      - action: utter_evac_disabled
+
+  - rule: Evac fire plan
+    steps:
+      - intent: edu_evac_fire_plan
+      - action: utter_evac_fire_plan

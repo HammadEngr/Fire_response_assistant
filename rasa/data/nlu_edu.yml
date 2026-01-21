@@ -1,0 +1,271 @@
+version: "3.1"
+
+nlu:
+  - intent: fire_education
+    examples: |
+      - learn
+      - education
+      - teach me
+      - fire safety education
+      - learn about fire
+      - i want to learn
+      - educate me
+      - fire training
+      - safety training
+  # BASICS
+  - intent: edu_fire_basics
+    examples: |
+      - fire basics
+      - basics of fire
+      - basic fire knowledge
+
+  - intent: edu_what_is_fire
+    examples: |
+      - what is fire
+      - define fire
+      - fire definition
+
+  - intent: edu_fire_triangle
+    examples: |
+      - fire triangle
+      - triangle of fire
+      - three elements of fire
+
+  - intent: edu_fire_classification
+    examples: |
+      - fire classification
+      - types of fire
+      - fire classes
+      - class of fire
+
+  - intent: edu_fire_spread
+    examples: |
+      - how fire spreads
+      - fire spread
+      - spreading of fire
+
+  - intent: edu_fire_consequences
+    examples: |
+      - consequences of fire
+      - fire consequences
+      - effects of fire
+      - fire damage
+
+  - intent: edu_back_main
+    examples: |
+      - main menu
+      - back to main
+      - go back
+
+  - intent: edu_back_basics
+    examples: |
+      - back to basics
+      - fire basics menu
+
+  # RISK ASSESSMENT
+  - intent: edu_risk_assessment
+    examples: |
+      - risk assessment
+      - fire risk
+
+  - intent: edu_ra_why
+    examples: |
+      - why risk assessment
+      - why do risk assessment
+      - purpose of risk assessment
+
+  - intent: edu_ra_step1
+    examples: |
+      - identify hazards
+      - fire hazards
+      - step 1
+
+  - intent: edu_ra_step2
+    examples: |
+      - identify people
+      - people at risk
+      - who is at risk
+      - step 2
+
+  - intent: edu_ra_step3
+    examples: |
+      - precautions
+      - fire precautions
+      - implement precautions
+      - step 3
+
+  - intent: edu_ra_step4
+    examples: |
+      - record findings
+      - training
+      - fire training
+      - step 4
+
+  - intent: edu_ra_step5
+    examples: |
+      - review
+      - revise
+      - step 5
+
+  # FIRE PREVENTION
+  - intent: edu_prevention
+    examples: |
+      - fire prevention
+      - prevent fire
+
+  - intent: edu_prev_combustibles
+    examples: |
+      - combustibles
+      - control combustibles
+      - flammable materials
+
+  - intent: edu_prev_ignition
+    examples: |
+      - ignition sources
+      - control ignition
+      - ignition control
+
+  - intent: edu_prev_hotwork
+    examples: |
+      - hot work
+      - welding safety
+      - hot work precautions
+
+  - intent: edu_prev_housekeeping
+    examples: |
+      - housekeeping
+      - fire housekeeping
+      - tidiness
+
+  - intent: edu_prev_flammable_liquids
+    examples: |
+      - flammable liquids
+      - lpg storage
+      - gas storage
+      - flash point
+
+  - intent: edu_prev_structural
+    examples: |
+      - structural measures
+      - fire doors
+      - compartmentation
+      - prevent fire spread
+
+  - intent: edu_prev_atex
+    examples: |
+      - atex
+      - atex zones
+      - explosive atmosphere
+      - ex zones
+
+  # FIREFIGHTINGS
+  - intent: edu_alarm_firefighting
+    examples: |
+      - fire alarm
+      - firefighting
+      - fire extinguisher
+
+  - intent: edu_af_detection
+    examples: |
+      - fire detection
+      - fire warning
+      - fire alarm
+      - detection systems
+
+  - intent: edu_af_detectors
+    examples: |
+      - detector types
+      - smoke detector
+      - heat detector
+      - types of detectors
+
+  - intent: edu_af_extinguishers
+    examples: |
+      - fire extinguisher
+      - extinguisher types
+      - which extinguisher
+      - extinguisher classes
+
+  - intent: edu_af_limitations
+    examples: |
+      - extinguisher limitations
+      - wrong extinguisher
+      - extinguisher danger
+      - extinguisher safety
+
+  - intent: edu_af_other_equipment
+    examples: |
+      - fire blanket
+      - hose reel
+      - sprinkler
+      - other equipment
+
+  - intent: edu_af_siting_maintenance
+    examples: |
+      - extinguisher location
+      - siting extinguishers
+      - extinguisher maintenance
+      - fire equipment maintenance
+
+  - intent: edu_af_fire_service
+    examples: |
+      - fire service access
+      - fire brigade
+      - firefighter access
+      - emergency access
+
+  # EVACUATIONS
+  - intent: edu_evacuation
+    examples: |
+      - evacuation
+      - escape plan
+      - emergency exit
+
+  - intent: edu_evac_means
+    examples: |
+      - means of escape
+      - escape routes
+      - exit routes
+      - fire exits
+
+  - intent: edu_evac_stairs_doors
+    examples: |
+      - stairs
+      - corridors
+      - fire doors
+      - emergency doors
+
+  - intent: edu_evac_lighting_signs
+    examples: |
+      - emergency lighting
+      - exit signs
+      - fire signs
+      - escape lighting
+
+  - intent: edu_evac_assembly
+    examples: |
+      - assembly point
+      - muster point
+      - meeting point
+      - where to go
+
+  - intent: edu_evac_marshals
+    examples: |
+      - fire marshal
+      - fire warden
+      - evacuation procedure
+      - roll call
+
+  - intent: edu_evac_disabled
+    examples: |
+      - disabled evacuation
+      - peep
+      - wheelchair evacuation
+      - vulnerable persons
+
+  - intent: edu_evac_fire_plan
+    examples: |
+      - fire plan
+      - emergency plan
+      - fire drill
+      - fire training
