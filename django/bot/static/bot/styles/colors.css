@@ -4,7 +4,8 @@
   /* --bg-primary: white; */
   /* --bg-secondary: #212121; */
   --bg-secondary: #2b2a27;
-  --bg-tertiary: #303030;
+  --bg-tertiary: #212121;
+  /* --bg-tertiary: #303030; */
   --bg-chat-btn: #6a6a6a;
 
   --hover: #272727;
@@ -12,7 +13,10 @@
 
   --border-color: #46443f;
 
-  --text-primary: #fff;
+  --text-primary: #ddd1d1;
+  --section-heading: #ff915d;
+  --text-heading: #99bf5f;
+
   --text-secondary: #f3f3f3;
   --text-tertiary: #afafaf;
 }

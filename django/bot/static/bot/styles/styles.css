@@ -176,6 +176,8 @@ body {
   flex-direction: column;
   align-items: start;
   gap: var(--flex-gap);
+  width: 100%;
+  /* background-color: gray; */
 }
 
 .chat_btns {
@@ -196,6 +198,7 @@ body {
   background-color: var(--bg-tertiary);
   color: var(--text-primary);
   padding: 0 10px;
+  font-weight: bold;
 }
 .chat_btn:hover {
   background-color: var(--hover);
@@ -232,4 +235,34 @@ body {
 }
 .chatbot__send-button:hover {
   background-color: var(--hover);
+}
+
+.bot-msg-text {
+  border-radius: 20px;
+  background-color: black;
+  width: fit-content;
+  padding: 10px;
+}
+
+.chatbot-response-box-title {
+  font-size: 1rem;
+  width: 100%;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--section-heading);
+  padding-bottom: 10px;
+}
+
+.chatbot-response-box-sections-heading {
+  color: var(--text-heading);
+  font-size: 1rem;
+}
+
+.chatbot-response-box-sections-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--flex-gap);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
 }

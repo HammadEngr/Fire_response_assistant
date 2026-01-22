@@ -349,581 +349,1115 @@ forms:
 responses:
   # Greetings
   utter_greet:
-    - text: "Hello! This is Fire Emergency Assistance. Say 'fire' to report an emergency."
+    - custom:
+        title: "👋 WELCOME TO FIRE EMERGENCY ASSISTANCE"
+        sections:
+          - heading: "How can I assist you today?"
+            content: "You can report a fire emergency or learn about fire safety."
+        footer: ""
+        buttons: []
 
   utter_goodbye:
-    - text: "Stay safe! Goodbye."
+    - custom:
+        title: "👋 GOODBYE!"
+        sections:
+          - heading: "Thank you for using the Fire Emergency Assistant."
+            content: "Stay safe!"
+        footer: ""
+        buttons: []
 
   # _____________________________________________________________________________________________
   # --------------------------------- FiRE REPORT UTTERANCES ------------------------------------
   # _____________________________________________________________________________________________
   utter_fire_reported:
-    - text: "🚨 Fire Emergency Acknowledged! Stay calm. I need some quick information."
+    - custom:
+        title: "🚒 FIRE EMERGENCY REPORTED"
+        sections:
+          - heading: "Help is on the way!"
+            content: "Please follow the instructions carefully to ensure your safety until emergency services arrive."
+        footer: ""
+        buttons: []
 
   # Site Types
   utter_ask_site_type:
-    - text: "What type of location is on fire?"
-      buttons:
-        - title: "🏠 House"
-          payload: '/inform{{"site_type": "house"}}'
-        - title: "🏢 Building (Mall, Office, Hospital)"
-          payload: '/inform{{"site_type": "building"}}'
-        - title: "🏭 Factory / Industry"
-          payload: '/inform{{"site_type": "factory"}}'
-        - title: "🏬 Warehouse"
-          payload: '/inform{{"site_type": "warehouse"}}'
-        - title: "🌲 Forest / Grassland"
-          payload: '/inform{{"site_type": "forest"}}'
+    - custom:
+        title: "🏞️ LOCATION TYPE"
+        sections:
+          - heading: "What type of location is on fire?"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "🏠 House"
+            payload: '/inform{{"site_type": "house"}}'
+          - title: "🏢 Building (Mall, Office, Hospital)"
+            payload: '/inform{{"site_type": "building"}}'
+          - title: "🏭 Factory / Industry"
+            payload: '/inform{{"site_type": "factory"}}'
+          - title: "🏬 Warehouse"
+            payload: '/inform{{"site_type": "warehouse"}}'
+          - title: "🌲 Forest / Grassland"
+            payload: '/inform{{"site_type": "forest"}}'
 
   # House locations
   utter_ask_house_location:
-    - text: "Where in the house is the fire?"
-      buttons:
-        - title: "🍳 Kitchen"
-          payload: '/inform{{"house_location": "kitchen"}}'
-        - title: "⚡ Electrical / Technical Room"
-          payload: '/inform{{"house_location": "electrical"}}'
-        - title: "🛏️ Bedroom / Living Area"
-          payload: '/inform{{"house_location": "bedroom"}}'
-        - title: "🚗 Garage"
-          payload: '/inform{{"house_location": "garage"}}'
-        - title: "🔥 Near Gas Pipeline / Cylinder"
-          payload: '/inform{{"house_location": "gas_area"}}'
-        - title: "❓ Other"
-          payload: '/inform{{"house_location": "other"}}'
+    - custom:
+        title: "🏠 HOUSE AREA"
+        sections:
+          - heading: "Where in the house is the fire?"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "🍳 Kitchen"
+            payload: '/inform{{"house_location": "kitchen"}}'
+          - title: "⚡ Electrical / Technical Room"
+            payload: '/inform{{"house_location": "electrical"}}'
+          - title: "🛏️ Bedroom / Living Area"
+            payload: '/inform{{"house_location": "bedroom"}}'
+          - title: "🚗 Garage"
+            payload: '/inform{{"house_location": "garage"}}'
+          - title: "🔥 Near Gas Pipeline / Cylinder"
+            payload: '/inform{{"house_location": "gas_area"}}'
+          - title: "❓ Other"
+            payload: '/inform{{"house_location": "other"}}'
 
   # Building locations
   utter_ask_building_location:
-    - text: "Where are you right now?"
-      buttons:
-        - title: "🏢 Inside the Building"
-          payload: '/pos_inside{{"building_location": "inside"}}'
-        - title: "🚪 Outside the Building"
-          payload: '/pos_outside{{"building_location": "outside"}}'
+    - custom:
+        title: "🏢 BUILDING LOCATION"
+        sections:
+          - heading: "Where are you right now?"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "🏢 Inside the Building"
+            payload: '/pos_inside{{"building_location": "inside"}}'
+          - title: "🚪 Outside the Building"
+            payload: '/pos_outside{{"building_location": "outside"}}'
 
   # factory locations
   utter_ask_factory_location:
-    - text: "Where are you right now?"
-      buttons:
-        - title: "🏭 Inside the Factory"
-          payload: '/pos_inside{{"factory_location": "inside"}}'
-        - title: "🚪 Outside the Factory"
-          payload: '/pos_outside{{"factory_location": "outside"}}'
+    - custom:
+        title: "🏭 FACTORY LOCATION"
+        sections:
+          - heading: "Location"
+            content: ""
+        buttons:
+          - title: "🏭 Inside the Factory"
+            payload: '/pos_inside{{"factory_location": "inside"}}'
+          - title: "🚪 Outside the Factory"
+            payload: '/pos_outside{{"factory_location": "outside"}}'
 
   # Factory roles
   utter_ask_factory_role:
-    - text: "Are you a worker or visitor?"
-      buttons:
-        - title: "👷 Factory Staff / Worker"
-          payload: '/inform{{"factory_role": "worker"}}'
-        - title: "👤 Visitor"
-          payload: '/inform{{"factory_role": "visitor"}}'
+    - custom:
+        title: "👷 FACTORY ROLE"
+        sections:
+          - heading: "Are you a worker or visitor?"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "👷 Factory Staff / Worker"
+            payload: '/inform{{"factory_role": "worker"}}'
+          - title: "👤 Visitor"
+            payload: '/inform{{"factory_role": "visitor"}}'
 
   # Warehouse
   utter_ask_warehouse_size:
-    - text: "Is this a large facility with a safety department?"
-      buttons:
-        - title: "✅ Yes (Large / Has Safety Team)"
-          payload: '/affirm{{"warehouse_size": "yes"}}'
-        - title: "❌ No (Small / No Safety Team)"
-          payload: '/deny{{"warehouse_size": "no"}}'
+    - custom:
+        title: "🏬 WAREHOUSE SIZE"
+        sections:
+          - heading: "Size & Safety Team"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "✅ Yes (Large / Has Safety Team)"
+            payload: '/affirm{{"warehouse_size": "yes"}}'
+          - title: "❌ No (Small / No Safety Team)"
+            payload: '/deny{{"warehouse_size": "no"}}'
 
   utter_ask_warehouse_material:
-    - text: "What is primarily stored in this warehouse?"
-      buttons:
-        - title: "👕 Garments & Synthetic Fibers"
-          payload: '/inform{{"warehouse_material": "garments"}}'
-        - title: "⚡ Electrical & Electronics"
-          payload: '/inform{{"warehouse_material": "electrical"}}'
-        - title: "🚗 Mechanical & Automobiles"
-          payload: '/inform{{"warehouse_material": "mechanical"}}'
-        - title: "📦 Wood / Paper / Cardboard"
-          payload: '/inform{{"warehouse_material": "wood"}}'
-        - title: "🏺 Ceramics & Glass"
-          payload: '/inform{{"warehouse_material": "ceramics"}}'
-        - title: "🛞 Rubber / Tires / Plastics"
-          payload: '/inform{{"warehouse_material": "rubber"}}'
-        - title: "🧪 Chemicals"
-          payload: '/inform{{"warehouse_material": "chemicals"}}'
-        - title: "❓ Mixed / Don't Know"
-          payload: '/inform{{"warehouse_material": "mixed"}}'
+    - custom:
+        title: "📦 WAREHOUSE MATERIALS"
+        sections:
+          - heading: "Stored Materials"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "👕 Garments & Synthetic Fibers"
+            payload: '/inform{{"warehouse_material": "garments"}}'
+          - title: "⚡ Electrical & Electronics"
+            payload: '/inform{{"warehouse_material": "electrical"}}'
+          - title: "🚗 Mechanical & Automobiles"
+            payload: '/inform{{"warehouse_material": "mechanical"}}'
+          - title: "📦 Wood / Paper / Cardboard"
+            payload: '/inform{{"warehouse_material": "wood"}}'
+          - title: "🏺 Ceramics & Glass"
+            payload: '/inform{{"warehouse_material": "ceramics"}}'
+          - title: "🛞 Rubber / Tires / Plastics"
+            payload: '/inform{{"warehouse_material": "rubber"}}'
+          - title: "🧪 Chemicals"
+            payload: '/inform{{"warehouse_material": "chemicals"}}'
+          - title: "❓ Mixed / Don't Know"
+            payload: '/inform{{"warehouse_material": "mixed"}}'
 
   # Risk Assessment Questions
   utter_ask_is_critical:
-    - text: "🔴 Are you experiencing any of these CRITICAL situations?
-        - Heavy/Black Smoke
-        - Cannot Breathe / Choking
-        - Trapped / Exit Blocked
-        - Someone Injured
-        - Explosion / Cylinder Burst"
-      buttons:
-        - title: "✅ Yes"
-          payload: '/affirm{{"is_critical": "yes"}}'
-        - title: "❌ No"
-          payload: '/deny{{"is_critical": "no"}}'
+    - custom:
+        title: "🔴 CRITICAL SITUATIONS"
+        sections:
+          - heading: "Are you experiencing any of these CRITICAL situations?"
+            content: "- Heavy/Black Smoke\n- Cannot Breathe / Choking\n- Trapped / Exit Blocked\n- Someone Injured\n- Explosion / Cylinder Burst"
+        footer: ""
+        buttons:
+          - title: "✅ Yes"
+            payload: '/affirm{{"is_critical": "yes"}}'
+          - title: "❌ No"
+            payload: '/deny{{"is_critical": "no"}}'
 
   utter_ask_is_high:
-    - text: "🟠 Do you see any of these?\n\n• Visible Flames\n• Fire Spreading\n• Burning Embers / Sparks Flying"
-      buttons:
-        - title: "✅ Yes"
-          payload: '/affirm{{"is_high": "yes"}}'
-        - title: "❌ No"
-          payload: '/deny{{"is_high": "no"}}'
+    - custom:
+        title: "🟠 HIGH RISK INDICATORS"
+        sections:
+          - heading: "Do you see any of these?"
+            content: "- Visible Flames\n- Fire Spreading\n- Burning Embers / Sparks Flying"
+        footer: ""
+        buttons:
+          - title: "✅ Yes"
+            payload: '/affirm{{"is_high": "yes"}}'
+          - title: "❌ No"
+            payload: '/deny{{"is_high": "no"}}'
 
   utter_ask_is_rising:
-    - text: "🟡 Do you notice any of these?\n\n• Light Smoke\n• Electric Sparks\n• Pungent Gas Smell"
-      buttons:
-        - title: "✅ Yes"
-          payload: '/affirm{{"is_rising": "yes"}}'
-        - title: "❌ No (Early Stage / No Smoke)"
-          payload: '/deny{{"is_rising": "no"}}'
+    - custom:
+        title: "🟡 EARLY WARNING SIGNS"
+        sections:
+          - heading: "Do you notice any of these?"
+            content: "• Light Smoke\n• Electric Sparks\n• Pungent Gas Smell"
+        footer: ""
+        buttons:
+          - title: "✅ Yes"
+            payload: '/affirm{{"is_rising": "yes"}}'
+          - title: "❌ No (Early Stage / No Smoke)"
+            payload: '/deny{{"is_rising": "no"}}'
 
   # ________________________________________________________________________________________
   # ----------------------------------- FALLBACK UTTERANCES --------------------------------
   # ________________________________________________________________________________________
   utter_out_of_scope:
-    - text: "Sorry, I can only help with fire emergencies. Type 'fire' to report one."
+    - custom:
+        title: "❓ OUT OF SCOPE"
+        sections:
+          - heading: "I'm here to help with fire emergencies only."
+            content: ""
+        footer: ""
+        buttons: []
 
   # Default fallback
   utter_default:
-    - text: "I'm sorry, I didn't understand that. Type 'fire' to report a fire emergency."
+    - custom:
+        title: "❓ UNRECOGNISED INPUT"
+        sections:
+          - heading: "I'm sorry, I didn't understand that."
+            content: "Type 'fire' to report a fire emergency."
+        footer: ""
+        buttons: []
 
   utter_please_rephrase:
-    - text: "I didn't quite get that. Could you rephrase?"
-
+    - custom:
+        title: "❓ PLEASE REPHRASE"
+        sections:
+          - heading: "I didn't quite get that."
+            content: "Could you rephrase?"
+        footer: ""
+        buttons: []
   # __________________________________________________________________________________________
   # -------------------------------- FIRE EDUCATION UTTERANCES -------------------------------
   # __________________________________________________________________________________________
   utter_education_menu:
-    - text: "📚 FIRE SAFETY EDUCATION\n\nSelect a module to learn:"
-      buttons:
-        - title: "🔥 1. Fire Basics"
-          payload: "/edu_fire_basics"
-        - title: "📋 2. Risk Assessment"
-          payload: "/edu_risk_assessment"
-        - title: "🛡️ 3. Prevention"
-          payload: "/edu_prevention"
-        - title: "🚨 4. Alarm & Firefighting"
-          payload: "/edu_alarm_firefighting"
-        - title: "🚪 5. Evacuation"
-          payload: "/edu_evacuation"
+    - custom:
+        title: "📚 FIRE SAFETY EDUCATION"
+        sections:
+          - heading: "Select a module to learn:"
+            # conetnt: ""
+        # footer: ""
+        buttons:
+          - title: "🔥 1. Fire Basics"
+            payload: "/edu_fire_basics"
+          - title: "📋 2. Risk Assessment"
+            payload: "/edu_risk_assessment"
+          - title: "🛡️ 3. Prevention"
+            payload: "/edu_prevention"
+          - title: "🚨 4. Alarm & Firefighting"
+            payload: "/edu_alarm_firefighting"
+          - title: "🚪 5. Evacuation"
+            payload: "/edu_evacuation"
 
   # FIRE BASICS MENU
   utter_fire_basics_menu:
-    - text: "🔥 FIRE BASICS\n\nSelect a topic:"
-      buttons:
-        - title: "❓ What is Fire?"
-          payload: "/edu_what_is_fire"
-        - title: "🔺 Fire Triangle"
-          payload: "/edu_fire_triangle"
-        - title: "📋 Fire Classification"
-          payload: "/edu_fire_classification"
-        - title: "🌊 How Fire Spreads"
-          payload: "/edu_fire_spread"
-        - title: "⚠️ Consequences of Fire"
-          payload: "/edu_fire_consequences"
-        - title: "⬅️ Back to Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🔥 FIRE BASICS"
+        sections:
+          - heading: "Select a topic:"
+            # conetnt: ""
+        # footer: ""
+        buttons:
+          - title: "❓ What is Fire?"
+            payload: "/edu_what_is_fire"
+          - title: "🔺 Fire Triangle"
+            payload: "/edu_fire_triangle"
+          - title: "📋 Fire Classification"
+            payload: "/edu_fire_classification"
+          - title: "🌊 How Fire Spreads"
+            payload: "/edu_fire_spread"
+          - title: "⚠️ Consequences of Fire"
+            payload: "/edu_fire_consequences"
+          - title: "⬅️ Back to Main Menu"
+            payload: "/edu_back_main"
 
   # FIRE BASICS CONTENT
   utter_what_is_fire:
-    - text: "🔥 WHAT IS FIRE?\n\nFire is a rapid chemical process in which oxygen combines with another substance (fuel) in the presence of a source of heat.\n\nThis reaction is called COMBUSTION.\n\nDuring this reaction, three things are produced:\n• Heat\n• Flames\n• Smoke\n\nUnderstanding this helps us know how to prevent and fight fires."
-      buttons:
-        - title: "⬅️ Back to Fire Basics"
-          payload: "/edu_fire_basics"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🔥 WHAT IS FIRE?"
+        sections:
+          - heading: Fire
+            content: "Fire is a rapid chemical process in which oxygen combines with another substance (fuel) in the presence of a source of heat.\n\nThis reaction is called COMBUSTION.\n\nDuring this reaction, three things are produced:\n• Heat\n• Flames\n• Smoke\n\nUnderstanding this helps us know how to prevent and fight fires."
+        footer: ""
+        buttons:
+          - title: "⬅️ Back to Fire Basics"
+            payload: "/edu_fire_basics"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_fire_triangle:
-    - text: "🔺 THE FIRE TRIANGLE\n\nFire needs THREE elements to exist:\n\n🪵 FUEL\n• Any combustible material\n• Wood, paper, cloth, gas, oil, etc.\n• Consumed during burning\n\n💨 OXYGEN\n• Present in air at 21% concentration\n• Fire needs at least 16% oxygen to burn\n• More oxygen = more intense fire\n\n🔥 HEAT (Ignition Source)\n• Energy needed to start combustion\n• Sources: flames, sparks, friction, electricity\n\n━━━━━━━━━━━━━━━━━━━━\nRemove ANY ONE element = Fire STOPS\n━━━━━━━━━━━━━━━━━━━━\n\nThis is the basis of all firefighting methods."
-      buttons:
-        - title: "⬅️ Back to Fire Basics"
-          payload: "/edu_fire_basics"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🔺 THE FIRE TRIANGLE"
+        sections:
+          - heading: "🪵 FUEL"
+            content: "Any combustible material\n• Wood, paper, cloth, gas, oil, etc."
+          - heading: "💨 OXYGEN"
+            content: "Present in air at 21% concentration\n• Fire needs at least 16% oxygen to burn\n• More oxygen = more intense fire\n\n"
+          - heading: "🔥 HEAT (Ignition Source)"
+            content: "Energy needed to start combustion\n• Sources: flames, sparks, friction, electricity"
+        footer: "Remove ANY ONE element = Fire STOPS"
+        buttons:
+          - title: "⬅️ Back to Fire Basics"
+            payload: "/edu_fire_basics"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_fire_classification:
-    - text: "📋 FIRE CLASSIFICATION (UK/EU System)\n\nFires are classified by the type of fuel:\n\nCLASS A - Solid Materials\n• Wood, paper, cloth, plastic\n• Most common type of fire\n\nCLASS B - Liquids & Liquefiable Solids\n• Petrol, oil, paint, wax\n• Spread rapidly\n\nCLASS C - Gases\n• Propane, butane, natural gas\n• Explosion risk\n\nCLASS D - Metals\n• Magnesium, sodium, potassium\n• React violently with water\n\nCLASS F - Cooking Fats/Oils\n• Deep fryers, cooking equipment\n• Very high temperature\n\n⚠️ Note: No Class E in UK/EU system."
-      buttons:
-        - title: "⬅️ Back to Fire Basics"
-          payload: "/edu_fire_basics"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "📋 FIRE CLASSIFICATION (UK/EU System)"
+        sections:
+          - heading: "Fires are classified by the type of fuel"
+            # content: ""
+          - heading: "CLASS A"
+            content: "Solid Materials\n Wood, paper, cloth, plastic\n -Most common type of fire"
+          - heading: "CLASS B"
+            content: "Liquids & Liquefiable Solids\n• Petrol, oil, paint, wax\n• Spread rapidly"
+          - heading: "CLASS C"
+            content: "- Gases\n• Propane, butane, natural gas\n• Explosion risk"
+          - heading: "CLASS D"
+            content: "- Metals\n• Magnesium, sodium, potassium\n• React violently with water"
+          - heading: "CLASS F/E"
+            content: "Cooking Fats/Oils\n• Deep fryers, cooking equipment\n• Very high temperature\n ⚠️ Note: No Class E in UK/EU system."
+        footer: ""
+        buttons:
+          - title: "⬅️ Back to Fire Basics"
+            payload: "/edu_fire_basics"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_fire_spread:
-    - text: "🌊 HOW FIRE SPREADS\n\nFire spreads through 4 methods:\n\n1️⃣ DIRECT BURNING\n• Flames touch new fuel source\n• Example: Fire spreading along curtains\n\n2️⃣ CONVECTION\n• Hot air rises, carries heat upward\n• Why fires spread quickly UP stairs\n• Most dangerous in buildings\n\n3️⃣ CONDUCTION\n• Heat travels through solid materials\n• Example: Fire spreads through metal pipes\n\n4️⃣ RADIATION\n• Heat travels through air as waves\n• Can ignite materials at distance\n\n━━━━━━━━━━━━━━━━━━━━\nConvection is the PRIMARY cause of fire spread in buildings\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "⬅️ Back to Fire Basics"
-          payload: "/edu_fire_basics"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🌊 HOW FIRE SPREADS"
+        sections:
+          - heading: "Fire spreads through 4 methods:"
+            # content: ""
+          - heading: "1️⃣ DIRECT BURNING"
+            content: "Flames touch new fuel source\n• Example: Fire spreading along curtains"
+          - heading: "2️⃣ CONVECTION"
+            conetnt: "Hot air rises, carries heat upward\n• Why fires spread quickly UP stairs\n• Most dangerous in buildings"
+          - heading: "3️⃣ CONDUCTION"
+            content: "Heat travels through solid materials\n• Example: Fire spreads through metal pipes"
+          - heading: "4️⃣ RADIATION"
+            conetnt: "Heat travels through air as waves\n• Can ignite materials at distance"
+        footer: "Convection is the PRIMARY cause of fire spread in buildings"
+        buttons:
+          - title: "⬅️ Back to Fire Basics"
+            payload: "/edu_fire_basics"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_fire_consequences:
-    - text: "⚠️ CONSEQUENCES OF FIRES\n\nHUMAN IMPACT\n• Deaths - smoke inhalation is #1 killer\n• Burns and injuries\n• Psychological trauma\n\nPROPERTY DAMAGE\n• Structural damage to buildings\n• Destruction of contents\n• Smoke damage (often worse than fire)\n\nENVIRONMENTAL DAMAGE\n• Air pollution from smoke\n• Water contamination from run-off\n\nBUSINESS IMPACT\n• Loss of production\n• Job losses\n• Legal consequences\n\n━━━━━━━━━━━━━━━━━━━━\n80% of businesses that suffer major fire never recover\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "⬅️ Back to Fire Basics"
-          payload: "/edu_fire_basics"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
-
-  # ===== COMING SOON =====
-  utter_coming_soon:
-    - text: "🚧 COMING SOON\n\nThis module is under development.\n\nPlease check back later!"
-      buttons:
-        - title: "⬅️ Back to Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "⚠️ CONSEQUENCES OF FIRES"
+        sections:
+          - heading: "HUMAN IMPACT "
+            content: "Deaths - smoke inhalation is #1 killer\n• Burns and injuries\n• Psychological trauma"
+          - heading: "PROPERTY DAMAGE"
+            content: "Structural damage to buildings\n• Destruction of contents\n• Smoke damage (often worse than fire)"
+          - heading: "ENVIRONMENTAL DAMAGE"
+            content: "Air pollution from smoke\n• Water contamination from run-off"
+          - heading: "BUSINESS IMPACT"
+            content: "Loss of production\n• Job losses\n• Legal consequences"
+        footer: "80% of businesses that suffer major fire never recover"
+        buttons:
+          - title: "⬅️ Back to Fire Basics"
+            payload: "/edu_fire_basics"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   # RISK ASSESSMENT EDUCATION
   utter_risk_assessment_menu:
-    - text: "📋 FIRE RISK ASSESSMENT\n\nA fire risk assessment is a legal requirement and essential for safety.\n\nSelect a topic:"
-      buttons:
-        - title: "❓ Why Risk Assessment?"
-          payload: "/edu_ra_why"
-        - title: "1️⃣ Identify Hazards"
-          payload: "/edu_ra_step1"
-        - title: "2️⃣ Identify People at Risk"
-          payload: "/edu_ra_step2"
-        - title: "3️⃣ Implement Precautions"
-          payload: "/edu_ra_step3"
-        - title: "4️⃣ Record & Train"
-          payload: "/edu_ra_step4"
-        - title: "5️⃣ Review"
-          payload: "/edu_ra_step5"
-        - title: "⬅️ Back to Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "📋 FIRE RISK ASSESSMENT"
+        sections:
+          - heading: "A fire risk assessment is a legal requirement and essential for safety."
+            content: ""
+          - heading: "Select a topic:"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "❓ Why Risk Assessment?"
+            payload: "/edu_ra_why"
+          - title: "1️⃣ Identify Hazards"
+            payload: "/edu_ra_step1"
+          - title: "2️⃣ Identify People at Risk"
+            payload: "/edu_ra_step2"
+          - title: "3️⃣ Implement Precautions"
+            payload: "/edu_ra_step3"
+          - title: "4️⃣ Record & Train"
+            payload: "/edu_ra_step4"
+          - title: "5️⃣ Review"
+            payload: "/edu_ra_step5"
+          - title: "⬅️ Back to Main Menu"
+            payload: "/edu_back_main"
 
   utter_ra_why:
-    - text: "❓ WHY DO A FIRE RISK ASSESSMENT?\n\nThree key reasons:\n\n1️⃣ PREVENT HARM TO PEOPLE\n• Protect lives of workers, visitors, public\n• Identify risks before they cause injury\n\n2️⃣ COMPLY WITH THE LAW\n• Legal requirement in most countries\n• Failure can result in fines or prosecution\n• Must be documented and up to date\n\n3️⃣ MINIMIZE COSTS\n• Fire damage is expensive\n• Insurance may require assessment\n• Prevention is cheaper than recovery\n\n━━━━━━━━━━━━━━━━━━━━\n80% of businesses that suffer major fire never recover\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Step 1: Identify Hazards"
-          payload: "/edu_ra_step1"
-        - title: "⬅️ Back to Risk Assessment"
-          payload: "/edu_risk_assessment"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "❓ WHY DO A FIRE RISK ASSESSMENT?"
+        sections:
+          - heading: "Three key reasons:"
+            content: ""
+          - heading: "1️⃣ PREVENT HARM TO PEOPLE"
+            content: "• Protect lives of workers, visitors, public\n• Identify risks before they cause injury"
+          - heading: "2️⃣ COMPLY WITH THE LAW"
+            content: "• Legal requirement in most countries\n• Failure can result in fines or prosecution\n• Must be documented and up to date"
+          - heading: "3️⃣ MINIMIZE COSTS"
+            content: "• Fire damage is expensive\n• Insurance may require assessment\n• Prevention is cheaper than recovery"
+        footer: "━━━━━━━━━━━━━━━━━━━━\n80% of businesses that suffer major fire never recover\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Step 1: Identify Hazards"
+            payload: "/edu_ra_step1"
+          - title: "⬅️ Back to Risk Assessment"
+            payload: "/edu_risk_assessment"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_ra_step1:
-    - text: "1️⃣ STEP 1: IDENTIFY FIRE HAZARDS\n\nLook for all three elements of the fire triangle:\n\n🪵 FUEL SOURCES\n• Paper and cardboard\n• Packaging materials\n• Furniture and furnishings\n• Flammable liquids (petrol, solvents)\n• Flammable gases (propane, butane)\n• Textiles and clothing\n\n🔥 IGNITION SOURCES\n• Hot work (welding, cutting)\n• Electrical equipment\n• Portable heaters\n• Smoking materials\n• Cooking equipment\n• Faulty wiring\n\n💨 OXYGEN SOURCES\n• Natural air (21% oxygen)\n• Oxygen cylinders (medical, industrial)\n• Oxidising chemicals\n• Air conditioning systems\n\n━━━━━━━━━━━━━━━━━━━━\nTip: Walk through your premises and identify ALL sources, even if well controlled\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Step 2: People at Risk"
-          payload: "/edu_ra_step2"
-        - title: "⬅️ Back to Risk Assessment"
-          payload: "/edu_risk_assessment"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "1️⃣ STEP 1: IDENTIFY FIRE HAZARDS"
+        sections:
+          - heading: "Look for all three elements of the fire triangle:"
+            content: ""
+          - heading: "🪵 FUEL SOURCES"
+            content: "• Paper and cardboard\n• Packaging materials\n• Furniture and furnishings\n• Flammable liquids (petrol, solvents)\n• Flammable gases (propane, butane)\n• Textiles and clothing"
+          - heading: "🔥 IGNITION SOURCES"
+            content: "• Hot work (welding, cutting)\n• Electrical equipment\n• Portable heaters\n• Smoking materials\n• Cooking equipment\n• Faulty wiring"
+          - heading: "💨 OXYGEN SOURCES"
+            content: "• Natural air (21% oxygen)\n• Oxygen cylinders (medical, industrial)\n• Oxidising chemicals\n• Air conditioning systems"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nTip: Walk through your premises and identify ALL sources, even if well controlled\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Step 2: People at Risk"
+            payload: "/edu_ra_step2"
+          - title: "⬅️ Back to Risk Assessment"
+            payload: "/edu_risk_assessment"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_ra_step2:
-    - text: "2️⃣ STEP 2: IDENTIFY PEOPLE AT RISK\n\nConsider everyone who might be on the premises:\n\n👷 WORKERS\n• Full-time employees\n• Part-time staff\n• Night shift workers\n• Lone workers\n\n👥 OTHERS\n• Visitors and guests\n• Contractors\n• Members of public\n• Delivery personnel\n\n📍 LOCATION\n• People in isolated areas\n• People in basements\n• People on upper floors\n\n⚠️ VULNERABLE GROUPS (Special Consideration)\n• Disabled / mobility-impaired\n• Visually impaired\n• Hearing impaired\n• Children / young persons\n• Elderly\n• Pregnant women\n• People unfamiliar with premises\n\n━━━━━━━━━━━━━━━━━━━━\nVulnerable groups may need Personal Emergency Evacuation Plans (PEEPs)\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Step 3: Precautions"
-          payload: "/edu_ra_step3"
-        - title: "⬅️ Back to Risk Assessment"
-          payload: "/edu_risk_assessment"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "2️⃣ STEP 2: IDENTIFY PEOPLE AT RISK"
+        sections:
+          - heading: "Consider everyone who might be on the premises:"
+            content: ""
+          - heading: "👷 WORKERS"
+            content: "• Full-time employees\n• Part-time staff\n• Night shift workers\n• Lone workers"
+          - heading: "👥 OTHERS"
+            content: "• Visitors and guests\n• Contractors\n• Members of public\n• Delivery personnel"
+          - heading: "📍 LOCATION"
+            content: "• People in isolated areas\n• People in basements\n• People on upper floors"
+          - heading: "⚠️ VULNERABLE GROUPS (Special Consideration)"
+            content: "• Disabled / mobility-impaired\n• Visually impaired\n• Hearing impaired\n• Children / young persons\n• Elderly\n• Pregnant women\n• People unfamiliar with premises"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nVulnerable groups may need Personal Emergency Evacuation Plans (PEEPs)\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Step 3: Precautions"
+            payload: "/edu_ra_step3"
+          - title: "⬅️ Back to Risk Assessment"
+            payload: "/edu_risk_assessment"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_ra_step3:
-    - text: "3️⃣ STEP 3: IMPLEMENT PRECAUTIONS\n\nEvaluate risks and implement controls:\n\n🛡️ FIRE PREVENTION\n• Remove or reduce fuel sources\n• Control ignition sources\n• Safe storage of flammables\n\n🧱 PREVENT SPREAD\n• Fire doors and walls\n• Compartmentation\n• Fire-resistant materials\n\n🚨 DETECTION & ALARM\n• Smoke detectors\n• Heat detectors\n• Manual call points\n• Alarm sounders\n\n🧯 FIREFIGHTING EQUIPMENT\n• Extinguishers (correct type)\n• Fire blankets\n• Sprinkler systems\n• Hose reels\n\n🚪 MEANS OF ESCAPE\n• Clear escape routes\n• Emergency exits\n• Assembly points\n\n🪧 SIGNS & NOTICES\n• Exit signs\n• Fire action notices\n• Equipment location signs\n\n💡 EMERGENCY LIGHTING\n• Illuminated exit signs\n• Backup lighting for escape routes"
-      buttons:
-        - title: "➡️ Step 4: Record & Train"
-          payload: "/edu_ra_step4"
-        - title: "⬅️ Back to Risk Assessment"
-          payload: "/edu_risk_assessment"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "3️⃣ STEP 3: IMPLEMENT PRECAUTIONS"
+        sections:
+          - heading: "Evaluate risks and implement controls:"
+            content: ""
+          - heading: "🛡️ FIRE PREVENTION"
+            content: "• Remove or reduce fuel sources\n• Control ignition sources\n• Safe storage of flammables"
+          - heading: "🧱 PREVENT SPREAD"
+            content: "• Fire doors and walls\n• Compartmentation\n• Fire-resistant materials"
+          - heading: "🚨 DETECTION & ALARM"
+            content: "• Smoke detectors\n• Heat detectors\n• Manual call points\n• Alarm sounders"
+          - heading: "🧯 FIREFIGHTING EQUIPMENT"
+            content: "• Extinguishers (correct type)\n• Fire blankets\n• Sprinkler systems\n• Hose reels"
+          - heading: "🚪 MEANS OF ESCAPE"
+            content: "• Clear escape routes\n• Emergency exits\n• Assembly points"
+          - heading: "🪧 SIGNS & NOTICES"
+            content: "• Exit signs\n• Fire action notices\n• Equipment location signs"
+          - heading: "💡 EMERGENCY LIGHTING"
+            content: "• Illuminated exit signs\n• Backup lighting for escape routes"
+        footer: ""
+        buttons:
+          - title: "➡️ Step 4: Record & Train"
+            payload: "/edu_ra_step4"
+          - title: "⬅️ Back to Risk Assessment"
+            payload: "/edu_risk_assessment"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_ra_step4:
-    - text: "4️⃣ STEP 4: RECORD FINDINGS & TRAIN\n\n📝 RECORD FINDINGS\n• Document all hazards identified\n• Record who is at risk\n• List control measures in place\n• Note any actions needed\n• Keep records accessible\n\n📋 DEVELOP EMERGENCY PLANS\n• Clear evacuation procedures\n• Roles and responsibilities\n• Assembly point locations\n• Contact emergency services\n• Account for all persons\n\n📢 PROVIDE INFORMATION\n• Fire action notices displayed\n• Escape routes clearly marked\n• Inform all workers of procedures\n• Brief visitors and contractors\n\n🎓 TRAIN WORKERS\n• Fire safety induction\n• Use of fire extinguishers\n• Evacuation procedures\n• Fire warden training\n• Regular fire drills\n\n━━━━━━━━━━━━━━━━━━━━\nTraining should be repeated regularly and after any changes\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Step 5: Review"
-          payload: "/edu_ra_step5"
-        - title: "⬅️ Back to Risk Assessment"
-          payload: "/edu_risk_assessment"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "4️⃣ STEP 4: RECORD FINDINGS & TRAIN"
+        sections:
+          - heading: "📝 RECORD FINDINGS"
+            content: "• Document all hazards identified\n• Record who is at risk\n• List control measures in place\n• Note any actions needed\n• Keep records accessible"
+          - heading: "📋 DEVELOP EMERGENCY PLANS"
+            content: "• Clear evacuation procedures\n• Roles and responsibilities\n• Assembly point locations\n• Contact emergency services\n• Account for all persons"
+          - heading: "📢 PROVIDE INFORMATION"
+            content: "• Fire action notices displayed\n• Escape routes clearly marked\n• Inform all workers of procedures\n• Brief visitors and contractors"
+          - heading: "🎓 TRAIN WORKERS"
+            content: "• Fire safety induction\n• Use of fire extinguishers\n• Evacuation procedures\n• Fire warden training\n• Regular fire drills"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nTraining should be repeated regularly and after any changes\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Step 5: Review"
+            payload: "/edu_ra_step5"
+          - title: "⬅️ Back to Risk Assessment"
+            payload: "/edu_risk_assessment"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_ra_step5:
-    - text: "5️⃣ STEP 5: REVIEW & REVISE\n\nFire risk assessment is NOT a one-time task!\n\n🔄 REVIEW WHEN:\n\n• Significant changes occur:\n  - New processes or equipment\n  - Building alterations\n  - Change in occupancy\n  - New hazardous materials\n\n• After any fire incident:\n  - Actual fires\n  - Near misses\n  - False alarms (investigate cause)\n\n• After fire drills:\n  - Issues identified during drill\n  - Evacuation time concerns\n\n⏰ REVIEW PERIODICALLY:\n• At least annually\n• More frequently for high-risk premises\n• Keep assessment current and relevant\n\n━━━━━━━━━━━━━━━━━━━━\nAn outdated risk assessment is as dangerous as no assessment\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🔄 Start Again: Why Risk Assessment?"
-          payload: "/edu_ra_why"
-        - title: "⬅️ Back to Risk Assessment"
-          payload: "/edu_risk_assessment"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "5️⃣ STEP 5: REVIEW & REVISE"
+        sections:
+          - heading: "Fire risk assessment is NOT a one-time task!"
+            content: ""
+          - heading: "🔄 REVIEW WHEN:"
+            content: ""
+          - heading: "• Significant changes occur:"
+            content: "  - New processes or equipment\n  - Building alterations\n  - Change in occupancy\n  - New hazardous materials"
+          - heading: "• After any fire incident:"
+            content: "  - Actual fires\n  - Near misses\n  - False alarms (investigate cause)"
+          - heading: "• After fire drills:"
+            content: "  - Issues identified during drill\n  - Evacuation time concerns"
+          - heading: "⏰ REVIEW PERIODICALLY:"
+            content: "• At least annually\n• More frequently for high-risk premises\n• Keep assessment current and relevant"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nAn outdated risk assessment is as dangerous as no assessment\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🔄 Start Again: Why Risk Assessment?"
+            payload: "/edu_ra_why"
+          - title: "⬅️ Back to Risk Assessment"
+            payload: "/edu_risk_assessment"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   # FIRE PREVENTION
   utter_prevention_menu:
-    - text: "🛡️ FIRE PREVENTION & PREVENTING SPREAD\n\nPrevention is better than cure. Learn how to stop fires before they start.\n\nSelect a topic:"
-      buttons:
-        - title: "🪵 Control Combustibles"
-          payload: "/edu_prev_combustibles"
-        - title: "🔥 Control Ignition Sources"
-          payload: "/edu_prev_ignition"
-        - title: "🔧 Hot Work Precautions"
-          payload: "/edu_prev_hotwork"
-        - title: "🧹 Housekeeping"
-          payload: "/edu_prev_housekeeping"
-        - title: "🧪 Flammable Liquids & LPG"
-          payload: "/edu_prev_flammable_liquids"
-        - title: "🧱 Structural Measures"
-          payload: "/edu_prev_structural"
-        - title: "⚡ ATEX Zones"
-          payload: "/edu_prev_atex"
-        - title: "⬅️ Back to Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🛡️ FIRE PREVENTION & PREVENTING SPREAD"
+        sections:
+          - heading: "Prevention is better than cure."
+            content: "Learn how to stop fires before they start."
+          - heading: "Select a topic:"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "🪵 Control Combustibles"
+            payload: "/edu_prev_combustibles"
+          - title: "🔥 Control Ignition Sources"
+            payload: "/edu_prev_ignition"
+          - title: "🔧 Hot Work Precautions"
+            payload: "/edu_prev_hotwork"
+          - title: "🧹 Housekeeping"
+            payload: "/edu_prev_housekeeping"
+          - title: "🧪 Flammable Liquids & LPG"
+            payload: "/edu_prev_flammable_liquids"
+          - title: "🧱 Structural Measures"
+            payload: "/edu_prev_structural"
+          - title: "⚡ ATEX Zones"
+            payload: "/edu_prev_atex"
+          - title: "⬅️ Back to Main Menu"
+            payload: "/edu_back_main"
 
   utter_prev_combustibles:
-    - text: "🪵 CONTROL COMBUSTIBLE & FLAMMABLE MATERIALS\n\nThe hierarchy of control:\n\n1️⃣ ELIMINATE\n• Remove combustible materials entirely\n• Best option if possible\n\n2️⃣ SUBSTITUTE\n• Replace with lower-risk alternatives\n• Use water-based instead of solvent-based\n\n3️⃣ MINIMIZE QUANTITIES\n• Stock control - order only what you need\n• Good housekeeping - remove waste regularly\n• Waste management - dispose promptly\n\n4️⃣ SAFE STORAGE\n• Use protected, dedicated buildings\n• Proper ventilation\n• Away from ignition sources\n• Clearly labelled\n\n━━━━━━━━━━━━━━━━━━━━\nRemember: Less fuel = Less fire risk\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🧪 Flammable Liquids & LPG"
-          payload: "/edu_prev_flammable_liquids"
-        - title: "⬅️ Back to Prevention"
-          payload: "/edu_prevention"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🪵 CONTROL COMBUSTIBLE & FLAMMABLE MATERIALS"
+        sections:
+          - heading: "The hierarchy of control:"
+            content: ""
+          - heading: "1️⃣ ELIMINATE"
+            content: "• Remove combustible materials entirely\n• Best option if possible"
+          - heading: "2️⃣ SUBSTITUTE"
+            content: "• Replace with lower-risk alternatives\n• Use water-based instead of solvent-based"
+          - heading: "3️⃣ MINIMIZE QUANTITIES"
+            content: "• Stock control - order only what you need\n• Good housekeeping - remove waste regularly\n• Waste management - dispose promptly"
+          - heading: "4️⃣ SAFE STORAGE"
+            content: "• Use protected, dedicated buildings\n• Proper ventilation\n• Away from ignition sources\n• Clearly labelled"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nRemember: Less fuel = Less fire risk\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🧪 Flammable Liquids & LPG"
+            payload: "/edu_prev_flammable_liquids"
+          - title: "⬅️ Back to Prevention"
+            payload: "/edu_prevention"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_prev_ignition:
-    - text: "🔥 CONTROL IGNITION SOURCES\n\nCommon ignition sources to control:\n\n⚡ ELECTRICAL EQUIPMENT\n• Regular inspection and testing\n• No overloaded sockets\n• PAT testing for portable equipment\n\n🔧 HOT WORK\n• Welding, cutting, grinding\n• Requires permit-to-work system\n\n🚬 SMOKING\n• Designated smoking areas only\n• Away from combustibles\n• Safe disposal of materials\n\n🍳 COOKING\n• Never leave unattended\n• Keep clean of grease\n• Fire blanket nearby\n\n⚙️ MECHANICAL HEAT\n• Friction from machinery\n• Overheating motors\n• Regular maintenance\n\n🔓 ARSON\n• Secure premises\n• Remove fuel from perimeter\n• Good lighting\n• CCTV\n\n━━━━━━━━━━━━━━━━━━━━\nControl ignition = Break the fire triangle\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🔧 Hot Work Precautions"
-          payload: "/edu_prev_hotwork"
-        - title: "⬅️ Back to Prevention"
-          payload: "/edu_prevention"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🔥 CONTROL IGNITION SOURCES"
+        sections:
+          - heading: "Common ignition sources to control:"
+            content: ""
+          - heading: "⚡ ELECTRICAL EQUIPMENT"
+            content: "• Regular inspection and testing\n• No overloaded sockets\n• PAT testing for portable equipment"
+          - heading: "🔧 HOT WORK"
+            content: "• Welding, cutting, grinding\n• Requires permit-to-work system"
+          - heading: "🚬 SMOKING"
+            content: "• Designated smoking areas only\n• Away from combustibles\n• Safe disposal of materials"
+          - heading: "🍳 COOKING"
+            content: "• Never leave unattended\n• Keep clean of grease\n• Fire blanket nearby"
+          - heading: "⚙️ MECHANICAL HEAT"
+            content: "• Friction from machinery\n• Overheating motors\n• Regular maintenance"
+          - heading: "🔓 ARSON"
+            content: "• Secure premises\n• Remove fuel from perimeter\n• Good lighting\n• CCTV"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nControl ignition = Break the fire triangle\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🔧 Hot Work Precautions"
+            payload: "/edu_prev_hotwork"
+          - title: "⬅️ Back to Prevention"
+            payload: "/edu_prevention"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_prev_hotwork:
-    - text: "🔧 HOT WORK PRECAUTIONS\n\nHot work = Welding, cutting, grinding, brazing\n\n⚠️ BEFORE WORK:\n• Remove ALL flammable materials from area\n• Cover items that cannot be removed\n• Sweep the floor clean\n• Damp down wooden floors\n• Check for flammable vapours\n\n🧯 DURING WORK:\n• Fire extinguisher within reach\n• Fire-watcher present in area\n• Screens to contain sparks\n• Monitor for smouldering\n\n✅ AFTER WORK:\n• Check area immediately after finishing\n• Re-check after 30 minutes\n• Re-check after 60 minutes\n• Fire-watcher remains on site\n\n📋 PERMIT TO WORK:\n• Required for all hot work\n• Specifies precautions\n• Signed authorization\n• Time-limited\n\n━━━━━━━━━━━━━━━━━━━━\nMany workplace fires start AFTER hot work is finished\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🧹 Housekeeping"
-          payload: "/edu_prev_housekeeping"
-        - title: "⬅️ Back to Prevention"
-          payload: "/edu_prevention"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🔧 HOT WORK PRECAUTIONS"
+        sections:
+          - heading: "Hot work = Welding, cutting, grinding, brazing"
+            content: ""
+          - heading: "⚠️ BEFORE WORK:"
+            content: "• Remove ALL flammable materials from area\n• Cover items that cannot be removed\n• Sweep the floor clean\n• Damp down wooden floors\n• Check for flammable vapours"
+          - heading: "🧯 DURING WORK:"
+            content: "• Fire extinguisher within reach\n• Fire-watcher present in area\n• Screens to contain sparks\n• Monitor for smouldering"
+          - heading: "✅ AFTER WORK:"
+            content: "• Check area immediately after finishing\n• Re-check after 30 minutes\n• Re-check after 60 minutes\n• Fire-watcher remains on site"
+          - heading: "📋 PERMIT TO WORK:"
+            content: "• Required for all hot work\n• Specifies precautions\n• Signed authorization\n• Time-limited"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nMany workplace fires start AFTER hot work is finished\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🧹 Housekeeping"
+            payload: "/edu_prev_housekeeping"
+          - title: "⬅️ Back to Prevention"
+            payload: "/edu_prevention"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_prev_housekeeping:
-    - text: "🧹 HOUSEKEEPING\n\nGood housekeeping prevents fires!\n\n🗑️ WASTE MANAGEMENT\n• Remove waste regularly\n• Don't let rubbish accumulate\n• Empty bins daily\n• Dispose of oily rags safely (can self-ignite!)\n\n📦 STORAGE\n• Keep areas tidy\n• Return flammables to correct storage\n• Don't block escape routes\n• Stack materials safely\n\n🔥 + 🪵 SEPARATION\n• Keep fuel and ignition sources apart\n• Minimum 2 metres separation\n• No storage near heaters\n• No combustibles near electrical panels\n\n🚪 ESCAPE ROUTES\n• Always keep clear\n• No storage in corridors\n• Fire doors not propped open\n• Exit signs visible\n\n━━━━━━━━━━━━━━━━━━━━\nA tidy workplace is a safe workplace\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🧪 Flammable Liquids & LPG"
-          payload: "/edu_prev_flammable_liquids"
-        - title: "⬅️ Back to Prevention"
-          payload: "/edu_prevention"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🧹 HOUSEKEEPING"
+        sections:
+          - heading: "Good housekeeping prevents fires!"
+            content: ""
+          - heading: "🗑️ WASTE MANAGEMENT"
+            content: "• Remove waste regularly\n• Don't let rubbish accumulate\n• Empty bins daily\n• Dispose of oily rags safely (can self-ignite!)"
+          - heading: "📦 STORAGE"
+            content: "• Keep areas tidy\n• Return flammables to correct storage\n• Don't block escape routes\n• Stack materials safely"
+          - heading: "🔥 + 🪵 SEPARATION"
+            content: "• Keep fuel and ignition sources apart\n• Minimum 2 metres separation\n• No storage near heaters\n• No combustibles near electrical panels"
+          - heading: "🚪 ESCAPE ROUTES"
+            content: "• Always keep clear\n• No storage in corridors\n• Fire doors not propped open\n• Exit signs visible"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nA tidy workplace is a safe workplace\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🧪 Flammable Liquids & LPG"
+            payload: "/edu_prev_flammable_liquids"
+          - title: "⬅️ Back to Prevention"
+            payload: "/edu_prevention"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_prev_flammable_liquids:
-    - text: "🧪 FLAMMABLE LIQUIDS & LPG STORAGE\n\n🌡️ FLASH POINT CLASSIFICATION:\n\n🔴 EXTREMELY FLAMMABLE (Flash point <0°C)\n• Ignites very easily at room temperature\n• Examples: Petrol, acetone, diethyl ether\n\n🟠 HIGHLY FLAMMABLE (Flash point 0-21°C)\n• Easy to ignite at room temperature\n• Max storage in work area: 50 litres\n• Examples: Ethanol, methanol\n\n🟡 FLAMMABLE (Flash point 21-55°C)\n• Ignites with heat source (match)\n• Max storage in work area: 250 litres\n• Examples: Diesel, kerosene\n\n📦 SAFE STORAGE RULES:\n• Purpose-built fire-resistant cabinet\n• Lockable with fire-resistant hinges\n• Clearly signed with hazard symbols\n• Built-in spill tray\n• Away from ignition sources\n\n🔵 LPG (Gas Bottles) STORAGE:\n• Store OUTSIDE only\n• Secure area with locked gate\n• Warning signs displayed\n• Bottles chained UPRIGHT\n• Empty bottles separate from full\n• NEVER store oxygen with LPG\n• Return to store after use"
-      buttons:
-        - title: "🧱 Structural Measures"
-          payload: "/edu_prev_structural"
-        - title: "⬅️ Back to Prevention"
-          payload: "/edu_prevention"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🧪 FLAMMABLE LIQUIDS & LPG STORAGE"
+        sections:
+          - heading: "🌡️ FLASH POINT CLASSIFICATION:"
+            content: ""
+          - heading: "🔴 EXTREMELY FLAMMABLE (Flash point <0°C)"
+            content: "• Ignites very easily at room temperature\n• Examples: Petrol, acetone, diethyl ether"
+          - heading: "🟠 HIGHLY FLAMMABLE (Flash point 0-21°C)"
+            content: "• Easy to ignite at room temperature\n• Max storage in work area: 50 litres\n• Examples: Ethanol, methanol"
+          - heading: "🟡 FLAMMABLE (Flash point 21-55°C)"
+            content: "• Ignites with heat source (match)\n• Max storage in work area: 250 litres\n• Examples: Diesel, kerosene"
+          - heading: "📦 SAFE STORAGE RULES:"
+            content: "• Purpose-built fire-resistant cabinet\n• Lockable with fire-resistant hinges\n• Clearly signed with hazard symbols\n• Built-in spill tray\n• Away from ignition sources"
+          - heading: "🔵 LPG (Gas Bottles) STORAGE:"
+            content: "• Store OUTSIDE only\n• Secure area with locked gate\n• Warning signs displayed\n• Bottles chained UPRIGHT\n• Empty bottles separate from full\n• NEVER store oxygen with LPG\n• Return to store after use"
+        footer: ""
+        buttons:
+          - title: "🧱 Structural Measures"
+            payload: "/edu_prev_structural"
+          - title: "⬅️ Back to Prevention"
+            payload: "/edu_prevention"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_prev_structural:
-    - text: "🧱 STRUCTURAL MEASURES TO PREVENT SPREAD\n\n📦 COMPARTMENTATION\n• Dividing buildings into fire-resistant boxes\n• Keeps fire and smoke IN or OUT of areas\n• Uses fire-resistant floors, walls, ceilings\n\n🚪 FIRE DOORS\n• Withstand fire for set time (30/60/90 mins)\n• Self-closing device (must NOT be propped open)\n• Intumescent strip (expands in heat to seal gaps)\n• Cold smoke seal (blocks smoke at normal temps)\n• Fire-resistant glass vision panels\n• Clearly labelled \"Fire Door - Keep Shut\"\n\n🏗️ BUILDING MATERIALS:\n• Concrete - Usually fire-resistant ✅\n• Brick - Very resistant ✅\n• Steel - WEAK in fire ⚠️ (needs protection)\n• Timber - Thin burns fast, thick chars slowly\n\n🛡️ PROTECTING STEEL:\n• Encase in concrete\n• Coat with intumescent paint/foam\n\n🔌 FIRE-STOPPING OPENINGS:\n• Pipe penetrations - seal gaps\n• Gaps above ceilings - block\n• Air ducts - automatic shutters\n• Lift shafts - enclosed\n\n━━━━━━━━━━━━━━━━━━━━\nCompartmentation = Containing the fire\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "⚡ ATEX Zones"
-          payload: "/edu_prev_atex"
-        - title: "⬅️ Back to Prevention"
-          payload: "/edu_prevention"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🧱 STRUCTURAL MEASURES TO PREVENT SPREAD"
+        sections:
+          - heading: "📦 COMPARTMENTATION"
+            content: "• Dividing buildings into fire-resistant boxes\n• Keeps fire and smoke IN or OUT of areas\n• Uses fire-resistant floors, walls, ceilings"
+          - heading: "🚪 FIRE DOORS"
+            content: "• Withstand fire for set time (30/60/90 mins)\n• Self-closing device (must NOT be propped open)\n• Intumescent strip (expands in heat to seal gaps)\n• Cold smoke seal (blocks smoke at normal temps)\n• Fire-resistant glass vision panels\n• Clearly labelled \"Fire Door - Keep Shut\""
+          - heading: "🏗️ BUILDING MATERIALS:"
+            content: "• Concrete - Usually fire-resistant ✅\n• Brick - Very resistant ✅\n• Steel - WEAK in fire ⚠️ (needs protection)\n• Timber - Thin burns fast, thick chars slowly"
+          - heading: "🛡️ PROTECTING STEEL:"
+            content: "• Encase in concrete\n• Coat with intumescent paint/foam"
+          - heading: "🔌 FIRE-STOPPING OPENINGS:"
+            content: "• Pipe penetrations - seal gaps\n• Gaps above ceilings - block\n• Air ducts - automatic shutters\n• Lift shafts - enclosed"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nCompartmentation = Containing the fire\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "⚡ ATEX Zones"
+            payload: "/edu_prev_atex"
+          - title: "⬅️ Back to Prevention"
+            payload: "/edu_prevention"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_prev_atex:
-    - text: "⚡ ATEX ZONES - EXPLOSIVE ATMOSPHERES\n\nWhen flammable gas, vapour, or dust mixes with air, it can EXPLODE if ignited.\n\n⚠️ ATEX = EU legislation controlling electrical equipment in explosive atmospheres\n\n📊 ZONE CLASSIFICATION:\n\nGASES, VAPOURS, MISTS:\n• Zone 0 - Explosive atmosphere CONTINUOUS\n• Zone 1 - Explosive atmosphere OCCASIONAL\n• Zone 2 - Explosive atmosphere UNLIKELY\n\nDUSTS:\n• Zone 20 - Explosive dust cloud CONTINUOUS\n• Zone 21 - Explosive dust cloud OCCASIONAL\n• Zone 22 - Explosive dust cloud UNLIKELY\n\n🔌 EQUIPMENT REQUIREMENTS:\n• Only ATEX-certified equipment in zones\n• Equipment marked with ⬡Ex symbol\n• Higher zone = stricter requirements\n• Zone 0/20 = most stringent\n\n🏭 COMMON LOCATIONS:\n• Petrol stations (Zone 1)\n• Paint spray booths (Zone 1)\n• Flour mills (Zone 21)\n• Fuel storage areas (Zone 1/2)\n\n━━━━━━━━━━━━━━━━━━━━\nWrong equipment in ATEX zone = Explosion risk\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🔄 Start Again: Combustibles"
-          payload: "/edu_prev_combustibles"
-        - title: "⬅️ Back to Prevention"
-          payload: "/edu_prevention"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "⚡ ATEX ZONES - EXPLOSIVE ATMOSPHERES"
+        sections:
+          - heading: "When flammable gas, vapour, or dust mixes with air, it can EXPLODE if ignited."
+            content: ""
+          - heading: "⚠️ ATEX"
+            content: "EU legislation controlling electrical equipment in explosive atmospheres"
+          - heading: "📊 ZONE CLASSIFICATION:"
+            content: ""
+          - heading: "GASES, VAPOURS, MISTS:"
+            content: "• Zone 0 - Explosive atmosphere CONTINUOUS\n• Zone 1 - Explosive atmosphere OCCASIONAL\n• Zone 2 - Explosive atmosphere UNLIKELY"
+          - heading: "DUSTS:"
+            content: "• Zone 20 - Explosive dust cloud CONTINUOUS\n• Zone 21 - Explosive dust cloud OCCASIONAL\n• Zone 22 - Explosive dust cloud UNLIKELY"
+          - heading: "🔌 EQUIPMENT REQUIREMENTS:"
+            content: "• Only ATEX-certified equipment in zones\n• Equipment marked with ⬡Ex symbol\n• Higher zone = stricter requirements\n• Zone 0/20 = most stringent"
+          - heading: "🏭 COMMON LOCATIONS:"
+            content: "• Petrol stations (Zone 1)\n• Paint spray booths (Zone 1)\n• Flour mills (Zone 21)\n• Fuel storage areas (Zone 1/2)"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nWrong equipment in ATEX zone = Explosion risk\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🔄 Start Again: Combustibles"
+            payload: "/edu_prev_combustibles"
+          - title: "⬅️ Back to Prevention"
+            payload: "/edu_prevention"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   # FIRE FIGHTING
   utter_alarm_firefighting_menu:
-    - text: "🚨 FIRE ALARM SYSTEMS & FIREFIGHTING\n\nEarly detection saves lives. Correct firefighting prevents disaster.\n\nSelect a topic:"
-      buttons:
-        - title: "🔔 Fire Detection & Warning"
-          payload: "/edu_af_detection"
-        - title: "📡 Detector Types"
-          payload: "/edu_af_detectors"
-        - title: "🧯 Fire Extinguishers"
-          payload: "/edu_af_extinguishers"
-        - title: "⚠️ Extinguisher Limitations"
-          payload: "/edu_af_limitations"
-        - title: "🔧 Other Equipment"
-          payload: "/edu_af_other_equipment"
-        - title: "📍 Siting & Maintenance"
-          payload: "/edu_af_siting_maintenance"
-        - title: "🚒 Fire Service Access"
-          payload: "/edu_af_fire_service"
-        - title: "⬅️ Back to Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🚨 FIRE ALARM SYSTEMS & FIREFIGHTING"
+        sections:
+          - heading: "Early detection saves lives."
+            content: "Correct firefighting prevents disaster."
+          - heading: "Select a topic:"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "🔔 Fire Detection & Warning"
+            payload: "/edu_af_detection"
+          - title: "📡 Detector Types"
+            payload: "/edu_af_detectors"
+          - title: "🧯 Fire Extinguishers"
+            payload: "/edu_af_extinguishers"
+          - title: "⚠️ Extinguisher Limitations"
+            payload: "/edu_af_limitations"
+          - title: "🔧 Other Equipment"
+            payload: "/edu_af_other_equipment"
+          - title: "📍 Siting & Maintenance"
+            payload: "/edu_af_siting_maintenance"
+          - title: "🚒 Fire Service Access"
+            payload: "/edu_af_fire_service"
+          - title: "⬅️ Back to Main Menu"
+            payload: "/edu_back_main"
 
   utter_af_detection:
-    - text: "🔔 FIRE DETECTION & WARNING SYSTEMS\n\nComplexity depends on workplace size and risk.\n\n📢 LEVELS OF WARNING SYSTEM:\n\n1️⃣ SIMPLEST\n• Someone shouts \"FIRE!\"\n• Suitable for very small premises\n\n2️⃣ SIMPLE WITH MORE NOISE\n• Hand bell\n• Whistle\n• Air horn\n• Better for noisy environments\n\n3️⃣ MANUAL FIRE ALARM\n• Manual Call Points (break glass)\n• Activates sounders throughout building\n• Requires someone to discover fire\n\n4️⃣ AUTOMATIC DETECTION & ALARM\n• Automatic detectors (smoke/heat)\n• Manual call points as backup\n• Linked to sounders and lights\n• Can alert fire service automatically\n• Best for larger/complex buildings\n\n━━━━━━━━━━━━━━━━━━━━\nEarly warning = More time to escape\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Detector Types"
-          payload: "/edu_af_detectors"
-        - title: "⬅️ Back to Alarm Menu"
-          payload: "/edu_alarm_firefighting"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🔔 FIRE DETECTION & WARNING SYSTEMS"
+        sections:
+          - heading: "Complexity depends on workplace size and risk."
+            content: ""
+          - heading: "📢 LEVELS OF WARNING SYSTEM:"
+            content: ""
+          - heading: "1️⃣ SIMPLEST"
+            content: "• Someone shouts \"FIRE!\"\n• Suitable for very small premises"
+          - heading: "2️⃣ SIMPLE WITH MORE NOISE"
+            content: "• Hand bell\n• Whistle\n• Air horn\n• Better for noisy environments"
+          - heading: "3️⃣ MANUAL FIRE ALARM"
+            content: "• Manual Call Points (break glass)\n• Activates sounders throughout building\n• Requires someone to discover fire"
+          - heading: "4️⃣ AUTOMATIC DETECTION & ALARM"
+            content: "• Automatic detectors (smoke/heat)\n• Manual call points as backup\n• Linked to sounders and lights\n• Can alert fire service automatically\n• Best for larger/complex buildings"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nEarly warning = More time to escape\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Detector Types"
+            payload: "/edu_af_detectors"
+          - title: "⬅️ Back to Alarm Menu"
+            payload: "/edu_alarm_firefighting"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_af_detectors:
-    - text: "📡 TYPES OF FIRE DETECTORS\n\n💨 SMOKE DETECTORS\n\nDetect small smoke particles in the air.\n\n• IONISATION TYPE\n  - Best for fast-flaming fires\n  - Very sensitive to small particles\n  - Can cause false alarms (cooking, dust)\n\n• OPTICAL TYPE\n  - Best for slow-smouldering fires\n  - Uses light beam to detect smoke\n  - Fewer false alarms\n\n🌡️ HEAT DETECTORS\n\nDetect excess heat from fire.\n\n• RATE OF RISE TYPE\n  - Triggers when temperature rises quickly\n  - Good for fires that spread fast\n\n• FIXED TEMPERATURE TYPE\n  - Triggers at set temperature (e.g., 60°C)\n  - More reliable, fewer false alarms\n\n⚠️ HEAT DETECTOR LIMITATIONS:\n• Less sensitive than smoke detectors\n• Give LATER warning\n• May miss smoky fires with little heat\n\n━━━━━━━━━━━━━━━━━━━━\nSmoke detectors = Early warning\nHeat detectors = Fewer false alarms\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Fire Extinguishers"
-          payload: "/edu_af_extinguishers"
-        - title: "⬅️ Back to Alarm Menu"
-          payload: "/edu_alarm_firefighting"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "📡 TYPES OF FIRE DETECTORS"
+        sections:
+          - heading: "💨 SMOKE DETECTORS"
+            content: "Detect small smoke particles in the air."
+          - heading: "• IONISATION TYPE"
+            content: "  - Best for fast-flaming fires\n  - Very sensitive to small particles\n  - Can cause false alarms (cooking, dust)"
+          - heading: "• OPTICAL TYPE"
+            content: "  - Best for slow-smouldering fires\n  - Uses light beam to detect smoke\n  - Fewer false alarms"
+          - heading: "🌡️ HEAT DETECTORS"
+            content: "Detect excess heat from fire."
+          - heading: "• RATE OF RISE TYPE"
+            content: "  - Triggers when temperature rises quickly\n  - Good for fires that spread fast"
+          - heading: "• FIXED TEMPERATURE TYPE"
+            content: "  - Triggers at set temperature (e.g., 60°C)\n  - More reliable, fewer false alarms"
+          - heading: "⚠️ HEAT DETECTOR LIMITATIONS:"
+            content: "• Less sensitive than smoke detectors\n• Give LATER warning\n• May miss smoky fires with little heat"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nSmoke detectors = Early warning\nHeat detectors = Fewer false alarms\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Fire Extinguishers"
+            payload: "/edu_af_extinguishers"
+          - title: "⬅️ Back to Alarm Menu"
+            payload: "/edu_alarm_firefighting"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_af_extinguishers:
-    - text: "🧯 FIRE EXTINGUISHERS BY CLASS\n\n(UK/EU Classification System)\n\n🔴 WATER (Red Label)\n• Class A only - Solids (wood, paper, cloth)\n• Cools the fire\n• ⚠️ NEVER use on electrical or liquid fires\n\n⚫ CARBON DIOXIDE - CO2 (Black Label)\n• Class A & B - Solids and Liquids\n• Safe for electrical fires\n• Suffocates fire (removes oxygen)\n• Leaves no residue\n\n🟡 FOAM (Cream/Yellow Label)\n• Class A & B - Solids and Liquids\n• Smothers and cools\n• Good for liquid spills\n\n🔵 DRY POWDER (Blue Label)\n• ALL CLASSES - A, B, C, D\n• Very versatile\n• ⚠️ Can damage electrical equipment\n• ⚠️ Reduces visibility\n\n🟡 WET CHEMICAL (Yellow Label)\n• Class F - Cooking oils/fats\n• Designed for kitchen fires\n• Cools and creates barrier\n\n━━━━━━━━━━━━━━━━━━━━\nKnow your extinguisher BEFORE you need it!\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "⚠️ Extinguisher Limitations"
-          payload: "/edu_af_limitations"
-        - title: "⬅️ Back to Alarm Menu"
-          payload: "/edu_alarm_firefighting"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🧯 FIRE EXTINGUISHERS BY CLASS"
+        sections:
+          - heading: "(UK/EU Classification System)"
+            content: ""
+          - heading: "🔴 WATER (Red Label)"
+            content: "• Class A only - Solids (wood, paper, cloth)\n• Cools the fire\n• ⚠️ NEVER use on electrical or liquid fires"
+          - heading: "⚫ CARBON DIOXIDE - CO2 (Black Label)"
+            content: "• Class A & B - Solids and Liquids\n• Safe for electrical fires\n• Suffocates fire (removes oxygen)\n• Leaves no residue"
+          - heading: "🟡 FOAM (Cream/Yellow Label)"
+            content: "• Class A & B - Solids and Liquids\n• Smothers and cools\n• Good for liquid spills"
+          - heading: "🔵 DRY POWDER (Blue Label)"
+            content: "• ALL CLASSES - A, B, C, D\n• Very versatile\n• ⚠️ Can damage electrical equipment\n• ⚠️ Reduces visibility"
+          - heading: "🟡 WET CHEMICAL (Yellow Label)"
+            content: "• Class F - Cooking oils/fats\n• Designed for kitchen fires\n• Cools and creates barrier"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nKnow your extinguisher BEFORE you need it!\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "⚠️ Extinguisher Limitations"
+            payload: "/edu_af_limitations"
+          - title: "⬅️ Back to Alarm Menu"
+            payload: "/edu_alarm_firefighting"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_af_limitations:
-    - text: "⚠️ EXTINGUISHER LIMITATIONS - CRITICAL SAFETY!\n\n🚨 USING WRONG EXTINGUISHER CAN KILL!\n\n❌ WATER ON ELECTRICAL FIRES\n• Water conducts electricity\n• Risk of ELECTROCUTION\n• NEVER use water on live electrical equipment\n\n❌ WATER ON LIQUID/OIL FIRES\n• Water sinks below burning liquid\n• Water boils instantly\n• Creates massive steam explosion\n• Burning liquid \"EXPLODES\" into fireball\n• Can spread fire dramatically\n\n❌ WATER ON METAL FIRES\n• Some metals react violently with water\n• Can cause explosion or intensify fire\n\n⚠️ DRY POWDER LIMITATIONS\n• Effective but messy\n• May destroy electrical equipment\n• Reduces visibility (dangerous in enclosed spaces)\n• Residue is corrosive\n\n✅ WHEN IN DOUBT:\n• Do NOT attempt to fight fire\n• Raise alarm\n• Evacuate\n• Call fire service\n\n━━━━━━━━━━━━━━━━━━━━\nWRONG EXTINGUISHER = WORSE THAN NO EXTINGUISHER\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Other Equipment"
-          payload: "/edu_af_other_equipment"
-        - title: "⬅️ Back to Alarm Menu"
-          payload: "/edu_alarm_firefighting"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "⚠️ EXTINGUISHER LIMITATIONS - CRITICAL SAFETY!"
+        sections:
+          - heading: "🚨 USING WRONG EXTINGUISHER CAN KILL!"
+            content: ""
+          - heading: "❌ WATER ON ELECTRICAL FIRES"
+            content: "• Water conducts electricity\n• Risk of ELECTROCUTION\n• NEVER use water on live electrical equipment"
+          - heading: "❌ WATER ON LIQUID/OIL FIRES"
+            content: "• Water sinks below burning liquid\n• Water boils instantly\n• Creates massive steam explosion\n• Burning liquid \"EXPLODES\" into fireball\n• Can spread fire dramatically"
+          - heading: "❌ WATER ON METAL FIRES"
+            content: "• Some metals react violently with water\n• Can cause explosion or intensify fire"
+          - heading: "⚠️ DRY POWDER LIMITATIONS"
+            content: "• Effective but messy\n• May destroy electrical equipment\n• Reduces visibility (dangerous in enclosed spaces)\n• Residue is corrosive"
+          - heading: "✅ WHEN IN DOUBT:"
+            content: "• Do NOT attempt to fight fire\n• Raise alarm\n• Evacuate\n• Call fire service"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nWRONG EXTINGUISHER = WORSE THAN NO EXTINGUISHER\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Other Equipment"
+            payload: "/edu_af_other_equipment"
+          - title: "⬅️ Back to Alarm Menu"
+            payload: "/edu_alarm_firefighting"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_af_other_equipment:
-    - text: "🔧 OTHER FIREFIGHTING EQUIPMENT\n\n🟫 FIRE BLANKETS\n• Smothers small fires physically\n• Ideal for kitchen fat/oil fires\n• Wrap around person if clothing on fire\n• Simple to use - pull down and cover\n• No maintenance except visual check\n\n🔴 HOSE REELS\n• Found in large buildings\n• For use by trained fire teams\n• Connected to water supply\n• Reaches further than extinguisher\n• Only for Class A fires\n\n💦 SPRINKLER SYSTEMS\n\nAutomatic fire suppression:\n\n• Heat-activated sprinkler heads\n• Only heads near fire activate\n• Douses fire automatically\n• Buys time for evacuation\n• Common in warehouses, hotels, offices\n• Can control fire until fire service arrives\n\n━━━━━━━━━━━━━━━━━━━━\nFire blanket in every kitchen = Essential\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Siting & Maintenance"
-          payload: "/edu_af_siting_maintenance"
-        - title: "⬅️ Back to Alarm Menu"
-          payload: "/edu_alarm_firefighting"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🔧 OTHER FIREFIGHTING EQUIPMENT"
+        sections:
+          - heading: "🟫 FIRE BLANKETS"
+            content: "• Smothers small fires physically\n• Ideal for kitchen fat/oil fires\n• Wrap around person if clothing on fire\n• Simple to use - pull down and cover\n• No maintenance except visual check"
+          - heading: "🔴 HOSE REELS"
+            content: "• Found in large buildings\n• For use by trained fire teams\n• Connected to water supply\n• Reaches further than extinguisher\n• Only for Class A fires"
+          - heading: "💦 SPRINKLER SYSTEMS"
+            content: "Automatic fire suppression:"
+          - heading: "How sprinklers work:"
+            content: "• Heat-activated sprinkler heads\n• Only heads near fire activate\n• Douses fire automatically\n• Buys time for evacuation\n• Common in warehouses, hotels, offices\n• Can control fire until fire service arrives"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nFire blanket in every kitchen = Essential\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Siting & Maintenance"
+            payload: "/edu_af_siting_maintenance"
+          - title: "⬅️ Back to Alarm Menu"
+            payload: "/edu_alarm_firefighting"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_af_siting_maintenance:
-    - text: "📍 SITING & MAINTENANCE OF EXTINGUISHERS\n\n📍 WHERE TO PLACE EXTINGUISHERS:\n\n• On fire exit routes\n• Close to exit doors\n• Close to specific hazards\n• Clearly visible\n• Signed with extinguisher location sign\n• Unobstructed access at all times\n• Mounted on wall or stand\n• Consistent height (handle ~1m from floor)\n\n🔧 INSPECTION (Regular):\n\n• Check extinguishers are in place\n• Check they haven't been discharged\n• Check for visible damage\n• Check pressure gauge (if fitted)\n• Check access is clear\n• Record in Fire Log Book\n\n🛠️ MAINTENANCE (Annual):\n\n• Must be done by certificated engineer\n• Full inspection and testing\n• May involve dismantling\n• Refill or replace as needed\n• Service label attached\n• Records kept in Fire Log Book\n\n━━━━━━━━━━━━━━━━━━━━\nAn extinguisher that doesn't work is useless\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Fire Service Access"
-          payload: "/edu_af_fire_service"
-        - title: "⬅️ Back to Alarm Menu"
-          payload: "/edu_alarm_firefighting"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "📍 SITING & MAINTENANCE OF EXTINGUISHERS"
+        sections:
+          - heading: "📍 WHERE TO PLACE EXTINGUISHERS:"
+            content: "• On fire exit routes\n• Close to exit doors\n• Close to specific hazards\n• Clearly visible\n• Signed with extinguisher location sign\n• Unobstructed access at all times\n• Mounted on wall or stand\n• Consistent height (handle ~1m from floor)"
+          - heading: "🔧 INSPECTION (Regular):"
+            content: "• Check extinguishers are in place\n• Check they haven't been discharged\n• Check for visible damage\n• Check pressure gauge (if fitted)\n• Check access is clear\n• Record in Fire Log Book"
+          - heading: "🛠️ MAINTENANCE (Annual):"
+            content: "• Must be done by certificated engineer\n• Full inspection and testing\n• May involve dismantling\n• Refill or replace as needed\n• Service label attached\n• Records kept in Fire Log Book"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nAn extinguisher that doesn't work is useless\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Fire Service Access"
+            payload: "/edu_af_fire_service"
+          - title: "⬅️ Back to Alarm Menu"
+            payload: "/edu_alarm_firefighting"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_af_fire_service:
-    - text: "🚒 FIRE SERVICE ACCESS\n\n🚗 VEHICLE ACCESS:\n\n• Small buildings (no fire main):\n  - Access to 15% of perimeter, OR\n  - Within 45m of every point on building\n\n• Large/high-rise buildings:\n  - Entire perimeter must be accessible\n  - Turning space for appliances\n  - Hard standing for heavy vehicles\n\n👨‍🚒 INFORMATION FOR FIREFIGHTERS:\n\n• Building layout plans\n• Location of hazardous materials\n• Dangerous processes\n• Utility shut-off points (gas, electric)\n• Location of people (if any trapped)\n\n🤝 LIAISON:\n\n• Nominated person to meet fire service\n• Competent to provide information\n• Part of emergency plan\n• Hand over control to fire service\n\n🏢 HIGH-RISE BUILDINGS:\n\nMay require protected fireman's shaft:\n• Fire-fighting lift\n• Fire-fighting stairs\n• Fire-fighting lobbies\n• Depends on building size and design\n\n━━━━━━━━━━━━━━━━━━━━\nGood access = Faster response = Lives saved\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🔄 Start Again: Detection"
-          payload: "/edu_af_detection"
-        - title: "⬅️ Back to Alarm Menu"
-          payload: "/edu_alarm_firefighting"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🚒 FIRE SERVICE ACCESS"
+        sections:
+          - heading: "🚗 VEHICLE ACCESS:"
+            content: ""
+          - heading: "• Small buildings (no fire main):"
+            content: "  - Access to 15% of perimeter, OR\n  - Within 45m of every point on building"
+          - heading: "• Large/high-rise buildings:"
+            content: "  - Entire perimeter must be accessible\n  - Turning space for appliances\n  - Hard standing for heavy vehicles"
+          - heading: "👨‍🚒 INFORMATION FOR FIREFIGHTERS:"
+            content: "• Building layout plans\n• Location of hazardous materials\n• Dangerous processes\n• Utility shut-off points (gas, electric)\n• Location of people (if any trapped)"
+          - heading: "🤝 LIAISON:"
+            content: "• Nominated person to meet fire service\n• Competent to provide information\n• Part of emergency plan\n• Hand over control to fire service"
+          - heading: "🏢 HIGH-RISE BUILDINGS:"
+            content: "May require protected fireman's shaft:\n• Fire-fighting lift\n• Fire-fighting stairs\n• Fire-fighting lobbies\n• Depends on building size and design"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nGood access = Faster response = Lives saved\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🔄 Start Again: Detection"
+            payload: "/edu_af_detection"
+          - title: "⬅️ Back to Alarm Menu"
+            payload: "/edu_alarm_firefighting"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   # EVACUATIONS
   utter_evacuation_menu:
-    - text: "🚪 EVACUATION OF A WORKPLACE\n\nWhen fire strikes, safe evacuation saves lives.\n\nSelect a topic:"
-      buttons:
-        - title: "🚶 Means of Escape"
-          payload: "/edu_evac_means"
-        - title: "🚪 Stairs, Corridors & Doors"
-          payload: "/edu_evac_stairs_doors"
-        - title: "💡 Lighting & Signs"
-          payload: "/edu_evac_lighting_signs"
-        - title: "📍 Assembly Points"
-          payload: "/edu_evac_assembly"
-        - title: "👷 Fire Marshals & Procedures"
-          payload: "/edu_evac_marshals"
-        - title: "♿ Disabled & Vulnerable"
-          payload: "/edu_evac_disabled"
-        - title: "📋 Fire Plan & Training"
-          payload: "/edu_evac_fire_plan"
-        - title: "⬅️ Back to Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🚪 EVACUATION OF A WORKPLACE"
+        sections:
+          - heading: "When fire strikes, safe evacuation saves lives."
+            content: ""
+          - heading: "Select a topic:"
+            content: ""
+        footer: ""
+        buttons:
+          - title: "🚶 Means of Escape"
+            payload: "/edu_evac_means"
+          - title: "🚪 Stairs, Corridors & Doors"
+            payload: "/edu_evac_stairs_doors"
+          - title: "💡 Lighting & Signs"
+            payload: "/edu_evac_lighting_signs"
+          - title: "📍 Assembly Points"
+            payload: "/edu_evac_assembly"
+          - title: "👷 Fire Marshals & Procedures"
+            payload: "/edu_evac_marshals"
+          - title: "♿ Disabled & Vulnerable"
+            payload: "/edu_evac_disabled"
+          - title: "📋 Fire Plan & Training"
+            payload: "/edu_evac_fire_plan"
+          - title: "⬅️ Back to Main Menu"
+            payload: "/edu_back_main"
 
   utter_evac_means:
-    - text: "🚶 MEANS OF ESCAPE\n\nEscape routes must be available to EVERY person.\n\n✅ REQUIREMENTS:\n\n• Available to all - no exceptions\n• Lead to place of safety (outside)\n• Two or more routes may be required\n• Adequate width for number of people\n• Clearly signed\n• Appropriately lit\n• Emergency lighting installed\n• No obstructions at any time\n\n🚫 NO LIFTS DURING EVACUATION!\n• Lifts can stop working\n• Lift shaft can fill with smoke\n• Lift can open onto fire floor\n• ALWAYS use stairs\n\n📏 TRAVEL DISTANCES:\n\n• LOW risk, few people: Up to 45m to exit\n• HIGH risk, many people: Less than 25m to exit\n\n🚪 TYPES OF EXITS:\n\n• Final Exit - Place of total safety (outside)\n• Storey Exit - Protected stairway\n• Fire Compartment - Leads to final exit\n\n━━━━━━━━━━━━━━━━━━━━\nKnow your nearest TWO exits\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Stairs & Doors"
-          payload: "/edu_evac_stairs_doors"
-        - title: "⬅️ Back to Evacuation"
-          payload: "/edu_evacuation"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🚶 MEANS OF ESCAPE"
+        sections:
+          - heading: "Escape routes must be available to EVERY person."
+            content: ""
+          - heading: "✅ REQUIREMENTS:"
+            content: "• Available to all - no exceptions\n• Lead to place of safety (outside)\n• Two or more routes may be required\n• Adequate width for number of people\n• Clearly signed\n• Appropriately lit\n• Emergency lighting installed\n• No obstructions at any time"
+          - heading: "🚫 NO LIFTS DURING EVACUATION!"
+            content: "• Lifts can stop working\n• Lift shaft can fill with smoke\n• Lift can open onto fire floor\n• ALWAYS use stairs"
+          - heading: "📏 TRAVEL DISTANCES:"
+            content: "• LOW risk, few people: Up to 45m to exit\n• HIGH risk, many people: Less than 25m to exit"
+          - heading: "🚪 TYPES OF EXITS:"
+            content: "• Final Exit - Place of total safety (outside)\n• Storey Exit - Protected stairway\n• Fire Compartment - Leads to final exit"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nKnow your nearest TWO exits\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Stairs & Doors"
+            payload: "/edu_evac_stairs_doors"
+          - title: "⬅️ Back to Evacuation"
+            payload: "/edu_evacuation"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_evac_stairs_doors:
-    - text: "🚪 STAIRS, CORRIDORS & DOORS\n\n🔲 STAIRS & CORRIDORS:\n\n• Fire-resistant construction\n• Adequate width for occupancy\n• UNOBSTRUCTED at all times\n• No storage of materials or equipment\n• Consider wheelchair users\n• Handrails on both sides\n• Non-slip surfaces\n\n🚪 DOORS:\n\n• Easy to open without a key\n• Adequate width (minimum 750mm)\n• Open in DIRECTION OF TRAVEL (outward)\n• Must NOT be locked when occupied\n• Push bars or panic hardware\n• Self-closing fire doors\n\n⚠️ COMMON PROBLEMS:\n\n❌ Fire doors propped open\n❌ Storage in corridors\n❌ Locked emergency exits\n❌ Blocked stairways\n❌ Worn/damaged door closers\n\n━━━━━━━━━━━━━━━━━━━━\nDoors must open OUTWARD - people push when panicking\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Lighting & Signs"
-          payload: "/edu_evac_lighting_signs"
-        - title: "⬅️ Back to Evacuation"
-          payload: "/edu_evacuation"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "🚪 STAIRS, CORRIDORS & DOORS"
+        sections:
+          - heading: "🔲 STAIRS & CORRIDORS:"
+            content: "• Fire-resistant construction\n• Adequate width for occupancy\n• UNOBSTRUCTED at all times\n• No storage of materials or equipment\n• Consider wheelchair users\n• Handrails on both sides\n• Non-slip surfaces"
+          - heading: "🚪 DOORS:"
+            content: "• Easy to open without a key\n• Adequate width (minimum 750mm)\n• Open in DIRECTION OF TRAVEL (outward)\n• Must NOT be locked when occupied\n• Push bars or panic hardware\n• Self-closing fire doors"
+          - heading: "⚠️ COMMON PROBLEMS:"
+            content: "❌ Fire doors propped open\n❌ Storage in corridors\n❌ Locked emergency exits\n❌ Blocked stairways\n❌ Worn/damaged door closers"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nDoors must open OUTWARD - people push when panicking\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Lighting & Signs"
+            payload: "/edu_evac_lighting_signs"
+          - title: "⬅️ Back to Evacuation"
+            payload: "/edu_evacuation"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_evac_lighting_signs:
-    - text: "💡 EMERGENCY LIGHTING & SIGNS\n\n💡 EMERGENCY LIGHTING:\n\nRequired where:\n• No natural light (internal rooms)\n• Night-time occupation\n• Windowless areas\n\nPurpose:\n• Illuminate escape routes\n• Indicate call points location\n• Indicate fire-fighting equipment\n• Allow safe movement in darkness\n\nMaintenance:\n• Regular testing (monthly)\n• Battery backup checked\n• Annual service\n• Records kept\n\n🪧 FIRE EXIT & DIRECTION SIGNS:\n\n• Easy to understand (pictograms)\n• Clearly visible from distance\n• Correctly positioned\n• Meet local regulations (ISO 7010)\n• Green background with white symbols\n• Illuminated or photoluminescent\n\n📍 SIGN PLACEMENT:\n\n• Above every fire exit\n• At every change of direction\n• At every decision point\n• Visible from all areas\n\n━━━━━━━━━━━━━━━━━━━━\nIn smoke, you can't see - signs must be LOW and LIT\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Assembly Points"
-          payload: "/edu_evac_assembly"
-        - title: "⬅️ Back to Evacuation"
-          payload: "/edu_evacuation"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "💡 EMERGENCY LIGHTING & SIGNS"
+        sections:
+          - heading: "💡 EMERGENCY LIGHTING:"
+            content: ""
+          - heading: "Required where:"
+            content: "• No natural light (internal rooms)\n• Night-time occupation\n• Windowless areas"
+          - heading: "Purpose:"
+            content: "• Illuminate escape routes\n• Indicate call points location\n• Indicate fire-fighting equipment\n• Allow safe movement in darkness"
+          - heading: "Maintenance:"
+            content: "• Regular testing (monthly)\n• Battery backup checked\n• Annual service\n• Records kept"
+          - heading: "🪧 FIRE EXIT & DIRECTION SIGNS:"
+            content: "• Easy to understand (pictograms)\n• Clearly visible from distance\n• Correctly positioned\n• Meet local regulations (ISO 7010)\n• Green background with white symbols\n• Illuminated or photoluminescent"
+          - heading: "📍 SIGN PLACEMENT:"
+            content: "• Above every fire exit\n• At every change of direction\n• At every decision point\n• Visible from all areas"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nIn smoke, you can't see - signs must be LOW and LIT\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Assembly Points"
+            payload: "/edu_evac_assembly"
+          - title: "⬅️ Back to Evacuation"
+            payload: "/edu_evacuation"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_evac_assembly:
-    - text: "📍 ASSEMBLY POINTS\n\nWhere everyone gathers after evacuation.\n\n✅ REQUIREMENTS:\n\n• Safe distance from building\n  - Away from falling debris\n  - Away from smoke\n  - Minimum 20 metres typically\n\n• Safe location\n  - Not in car park (vehicle movement)\n  - Not blocking roads\n  - Not near hazardous storage\n\n• Further escape possible\n  - If fire spreads\n  - Secondary assembly point identified\n\n• Must NOT impede firefighters\n  - Clear access for fire engines\n  - Away from fire hydrants\n\n• Clearly signed\n  - Assembly Point sign visible\n  - Known to all staff\n\n♿ REFUGES:\n\n• Safe waiting areas for disabled workers\n• Fire-resistant construction\n• Communication with fire marshals\n• Firefighters will assist evacuation\n\n━━━━━━━━━━━━━━━━━━━━\nGo to assembly point → Stay there → Get counted\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Fire Marshals"
-          payload: "/edu_evac_marshals"
-        - title: "⬅️ Back to Evacuation"
-          payload: "/edu_evacuation"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "📍 ASSEMBLY POINTS"
+        sections:
+          - heading: "Where everyone gathers after evacuation."
+            content: ""
+          - heading: "✅ REQUIREMENTS:"
+            content: ""
+          - heading: "• Safe distance from building"
+            content: "  - Away from falling debris\n  - Away from smoke\n  - Minimum 20 metres typically"
+          - heading: "• Safe location"
+            content: "  - Not in car park (vehicle movement)\n  - Not blocking roads\n  - Not near hazardous storage"
+          - heading: "• Further escape possible"
+            content: "  - If fire spreads\n  - Secondary assembly point identified"
+          - heading: "• Must NOT impede firefighters"
+            content: "  - Clear access for fire engines\n  - Away from fire hydrants"
+          - heading: "• Clearly signed"
+            content: "  - Assembly Point sign visible\n  - Known to all staff"
+          - heading: "♿ REFUGES:"
+            content: "• Safe waiting areas for disabled workers\n• Fire-resistant construction\n• Communication with fire marshals\n• Firefighters will assist evacuation"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nGo to assembly point → Stay there → Get counted\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Fire Marshals"
+            payload: "/edu_evac_marshals"
+          - title: "⬅️ Back to Evacuation"
+            payload: "/edu_evacuation"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_evac_marshals:
-    - text: "👷 FIRE MARSHALS & PROCEDURES\n\n🚨 BASIC EVACUATION PROCEDURE:\n\n1️⃣ Sound the alarm\n2️⃣ Get out of the building\n3️⃣ STAY out of the building!\n\n👷 FIRE MARSHAL DUTIES:\n\n• Check if alarm is real (not false alarm)\n• Sweep designated area\n• Check all areas are evacuated\n• Check toilets, meeting rooms, storage\n• Assist disabled workers\n• Ensure escape routes are clear\n• Close windows and doors (contains fire)\n• Report to assembly point\n• Conduct roll call\n• Report to senior marshal / fire service\n\n📢 ROLL CALL:\n\n• Account for all persons\n• Use sign-in sheets or registers\n• Report missing persons to fire service\n• May not be practical in some places (supermarkets, public venues)\n\n⚠️ NEVER:\n\n• Go back for belongings\n• Use lifts\n• Delay to finish work\n• Ignore the alarm\n\n━━━━━━━━━━━━━━━━━━━━\nEvery second counts - GET OUT, STAY OUT\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Disabled & Vulnerable"
-          payload: "/edu_evac_disabled"
-        - title: "⬅️ Back to Evacuation"
-          payload: "/edu_evacuation"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "👷 FIRE MARSHALS & PROCEDURES"
+        sections:
+          - heading: "🚨 BASIC EVACUATION PROCEDURE:"
+            content: "1️⃣ Sound the alarm\n2️⃣ Get out of the building\n3️⃣ STAY out of the building!"
+          - heading: "👷 FIRE MARSHAL DUTIES:"
+            content: "• Check if alarm is real (not false alarm)\n• Sweep designated area\n• Check all areas are evacuated\n• Check toilets, meeting rooms, storage\n• Assist disabled workers\n• Ensure escape routes are clear\n• Close windows and doors (contains fire)\n• Report to assembly point\n• Conduct roll call\n• Report to senior marshal / fire service"
+          - heading: "📢 ROLL CALL:"
+            content: "• Account for all persons\n• Use sign-in sheets or registers\n• Report missing persons to fire service\n• May not be practical in some places (supermarkets, public venues)"
+          - heading: "⚠️ NEVER:"
+            content: "• Go back for belongings\n• Use lifts\n• Delay to finish work\n• Ignore the alarm"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nEvery second counts - GET OUT, STAY OUT\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Disabled & Vulnerable"
+            payload: "/edu_evac_disabled"
+          - title: "⬅️ Back to Evacuation"
+            payload: "/edu_evacuation"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_evac_disabled:
-    - text: "♿ DISABLED & VULNERABLE PERSONS\n\n📋 PERSONAL EMERGENCY EVACUATION PLANS (PEEPs)\n\nRequired for staff with:\n• Mobility impairment (wheelchair, walking aids)\n• Visual impairment\n• Hearing impairment\n• Cognitive impairment\n• Temporary disabilities (crutches, pregnancy)\n\n📝 PEEP SHOULD INCLUDE:\n\n• Person's specific needs\n• Assistance required\n• Who will assist (named buddy)\n• Route to be used\n• Equipment needed (evac chair)\n• Refuge location if needed\n\n👂 HEARING IMPAIRED:\n\n• Visual alarms (flashing lights)\n• Vibrating pagers\n• Personal alert by colleague\n\n👁️ VISUALLY IMPAIRED:\n\n• Buddy system\n• Tactile escape routes\n• Verbal guidance\n\n🧒👴 ALSO CONSIDER:\n\n• Young persons (may panic)\n• Elderly (slower movement)\n• Visitors unfamiliar with building\n• Contractors\n\n━━━━━━━━━━━━━━━━━━━━\nNo one left behind - plan for everyone\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "➡️ Fire Plan & Training"
-          payload: "/edu_evac_fire_plan"
-        - title: "⬅️ Back to Evacuation"
-          payload: "/edu_evacuation"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "♿ DISABLED & VULNERABLE PERSONS"
+        sections:
+          - heading: "📋 PERSONAL EMERGENCY EVACUATION PLANS (PEEPs)"
+            content: ""
+          - heading: "Required for staff with:"
+            content: "• Mobility impairment (wheelchair, walking aids)\n• Visual impairment\n• Hearing impairment\n• Cognitive impairment\n• Temporary disabilities (crutches, pregnancy)"
+          - heading: "📝 PEEP SHOULD INCLUDE:"
+            content: "• Person's specific needs\n• Assistance required\n• Who will assist (named buddy)\n• Route to be used\n• Equipment needed (evac chair)\n• Refuge location if needed"
+          - heading: "👂 HEARING IMPAIRED:"
+            content: "• Visual alarms (flashing lights)\n• Vibrating pagers\n• Personal alert by colleague"
+          - heading: "👁️ VISUALLY IMPAIRED:"
+            content: "• Buddy system\n• Tactile escape routes\n• Verbal guidance"
+          - heading: "🧒👴 ALSO CONSIDER:"
+            content: "• Young persons (may panic)\n• Elderly (slower movement)\n• Visitors unfamiliar with building\n• Contractors"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nNo one left behind - plan for everyone\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "➡️ Fire Plan & Training"
+            payload: "/edu_evac_fire_plan"
+          - title: "⬅️ Back to Evacuation"
+            payload: "/edu_evacuation"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
   utter_evac_fire_plan:
-    - text: "📋 FIRE PLAN & TRAINING\n\n📋 FIRE PLAN SHOULD INCLUDE:\n\n• Who is on premises (staff, visitors)\n• Action on discovering fire\n• Action on hearing alarm\n• Means of escape (shown on plans)\n• Fire-fighting equipment locations\n• Assembly point location\n• Action after evacuation\n• Liaison with fire service\n• Training requirements\n\n🗺️ BUILDING PLANS:\n\n• Show all escape routes\n• Part of fire risk assessment\n• Displayed in building\n  - Each floor in multi-storey\n  - Behind hotel room doors\n  - Reception areas\n• Updated when building changes\n\n🎓 TRAINING:\n\n• All staff on joining\n• Refresher training annually\n• Fire marshals - additional training\n• Fire extinguisher users\n• Those assisting disabled persons\n\n🔥 FIRE DRILLS:\n\n• Usually once a year minimum\n• Unannounced if possible\n• Timed and evaluated\n• Records kept\n• Issues identified and fixed\n\n━━━━━━━━━━━━━━━━━━━━\nPractice makes perfect - drills save lives\n━━━━━━━━━━━━━━━━━━━━"
-      buttons:
-        - title: "🔄 Start Again: Means of Escape"
-          payload: "/edu_evac_means"
-        - title: "⬅️ Back to Evacuation"
-          payload: "/edu_evacuation"
-        - title: "🏠 Main Menu"
-          payload: "/edu_back_main"
+    - custom:
+        title: "📋 FIRE PLAN & TRAINING"
+        sections:
+          - heading: "📋 FIRE PLAN SHOULD INCLUDE:"
+            content: "• Who is on premises (staff, visitors)\n• Action on discovering fire\n• Action on hearing alarm\n• Means of escape (shown on plans)\n• Fire-fighting equipment locations\n• Assembly point location\n• Action after evacuation\n• Liaison with fire service\n• Training requirements"
+          - heading: "🗺️ BUILDING PLANS:"
+            content: "• Show all escape routes\n• Part of fire risk assessment\n• Displayed in building\n  - Each floor in multi-storey\n  - Behind hotel room doors\n  - Reception areas\n• Updated when building changes"
+          - heading: "🎓 TRAINING:"
+            content: "• All staff on joining\n• Refresher training annually\n• Fire marshals - additional training\n• Fire extinguisher users\n• Those assisting disabled persons"
+          - heading: "🔥 FIRE DRILLS:"
+            content: "• Usually once a year minimum\n• Unannounced if possible\n• Timed and evaluated\n• Records kept\n• Issues identified and fixed"
+        footer: "━━━━━━━━━━━━━━━━━━━━\nPractice makes perfect - drills save lives\n━━━━━━━━━━━━━━━━━━━━"
+        buttons:
+          - title: "🔄 Start Again: Means of Escape"
+            payload: "/edu_evac_means"
+          - title: "⬅️ Back to Evacuation"
+            payload: "/edu_evacuation"
+          - title: "🏠 Main Menu"
+            payload: "/edu_back_main"
 
 actions:
   - action_reset_slots

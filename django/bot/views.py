@@ -77,18 +77,40 @@ def handle_user_message(request):
 
         all_messages = []
 
+
         for msg in bot_message:
+            logger.info(f"msg============={msg}")
             if msg.get("custom"):
                 custom_data = msg["custom"]
-                all_messages.append({
-                    "sender": "bot",
-                    "sender_id": sender_id,
-                    "message_type": "custom",
-                    "data": custom_data,
-                    "text": custom_data.get("heading", "Emergency Instructions"),
-                    "is_btn": False,
-                    "buttons": []
-                })
+                if custom_data.get("buttons"):
+                    msg_btns = custom_data.get("buttons")
+                    title = custom_data.get("title")
+                    footer = custom_data.get("footer")
+                    sections = custom_data.get("sections")
+                    all_messages.append({
+                        "sender": "bot",
+                        "sender_id": sender_id,
+                        "message_type": "custom",
+                        "title":title,
+                        "sections":sections,
+                        "text": custom_data.get("heading", "Emergency Instructions"),
+                        "is_btn": True,
+                        "buttons": msg_btns,
+                        "footer":footer
+                    })
+                else:
+                    title = custom_data.get("title")
+                    sections = custom_data.get("sections")
+                    all_messages.append({
+                        "sender": "bot",
+                        "sender_id": sender_id,
+                        "message_type": "custom",
+                        "title":title,
+                        "sections":sections,
+                        "text": custom_data.get("heading", "Emergency Instructions"),
+                        "is_btn": False,
+                        "buttons": []
+                    })
 
             elif msg.get("buttons"):
                 all_messages.append({
@@ -110,7 +132,7 @@ def handle_user_message(request):
                     "buttons": []
                 })
 
-        logger.info(all_messages)
+        # logger.info(all_messages)
 
         return JsonResponse({"status": "success", "response": all_messages})
     except Exception as e:

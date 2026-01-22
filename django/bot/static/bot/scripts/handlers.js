@@ -25,18 +25,21 @@ export async function handleUserInput(event, input) {
     const data = await handleRequest(headers_content, body_content);
 
     if (data.status === "success") {
+      console.log(data);
       const { response } = data;
 
       // Handle multiple messages from Rasa
       if (Array.isArray(response)) {
         response.forEach((msg) => {
-          app_state.push({
-            sender: "bot",
-            text: msg.text,
-            message_type: msg.message_type,
-            buttons: msg.is_btn ? msg.buttons : [],
-            data: msg.data || null,
-          });
+          // console.log(first)
+          app_state.push(
+            msg,
+            // sender: "bot",
+            // text: msg.text,
+            // message_type: msg.message_type,
+            // buttons: msg.is_btn ? msg.buttons : [],
+            // data: msg.data || null,
+          );
         });
       } else {
         // Fallback for single message (backward compatibility)
@@ -78,22 +81,26 @@ export async function handleBtnInputs(event) {
 
     if (data.status === "success") {
       const { response } = data;
+      // console.log(response);
 
       if (Array.isArray(response)) {
         response.forEach((msg) => {
-          app_state.push({
-            sender: "bot",
-            text: msg.text,
-            message_type: msg.message_type,
-            buttons: msg.is_btn ? msg.buttons : [],
-            data: msg.data || null,
-          });
+          const msg_text = msg.text.replace(/\n/g, "<br>");
+          app_state.push(msg);
+          // app_state.push({
+          //   sender: "bot",
+          //   text: msg_text,
+          //   message_type: msg.message_type,
+          //   buttons: msg.is_btn ? msg.buttons : [],
+          //   data: msg.data || null,
+          // });
         });
       } else {
         // Fallback for single message
+        const msg_text = response.text.replace(/\n/g, "<br>");
         app_state.push({
           sender: "bot",
-          text: response.text,
+          text: msg_text,
           message_type: response.message_type,
           buttons: response.is_btn ? response.buttons : [],
           data: response.data || null,
@@ -109,6 +116,7 @@ export async function handleBtnInputs(event) {
 
 function renderChat() {
   const chat_container = document.getElementById("chat_container");
+  console.log(app_state);
 
   const chat_markup = app_state
     .map((entry) => {
@@ -121,10 +129,6 @@ function renderChat() {
       }
 
       if (entry.sender === "bot") {
-        if (entry.message_type === "custom" && entry.data) {
-          return renderCustomMessage(entry.data);
-        }
-
         let btn_markup = "";
         if (entry.buttons && entry.buttons.length > 0) {
           btn_markup = entry.buttons
@@ -135,6 +139,16 @@ function renderChat() {
                 </button>`,
             )
             .join("");
+        }
+        if (entry.message_type === "custom") {
+          console.log(entry);
+          return renderCustomMessage(
+            entry.title,
+            entry.sections,
+            entry.text,
+            entry.footer,
+            btn_markup,
+          );
         }
 
         return `
@@ -157,12 +171,29 @@ function renderChat() {
   chat_container.scrollTop = chat_container.scrollHeight;
 }
 
-function renderCustomMessage(data) {
+function renderCustomMessage(title, sections, text, footer, btn_markup) {
+  console.log(sections);
   return `
     <div class="chatbot__chats-bot chatbot__chats-resp">
       <div class="chatbot-response-box custom-message">
-        <h4>${data.heading || "Emergency Instructions"}</h4>
-        <p>${data.content || ""}</p>
+      <div class = "chatbot-response-box-sections-box">
+      <h4 class="chatbot-response-box-title" >${title || "Emergency Instructions"}</h4>
+        ${sections
+          .map(
+            (sec) => `
+            <div class = "chatbot-response-box-sections-sub-box">
+            <h5 class = "chatbot-response-box-sections-heading">${sec.heading}</h5>
+            <p>${sec.content || ""}</p>
+            </div>
+            `,
+          )
+          .join("")}
+        </div>
+        <p>${footer || ""}</p>
+        <p>${text}</p>
+        <div class="chat_btns bot-btns">
+          ${btn_markup}
+        </div>
       </div>
     </div>
   `;
