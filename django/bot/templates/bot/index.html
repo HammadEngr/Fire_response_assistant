@@ -6,33 +6,13 @@
 
 {% block content %}
     <section class="chatbot-layout">
-        <div class="sidebar-section">
-            <h2 class="sidebar-heading">Quick Actions</h2>
-            <div class="quick-action">
-                <p class="quick-action-heading">Fire Education</p>
-                <div class="quick-btns">
-                    <button class="quick-btn">Basics</button>
-                    <button class="quick-btn">Risk Assessments</button>
-                    <button class="quick-btn">Mitigatoion Steps</button>
-                </div>
-            </div>
-            <div class="quick-action">
-                <p class="quick-action-heading">Fire Incident Report</p>
-                <div class="quick-btns">
-                    <button class="quick-btn">click me</button>
-                    <button class="quick-btn">click me</button>
-                    <button class="quick-btn">click me</button>
-                    <button class="quick-btn">click me</button>
-                    <button class="quick-btn">click me</button>
-                </div>
-            </div>
+        <div class="quick-section">
+            <button class="quick-btn quick-btn-report" data-payload="/report">Report Fire Incident</button>
+            <button class="quick-btn quick-btn-edu" data-payload="/education">Fire Education</button>
         </div>
         <main class="chat-section">
             <div class="chatbot__chats" id="chat_container">
-
-                <div class="chatbot__chats-bot chatbot__chats-resp">
-            
-          </div>
+                <div class="chatbot__chats-bot chatbot__chats-resp"></div>
             </div>    
             <div class="chatbot__input-box">
                 <div action="" class="chatbot__input-form">

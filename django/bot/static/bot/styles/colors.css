@@ -1,11 +1,9 @@
 :root {
-  /* --bg-primary: #181818; */
   --bg-primary: #2b2a27;
-  /* --bg-primary: white; */
-  /* --bg-secondary: #212121; */
   --bg-secondary: #2b2a27;
   --bg-tertiary: #212121;
-  /* --bg-tertiary: #303030; */
+  --bg-user: #181818;
+
   --bg-chat-btn: #6a6a6a;
 
   --hover: #272727;

@@ -4,27 +4,21 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import UserUtteranceReverted
+# import os
+import psycopg2
 
-# RESPONSES
-from responses import (
-    HOUSE_KITCHEN, HOUSE_ELECTRICAL, HOUSE_BEDROOM, HOUSE_GARAGE, HOUSE_GAS, HOUSE_OTHER,
-    BUILDING_INSIDE, BUILDING_OUTSIDE,
-    FACTORY_WORKER, FACTORY_VISITOR, FACTORY_OUTSIDE,
-    WAREHOUSE_LARGE, WAREHOUSE_SMALL,
-    FOREST, DEFAULT_RESPONSE
-)
+DATABASE_URL = "postgres://crisis_user:12&@hagYnLikj@3@db:5432/crisis_db"
+# print("==DEBUG==DATABASE_URL=", DATABASE_URL)
 
-# RISK LEVEL HELPER FUNCTION
-def get_risk_level(is_critical: str, is_high: str, is_rising: str) -> str:
-    # Determine risk level from yes/no answers
-    if is_critical == "yes":
-        return "critical"
-    elif is_high == "yes":
-        return "high"
-    elif is_rising == "yes":
-        return "rising"
-    else:
-        return "low"
+def get_db_connection():
+    conn = psycopg2.connect(
+        host="postgres_db",
+        port=5432,
+        dbname="crisis_db",
+        user="crisis_user",
+        password="12&@hagYnLikj@3"
+    )
+    return conn
 
 # FORM VALIDATION HELPER
 class RiskFormValidationMixin:
@@ -157,7 +151,6 @@ class ValidateWarehouseLargeForm(RiskFormValidationMixin, FormValidationAction):
     def name(self) -> Text:
         return "validate_warehouse_large_form"
 
-
 class ValidateWarehouseSmallForm(RiskFormValidationMixin, FormValidationAction):
     def name(self) -> Text:
         return "validate_warehouse_small_form"
@@ -180,7 +173,6 @@ class ValidateWarehouseSmallForm(RiskFormValidationMixin, FormValidationAction):
         else:
             dispatcher.utter_message(text="Please select a valid material type from the options.")
             return {"warehouse_material": None}
-
 
 class ValidateForestFireForm(RiskFormValidationMixin, FormValidationAction):
     def name(self) -> Text:
@@ -265,6 +257,37 @@ class ActionRouteAfterWarehouseSize(Action):
             dispatcher.utter_message(text="Unknown size. Please try again.")
             return [FollowupAction("warehouse_size_form")]
 
+# RISK LEVEL HELPER FUNCTION
+def get_risk_level(is_critical: str, is_high: str, is_rising: str) -> str:
+    # Determine risk level from yes/no answers
+    if is_critical == "yes":
+        return "critical"
+    elif is_high == "yes":
+        return "high"
+    elif is_rising == "yes":
+        return "rising"
+    else:
+        return "low"
+    
+# GET RESPONSES FROM DATABASE
+def get_fire_response(response_key):
+    try:
+        cur = get_db_connection().cursor()
+        db_query = "SELECT title, content, additional_warning FROM fire_responses WHERE response_key = %s AND is_active = true;"
+        cur.execute(db_query, (response_key,))
+        result = cur.fetchall()
+        cur.close()
+
+        if result:
+            row = result[0]
+            title, content, warning = row
+            full_response = {"title": title, "content": content, "warning": warning or ""}
+            return full_response
+        else:
+            return None
+    except Exception as e:
+        print(f"Database error: {e}")
+        return None
 
 # SUBMIT FIRE ASSESSMENT
 class ActionSubmitFireAssessment(Action):
@@ -298,10 +321,21 @@ class ActionSubmitFireAssessment(Action):
             warehouse_material,
             is_critical, is_high, is_rising
         )
-
+        default_response = get_fire_response("default_response")
         # Send response
-        dispatcher.utter_message(text=response)
-        dispatcher.utter_message(text="🆘 Emergency Helpline: 112\n\nStay safe!")
+        dispatcher.utter_message(
+                    json_message={
+                        "title": response["title"],
+                        "sections": [{"heading":"", "content": response["content"]}],
+                        "footer": response["warning"] or "",
+                        "buttons": []
+                    })
+        dispatcher.utter_message(json_message={
+                        "title": default_response["title"],
+                        "sections": [{"heading":"", "content": default_response["content"]}],
+                        "footer": default_response["warning"] or "",
+                        "buttons": []
+        })
 
         # Reset all slots
         return [
@@ -324,57 +358,57 @@ class ActionSubmitFireAssessment(Action):
     ) -> str:
 
         # HOUSE
+        
         if site_type == "house":
             risk = get_risk_level(is_critical, is_high, is_rising)
-            print(f"DEBUG==risk={risk}, house_location={house_location}")
-            location_map = {
-                "kitchen": HOUSE_KITCHEN,
-                "electrical": HOUSE_ELECTRICAL,
-                "bedroom": HOUSE_BEDROOM,
-                "garage": HOUSE_GARAGE,
-                "gas_area": HOUSE_GAS,
-                "other": HOUSE_OTHER
-            }
-            responses = location_map.get(house_location, HOUSE_OTHER)
-            print(f"DEBUG===responses={responses}")
-            return responses.get(risk, "Emergency! Call 112.")
+            response_key = f"{site_type}_{house_location}_{risk}"
+            house_response = get_fire_response(response_key)
+            return house_response
         
         # BUILDINGS
         elif site_type == "building":
+            response_key = None
             if building_location == "inside":
-                return BUILDING_INSIDE
+                response_key = f"{site_type}_inside"
             else:
-                return BUILDING_OUTSIDE
+                response_key = f"{site_type}_outside"
+            building_response = get_fire_response(response_key)
+            return building_response
         
         # FACTORY
         elif site_type == "factory":
+            response_key = None
             if factory_location == "inside":
                 if factory_role == "visitor":
-                    return FACTORY_VISITOR
+                    response_key = f"inside_visitor_protocol"
                 else:
-                    return FACTORY_WORKER
+                    response_key = f"inside_worker_protocol"
+                inside_response = get_fire_response(response_key)
+                return inside_response
             else:
                 risk = get_risk_level(is_critical, is_high, is_rising)
-                return FACTORY_OUTSIDE.get(risk, FACTORY_OUTSIDE["low"])
+                outside_response = get_fire_response(f"outside_{site_type}_{risk}")
+                return outside_response
+
         elif site_type == "warehouse":
             if warehouse_size == "large":
-                return WAREHOUSE_LARGE
+                warehouse_large_response = get_fire_response("warehouse_large")
+                return warehouse_large_response
             else:
                 risk = get_risk_level(is_critical, is_high, is_rising)
-                material_responses = WAREHOUSE_SMALL.get(
-                    warehouse_material,
-                    WAREHOUSE_SMALL["mixed"]
-                )
-                return material_responses.get(risk, material_responses.get("low"))
+                warehouse_small_response = get_fire_response(f"warehouse_{warehouse_material}_{risk}")
+                return warehouse_small_response
             
         # FOREST
         elif site_type == "forest":
             risk = get_risk_level(is_critical, is_high, is_rising)
-            return FOREST.get(risk, FOREST["low"])
+            forest_response = get_fire_response(f"forest_{risk}")
+            return forest_response
 
         # DEFAULT
         else:
-            return DEFAULT_RESPONSE
+            default_response = get_fire_response("default_response")
+            return default_response
         
 class ActionResetSlots(Action):
 

@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 
 RASA_URL = "http://rasa:5005/webhooks/rest/webhook"
 
-# Create your views here.
 @csrf_exempt
 def index(request):
     return render(request, "bot/index.html")
@@ -32,25 +31,12 @@ def handle_user_message(request):
             return JsonResponse({"status":"error", "message":"user message must be a string"}, status=400)
         if len(user_message) > 500:
             return JsonResponse({"status":"error","message":"Message too long"})
-
-        # FOR DEBUGGING ONLY
-        # parse_response = requests.post("http://rasa:5005/model/parse", json={"text":user_message}).json()
-        # print("=========parse result", parse_response["intent"], parse_response.get("entities"))
         
         # VERY IMPORTANT -> otherwise data will be fetched from cache
         sender_id = request.session.session_key
         if sender_id is None:
             request.session.create()
             sender_id = request.session.session_key
-
-        # RESETTING TRACKER (only in development phase)
-        # if (settings.APP_MODE=="development"):
-        #     requests.post(f"http://rasa:5005/conversations/{sender_id}/tracker/events",json={"event": "restart"})
-
-        logger.info(f"Sending to Rasa - Sender: {sender_id}, Message: {user_message}")
-        parse_response = requests.post("http://rasa:5005/model/parse", json={"text": user_message}).json()
-        logger.info(f"Parse result - Intent: {parse_response.get('intent')}, Entities: {parse_response.get('entities')}")
-
 
         # RASA REQUEST
         rasa_response = requests.post(RASA_URL, json={
@@ -64,10 +50,10 @@ def handle_user_message(request):
             "message": "Assistant service unavailable"
         }, status=503)
 
-        logger.info(f"rasa====={rasa_response}")
+        # logger.info(f"Rasa response status code: {rasa_response}")
 
         bot_message = rasa_response.json()
-        logger.info(f"bot_message---{bot_message}")
+        # logger.info(f"bot_message-new---{bot_message}")
 
         if not bot_message or not isinstance(bot_message, list):
             return JsonResponse({
@@ -77,62 +63,46 @@ def handle_user_message(request):
 
         all_messages = []
 
-
+        def build_message(sender_id, message_type, **kwargs):
+            return {
+                "sender": "bot",
+                "sender_id": sender_id,
+                "message_type": message_type,
+                "title": kwargs.get("title", ""),
+                "sections": kwargs.get("sections", []),
+                "text": kwargs.get("text", ""),
+                "footer": kwargs.get("footer", ""),
+                "is_btn": kwargs.get("is_btn", False),
+                "buttons": kwargs.get("buttons", [])
+            }
+        
         for msg in bot_message:
-            logger.info(f"msg============={msg}")
             if msg.get("custom"):
                 custom_data = msg["custom"]
-                if custom_data.get("buttons"):
-                    msg_btns = custom_data.get("buttons")
-                    title = custom_data.get("title")
-                    footer = custom_data.get("footer")
-                    sections = custom_data.get("sections")
-                    all_messages.append({
-                        "sender": "bot",
-                        "sender_id": sender_id,
-                        "message_type": "custom",
-                        "title":title,
-                        "sections":sections,
-                        "text": custom_data.get("heading", "Emergency Instructions"),
-                        "is_btn": True,
-                        "buttons": msg_btns,
-                        "footer":footer
-                    })
-                else:
-                    title = custom_data.get("title")
-                    sections = custom_data.get("sections")
-                    all_messages.append({
-                        "sender": "bot",
-                        "sender_id": sender_id,
-                        "message_type": "custom",
-                        "title":title,
-                        "sections":sections,
-                        "text": custom_data.get("heading", "Emergency Instructions"),
-                        "is_btn": False,
-                        "buttons": []
-                    })
-
+                all_messages.append(build_message(
+                    sender_id,
+                    "custom",
+                    title=custom_data.get("title", ""),
+                    sections=custom_data.get("sections", []),
+                    text=msg.get("text", "Emergency Instructions"),
+                    footer=custom_data.get("footer", ""),
+                    is_btn=bool(custom_data.get("buttons")),
+                    buttons=custom_data.get("buttons", [])
+                ))
             elif msg.get("buttons"):
-                all_messages.append({
-                    "sender": "bot",
-                    "sender_id": sender_id,
-                    "message_type": "buttons",
-                    "text": msg.get("text", ""),
-                    "is_btn": True,
-                    "buttons": msg.get("buttons")
-                })
-
+                all_messages.append(build_message(
+                    sender_id,
+                    "buttons",
+                    text=msg.get("text", ""),
+                    is_btn=True,
+                    buttons=msg.get("buttons", [])
+                ))
             else:
-                all_messages.append({
-                    "sender": "bot",
-                    "sender_id": sender_id,
-                    "message_type": "text",
-                    "text": msg.get("text", ""),
-                    "is_btn": False,
-                    "buttons": []
-                })
-
-        # logger.info(all_messages)
+                all_messages.append(build_message(
+                    sender_id,
+                    "text",
+                    text=msg.get("text", "")
+                ))
 
         return JsonResponse({"status": "success", "response": all_messages})
     except Exception as e:

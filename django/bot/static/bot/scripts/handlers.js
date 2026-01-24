@@ -25,21 +25,12 @@ export async function handleUserInput(event, input) {
     const data = await handleRequest(headers_content, body_content);
 
     if (data.status === "success") {
-      console.log(data);
       const { response } = data;
 
       // Handle multiple messages from Rasa
       if (Array.isArray(response)) {
         response.forEach((msg) => {
-          // console.log(first)
-          app_state.push(
-            msg,
-            // sender: "bot",
-            // text: msg.text,
-            // message_type: msg.message_type,
-            // buttons: msg.is_btn ? msg.buttons : [],
-            // data: msg.data || null,
-          );
+          app_state.push(msg);
         });
       } else {
         // Fallback for single message (backward compatibility)
@@ -81,19 +72,11 @@ export async function handleBtnInputs(event) {
 
     if (data.status === "success") {
       const { response } = data;
-      // console.log(response);
 
       if (Array.isArray(response)) {
         response.forEach((msg) => {
           const msg_text = msg.text.replace(/\n/g, "<br>");
           app_state.push(msg);
-          // app_state.push({
-          //   sender: "bot",
-          //   text: msg_text,
-          //   message_type: msg.message_type,
-          //   buttons: msg.is_btn ? msg.buttons : [],
-          //   data: msg.data || null,
-          // });
         });
       } else {
         // Fallback for single message
@@ -114,9 +97,12 @@ export async function handleBtnInputs(event) {
   }
 }
 
+export async function handleQuickSection(e) {
+  console.log(e.target);
+}
+
 function renderChat() {
   const chat_container = document.getElementById("chat_container");
-  console.log(app_state);
 
   const chat_markup = app_state
     .map((entry) => {
@@ -141,10 +127,18 @@ function renderChat() {
             .join("");
         }
         if (entry.message_type === "custom") {
-          console.log(entry);
+          let sections = entry.sections.map((sec) => {
+            return {
+              heading: sec.heading ?? "",
+              content: sec.content
+                ?.replace(/\\n/g, "<br>")
+                ?.replace(/\r\n/g, "<br>")
+                ?.replace(/\n/g, "<br>"),
+            };
+          });
           return renderCustomMessage(
             entry.title,
-            entry.sections,
+            sections,
             entry.text,
             entry.footer,
             btn_markup,
@@ -172,7 +166,6 @@ function renderChat() {
 }
 
 function renderCustomMessage(title, sections, text, footer, btn_markup) {
-  console.log(sections);
   return `
     <div class="chatbot__chats-bot chatbot__chats-resp">
       <div class="chatbot-response-box custom-message">
