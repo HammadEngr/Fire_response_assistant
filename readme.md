@@ -2,7 +2,7 @@
 
 _A Dockerized Fire Response & Education Assistant_
 
-This project is a **production-style chatbot system** built using **Django**, **Rasa**, and **Docker**, and deployed on **AWS EC2** behind **NGINX + Gunicorn**.
+This project is a **production-style chatbot system** built using **Django**, **Rasa**, **Postgresql** and **Docker**, and deployed on **AWS EC2** behind **NGINX + Gunicorn**.
 
 The goal of the project is to demonstrate:
 
@@ -33,12 +33,34 @@ All services run as **Docker containers**.
 
 ---
 
+## Architecture Overview
+
+```
+Django Container
+   - Admin Panel
+   - Models
+   - Migrations
+   - View Layer
+
+PostgreSQL Container
+   - fire_categories
+   - sub_categories
+   - risk_levels
+   - fire_responses
+   - default_response
+   - user_submissions
+
+Rasa Container
+Custom Actions
+```
+
 ## Tech Stack
 
 - Python 3.8
 - Django 4.x
 - Rasa 3.1.0
 - Rasa SDK 3.1.0
+- Postgresql
 - Docker & Docker Compose
 - NGINX
 - Gunicorn
@@ -50,8 +72,9 @@ All services run as **Docker containers**.
 
 ```
 crisis_assistant/
-├── docker-compose.yml          # Production configuration
+├── docker-compose.prod.yml     # Production configuration
 ├── docker-compose.dev.yml      # Development overrides
+├── docker-compose.yml          # Development overrides
 ├── django/                     # Django backend + UI
 ├── rasa/                       # Rasa NLU, rules, domain
 ├── actions/                    # Rasa custom actions
@@ -87,7 +110,7 @@ cd crisis_assistant
 ### Step 2: Start the application (development mode)
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
 This will:
@@ -140,7 +163,7 @@ No local machine is required to keep it running.
 
 ## Development → Deployment Workflow
 
-1. Develop locally using `docker-compose.dev.yml`
+1. Develop locally using `docker-compose.yml`
 2. Commit and push changes
 3. Pull on EC2
 4. Deploy with:
@@ -155,8 +178,7 @@ No local machine is required to keep it running.
 ## Key Engineering Decisions
 
 - **Docker volumes** are used for:
-
-  - SQLite database persistence
+  - Postgresql database persistence
   - Rasa trained models
 
 - **No live reload in production** (safe deployment)
