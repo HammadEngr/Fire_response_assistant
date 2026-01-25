@@ -65,6 +65,7 @@ Custom Actions
 - NGINX
 - Gunicorn
 - AWS EC2 (Elastic IP)
+- geopy (for resolved address from longitudes and latitudes)
 
 ---
 
