@@ -24,7 +24,7 @@ staticfiles/
 local_settings.py
 
 # Rasa
-rasa/models/
+# rasa/models/
 rasa/.rasa/
 rasa/results/
 rasa/logs/
