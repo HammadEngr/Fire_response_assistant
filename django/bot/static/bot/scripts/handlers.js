@@ -74,9 +74,9 @@ export async function handleUserInput(event, input) {
   }
 }
 
-export async function handleBtnInputs(event) {
+export async function handleBtnInputs(event, btn_class = ".chat_btn") {
   try {
-    const btn = event.target.closest(".chat_btn");
+    const btn = event.target.closest(btn_class);
     if (!btn) return;
 
     const payload = btn.dataset.payload;
@@ -118,10 +118,6 @@ export async function handleBtnInputs(event) {
   } catch (error) {
     console.log(error);
   }
-}
-
-export async function handleQuickSection(e) {
-  console.log(e.target);
 }
 
 function renderChat() {
@@ -213,9 +209,4 @@ function renderCustomMessage(title, sections, text, footer, btn_markup) {
       </div>
     </div>
   `;
-}
-
-function sendLocationToBackend(latitude, longitude) {
-  const csrfToken = getCsrfToken();
-  const body_content = JSON.stringify({ latitude, longitude });
 }
