@@ -3,6 +3,7 @@ import {
   handleBtnInputs,
   handleUserInput,
   handleQuickSection,
+  handleSendLocation,
 } from "./handlers.js";
 
 const user_input = document.getElementById("user_msg");
@@ -11,13 +12,18 @@ const chat_container = document.getElementById("chat_container");
 const quick_section = document.querySelector(".quick-section");
 
 // EVENT LISTENERS
+let userLocation = null;
+document.addEventListener("DOMContentLoaded", async function () {
+  handleSendLocation();
+});
+
 send_message_btn.addEventListener("click", function (e) {
-  handleUserInput(e, user_input);
+  handleUserInput(e, user_input, userLocation);
 });
 user_input.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    handleUserInput(e, user_input);
+    handleUserInput(e, user_input, userLocation);
   }
 });
 

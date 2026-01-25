@@ -28,20 +28,19 @@ export function getCsrfToken() {
   return csrfToken;
 }
 
-const showPosition = (position) => {
-  console.log(position);
-  console.log(
-    "Latitude: " +
-      position.coords.latitude +
-      " Longitude: " +
-      position.coords.longitude,
-  );
-};
-
-const get_location = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
+export const getLocation = () => {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) =>
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }),
+        (error) => reject(error),
+      );
+    } else {
+      reject(new Error("Geolocation not supported"));
+    }
+  });
 };

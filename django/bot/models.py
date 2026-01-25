@@ -1,5 +1,29 @@
 from django.db import models
 
+class UserSubmission(models.Model):
+    """
+    Model to store user submissions related to fire incidents.
+    """
+    user_id = models.CharField(max_length=100, help_text="Unique identifier for the user", unique=True)
+    submission_time = models.DateTimeField(auto_now_add=True, help_text="Time of submission")    
+    longitude = models.FloatField(help_text="Longitude of the incident location", null=True)
+    latitude = models.FloatField(help_text="Latitude of the incident location", null=True)
+    description = models.TextField(help_text="Description of the incident", null=True, blank=True)
+    site_type = models.CharField(max_length=50, help_text="Type of site (e.g., House, Building)", null=True)
+    site_location = models.CharField(max_length=255, help_text="Specific location within the site", null=True)
+    
+    risk_level = models.CharField(max_length=50, help_text="Severity level of the incident", null=True)
+    resolved_address = models.CharField(max_length=255, help_text="Resolved address from coordinates", null=True, blank=True)
+
+    class Meta:
+        db_table = 'user_submissions'
+        verbose_name = 'User Submission'
+        verbose_name_plural = 'User Submissions'
+        ordering = ['-submission_time']
+
+    def __str__(self):
+        return f"Submission by {self.user_id} at {self.submission_time}"
+
 class FireCategory(models.Model):
     """
     Main fire categories: House, Building, Factory, Warehouse, Forest

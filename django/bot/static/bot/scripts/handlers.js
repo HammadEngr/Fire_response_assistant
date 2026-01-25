@@ -1,7 +1,30 @@
 "use strict";
-import { getCsrfToken, handleRequest } from "./helpers.js";
+import { getCsrfToken, handleRequest, getLocation } from "./helpers.js";
 
 const app_state = [];
+
+export async function handleSendLocation() {
+  try {
+    const { latitude, longitude } = await getLocation();
+
+    const body_content = JSON.stringify({ latitude, longitude });
+    const csrfToken = getCsrfToken();
+    const headers_content = {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrfToken,
+    };
+
+    const res = await fetch("send_location/", {
+      method: "POST",
+      credentials: "same-origin",
+      body: body_content,
+      headers: headers_content,
+    });
+    const result = await res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function handleUserInput(event, input) {
   try {
@@ -190,4 +213,9 @@ function renderCustomMessage(title, sections, text, footer, btn_markup) {
       </div>
     </div>
   `;
+}
+
+function sendLocationToBackend(latitude, longitude) {
+  const csrfToken = getCsrfToken();
+  const body_content = JSON.stringify({ latitude, longitude });
 }

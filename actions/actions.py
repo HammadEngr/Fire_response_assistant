@@ -4,6 +4,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import UserUtteranceReverted
+from datetime import datetime
 # import os
 import psycopg2
 
@@ -288,6 +289,30 @@ def get_fire_response(response_key):
     except Exception as e:
         print(f"Database error: {e}")
         return None
+    
+# UPDATE USER_SUBMISSIONS FOR CRITICAL RISK
+def log_critical_submission(site_type, site_location, risk_level, sender_id):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        upsert_query = """
+            INSERT INTO user_submissions (user_id, site_type, site_location, risk_level, submission_time)
+            VALUES (%s, %s, %s, %s, %s)
+            ON CONFLICT (user_id) 
+            DO UPDATE SET site_type = EXCLUDED.site_type, 
+                          site_location = EXCLUDED.site_location,
+                          risk_level = EXCLUDED.risk_level,
+                          submission_time = EXCLUDED.submission_time;
+        """
+        print("sender_id:", sender_id)
+
+        cur.execute(upsert_query, (sender_id, site_type, site_location, risk_level, datetime.now()))
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Database error while logging submission: {e}")
 
 # SUBMIT FIRE ASSESSMENT
 class ActionSubmitFireAssessment(Action):
@@ -303,6 +328,7 @@ class ActionSubmitFireAssessment(Action):
     ) -> List[Dict[Text, Any]]:
 
         # Get all slots
+        sender_id = tracker.sender_id
         site_type = tracker.get_slot("site_type")
         house_location = tracker.get_slot("house_location")
         building_location = tracker.get_slot("building_location")
@@ -315,7 +341,7 @@ class ActionSubmitFireAssessment(Action):
         is_rising = tracker.get_slot("is_rising")
 
         # Get response
-        response = self._get_response(
+        response = self._get_response(sender_id,
             site_type, house_location, building_location,
             factory_location, factory_role, warehouse_size, 
             warehouse_material,
@@ -351,7 +377,7 @@ class ActionSubmitFireAssessment(Action):
         ]
 
     def _get_response(
-        self, site_type, house_location, building_location,
+        self, sender_id, site_type, house_location, building_location,
         factory_location, factory_role, warehouse_size,
         warehouse_material,
         is_critical, is_high, is_rising
@@ -363,6 +389,14 @@ class ActionSubmitFireAssessment(Action):
             risk = get_risk_level(is_critical, is_high, is_rising)
             response_key = f"{site_type}_{house_location}_{risk}"
             house_response = get_fire_response(response_key)
+            # for human escalation, insert record into user_submissions for admin to monitor
+            if risk == "critical":
+                log_critical_submission(
+                    site_type=site_type,
+                    site_location=house_location,
+                    risk_level=risk,
+                    sender_id=sender_id
+                )
             return house_response
         
         # BUILDINGS
@@ -388,6 +422,13 @@ class ActionSubmitFireAssessment(Action):
             else:
                 risk = get_risk_level(is_critical, is_high, is_rising)
                 outside_response = get_fire_response(f"outside_{site_type}_{risk}")
+                if risk == "critical":
+                    log_critical_submission(
+                        site_type=site_type,
+                        site_location=factory_location,
+                        risk_level=risk,
+                        sender_id=sender_id
+                    )
                 return outside_response
 
         elif site_type == "warehouse":
@@ -397,12 +438,26 @@ class ActionSubmitFireAssessment(Action):
             else:
                 risk = get_risk_level(is_critical, is_high, is_rising)
                 warehouse_small_response = get_fire_response(f"warehouse_{warehouse_material}_{risk}")
+                if risk == "critical":
+                    log_critical_submission(
+                        site_type=site_type,
+                        site_location="small warehouse",
+                        risk_level=risk,
+                        sender_id=sender_id
+                    )
                 return warehouse_small_response
             
         # FOREST
         elif site_type == "forest":
             risk = get_risk_level(is_critical, is_high, is_rising)
             forest_response = get_fire_response(f"forest_{risk}")
+            if risk == "critical":
+                log_critical_submission(
+                    site_type=site_type,
+                    site_location="forest",
+                    risk_level=risk,
+                    sender_id=sender_id
+                )
             return forest_response
 
         # DEFAULT
