@@ -1,0 +1,746 @@
+[
+  {
+    "text": "have a nice day",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "out_of_scope",
+      "confidence": 0.9752072691917419
+    }
+  },
+  {
+    "text": "need assistance with fire",
+    "intent": "report_fire",
+    "intent_prediction": {
+      "name": "edu_ra_why",
+      "confidence": 0.760599672794342
+    }
+  },
+  {
+    "text": "indeed",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "pos_inside",
+      "confidence": 0.5008996725082397
+    }
+  },
+  {
+    "text": "of course",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.13364197313785553
+    }
+  },
+  {
+    "text": "never",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "inform",
+      "confidence": 0.18487529456615448
+    }
+  },
+  {
+    "text": "within the building",
+    "intent": "pos_inside",
+    "intent_prediction": {
+      "name": "out_of_scope",
+      "confidence": 0.46061110496520996
+    }
+  },
+  {
+    "text": "out in the open",
+    "intent": "pos_outside",
+    "intent_prediction": {
+      "name": "pos_inside",
+      "confidence": 0.5566110610961914
+    }
+  },
+  {
+    "text": "what's the meaning of life?",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.5458810925483704
+    }
+  },
+  {
+    "text": "let's start from the beginning",
+    "intent": "restart",
+    "intent_prediction": {
+      "name": "edu_back_main",
+      "confidence": 0.7769867777824402
+    }
+  },
+  {
+    "text": "let's reset the conversation",
+    "intent": "restart",
+    "intent_prediction": {
+      "name": "edu_fire_spread",
+      "confidence": 0.23033688962459564
+    }
+  },
+  {
+    "text": "let's start fresh",
+    "intent": "restart",
+    "intent_prediction": {
+      "name": "edu_prev_ignition",
+      "confidence": 0.6323860883712769
+    }
+  },
+  {
+    "text": "can we start over?",
+    "intent": "restart",
+    "intent_prediction": {
+      "name": "edu_back_main",
+      "confidence": 0.30839622020721436
+    }
+  },
+  {
+    "text": "I would like to reset",
+    "intent": "restart",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.591789722442627
+    }
+  },
+  {
+    "text": "let's begin from the start",
+    "intent": "restart",
+    "intent_prediction": {
+      "name": "edu_evac_fire_plan",
+      "confidence": 0.24801495671272278
+    }
+  },
+  {
+    "text": "fire training",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_ra_step4",
+      "confidence": 0.37504518032073975
+    }
+  },
+  {
+    "text": "fire knowledge",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_fire_basics",
+      "confidence": 0.4880566895008087
+    }
+  },
+  {
+    "text": "fire safety knowledge",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_fire_basics",
+      "confidence": 0.4245626926422119
+    }
+  },
+  {
+    "text": "fire awareness",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_af_detection",
+      "confidence": 0.15071271359920502
+    }
+  },
+  {
+    "text": "fire safety tips",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_prevention",
+      "confidence": 0.3231951892375946
+    }
+  },
+  {
+    "text": "fire prevention education",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_prevention",
+      "confidence": 0.77158522605896
+    }
+  },
+  {
+    "text": "fire safety information",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_af_detection",
+      "confidence": 0.1373755782842636
+    }
+  },
+  {
+    "text": "fire safety course",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_prev_hotwork",
+      "confidence": 0.26061001420021057
+    }
+  },
+  {
+    "text": "fire safety program",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_prev_hotwork",
+      "confidence": 0.32000619173049927
+    }
+  },
+  {
+    "text": "fire safety workshop",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_prev_hotwork",
+      "confidence": 0.7007297873497009
+    }
+  },
+  {
+    "text": "fire safety seminar",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_prevention",
+      "confidence": 0.1410527527332306
+    }
+  },
+  {
+    "text": "fire safety class",
+    "intent": "fire_education",
+    "intent_prediction": {
+      "name": "edu_fire_classification",
+      "confidence": 0.9597818851470947
+    }
+  },
+  {
+    "text": "fire fundamental",
+    "intent": "edu_fire_basics",
+    "intent_prediction": {
+      "name": "report_fire",
+      "confidence": 0.29102492332458496
+    }
+  },
+  {
+    "text": "fire basic information",
+    "intent": "edu_fire_basics",
+    "intent_prediction": {
+      "name": "edu_back_basics",
+      "confidence": 0.15134277939796448
+    }
+  },
+  {
+    "text": "fire concept",
+    "intent": "edu_what_is_fire",
+    "intent_prediction": {
+      "name": "edu_fire_triangle",
+      "confidence": 0.2947829067707062
+    }
+  },
+  {
+    "text": "fire nature",
+    "intent": "edu_what_is_fire",
+    "intent_prediction": {
+      "name": "report_fire",
+      "confidence": 0.2019886076450348
+    }
+  },
+  {
+    "text": "fire characteristics",
+    "intent": "edu_what_is_fire",
+    "intent_prediction": {
+      "name": "inform",
+      "confidence": 0.2592349350452423
+    }
+  },
+  {
+    "text": "fire properties",
+    "intent": "edu_what_is_fire",
+    "intent_prediction": {
+      "name": "edu_fire_consequences",
+      "confidence": 0.5281737446784973
+    }
+  },
+  {
+    "text": "fire ingredients",
+    "intent": "edu_fire_triangle",
+    "intent_prediction": {
+      "name": "report_fire",
+      "confidence": 0.17132139205932617
+    }
+  },
+  {
+    "text": "fire factors",
+    "intent": "edu_fire_triangle",
+    "intent_prediction": {
+      "name": "report_fire",
+      "confidence": 0.3788357079029083
+    }
+  },
+  {
+    "text": "fire types explanation",
+    "intent": "edu_fire_classification",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.866310179233551
+    }
+  },
+  {
+    "text": "fire diffusion",
+    "intent": "edu_fire_spread",
+    "intent_prediction": {
+      "name": "report_fire",
+      "confidence": 0.47455596923828125
+    }
+  },
+  {
+    "text": "fire spread explanation",
+    "intent": "edu_fire_spread",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.5910009741783142
+    }
+  },
+  {
+    "text": "fire spread definition",
+    "intent": "edu_fire_spread",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.601351797580719
+    }
+  },
+  {
+    "text": "fire outcomes",
+    "intent": "edu_fire_consequences",
+    "intent_prediction": {
+      "name": "report_fire",
+      "confidence": 0.5423809885978699
+    }
+  },
+  {
+    "text": "flammable substances",
+    "intent": "edu_prev_combustibles",
+    "intent_prediction": {
+      "name": "edu_prev_flammable_liquids",
+      "confidence": 0.5943741798400879
+    }
+  },
+  {
+    "text": "fire starters",
+    "intent": "edu_prev_ignition",
+    "intent_prediction": {
+      "name": "report_fire",
+      "confidence": 0.8269457817077637
+    }
+  },
+  {
+    "text": "fire starting points",
+    "intent": "edu_prev_ignition",
+    "intent_prediction": {
+      "name": "edu_evac_assembly",
+      "confidence": 0.24108745157718658
+    }
+  },
+  {
+    "text": "fire alarm",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_af_detection",
+      "confidence": 0.9897213578224182
+    }
+  },
+  {
+    "text": "fire extinguisher",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_af_extinguishers",
+      "confidence": 0.9245181679725647
+    }
+  },
+  {
+    "text": "fire alarm systems",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_af_detection",
+      "confidence": 0.9929578304290771
+    }
+  },
+  {
+    "text": "fire extinguisher usage",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_af_extinguishers",
+      "confidence": 0.6873510479927063
+    }
+  },
+  {
+    "text": "fire alarm procedures",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_af_detection",
+      "confidence": 0.9090164303779602
+    }
+  },
+  {
+    "text": "fire alarm explanation",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.5216761231422424
+    }
+  },
+  {
+    "text": "fire alarm definition",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.6104136109352112
+    }
+  },
+  {
+    "text": "fire alarm meaning",
+    "intent": "edu_alarm_firefighting",
+    "intent_prediction": {
+      "name": "edu_af_detection",
+      "confidence": 0.6924911141395569
+    }
+  },
+  {
+    "text": "fire extinguishing",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "edu_af_extinguishers",
+      "confidence": 0.9350476861000061
+    }
+  },
+  {
+    "text": "fire suppression",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "edu_fire_spread",
+      "confidence": 0.3340549170970917
+    }
+  },
+  {
+    "text": "fire putting out",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "pos_outside",
+      "confidence": 0.288229763507843
+    }
+  },
+  {
+    "text": "fire extinguishing methods",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "edu_af_extinguishers",
+      "confidence": 0.8854855298995972
+    }
+  },
+  {
+    "text": "fire suppression techniques",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "edu_fire_spread",
+      "confidence": 0.10094253718852997
+    }
+  },
+  {
+    "text": "fire putting out procedures",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "pos_outside",
+      "confidence": 0.11225497722625732
+    }
+  },
+  {
+    "text": "fire extinguishing explanation",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "edu_af_extinguishers",
+      "confidence": 0.6922420263290405
+    }
+  },
+  {
+    "text": "fire extinguishing definition",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "edu_af_extinguishers",
+      "confidence": 0.6817541122436523
+    }
+  },
+  {
+    "text": "fire extinguishing meaning",
+    "intent": "edu_af_extinguishing",
+    "intent_prediction": {
+      "name": "edu_af_extinguishers",
+      "confidence": 0.8841800689697266
+    }
+  },
+  {
+    "text": "fire escape routes",
+    "intent": "edu_evacuation",
+    "intent_prediction": {
+      "name": "edu_evac_means",
+      "confidence": 0.7455317378044128
+    }
+  },
+  {
+    "text": "evacuation means",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9473065733909607
+    }
+  },
+  {
+    "text": "evacuation methods",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9685015082359314
+    }
+  },
+  {
+    "text": "evacuation options",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9152759909629822
+    }
+  },
+  {
+    "text": "fire evacuation means",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9362344145774841
+    }
+  },
+  {
+    "text": "fire evacuation methods",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9526739716529846
+    }
+  },
+  {
+    "text": "fire evacuation options",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9107320308685303
+    }
+  },
+  {
+    "text": "evacuation means explanation",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.5102030634880066
+    }
+  },
+  {
+    "text": "evacuation means definition",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_what_is_fire",
+      "confidence": 0.59064120054245
+    }
+  },
+  {
+    "text": "evacuation means meaning",
+    "intent": "edu_evac_means",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.43512049317359924
+    }
+  },
+  {
+    "text": "evacuation stairs",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.945152997970581
+    }
+  },
+  {
+    "text": "evacuation doors",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.8633958101272583
+    }
+  },
+  {
+    "text": "fire evacuation stairs",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9194522500038147
+    }
+  },
+  {
+    "text": "fire evacuation doors",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.8918344378471375
+    }
+  },
+  {
+    "text": "evacuation stairways",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.971930742263794
+    }
+  },
+  {
+    "text": "evacuation exits",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9845182299613953
+    }
+  },
+  {
+    "text": "fire evacuation stairways",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9564423561096191
+    }
+  },
+  {
+    "text": "fire evacuation exits",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.9848458766937256
+    }
+  },
+  {
+    "text": "evacuation stairs explanation",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.819464385509491
+    }
+  },
+  {
+    "text": "evacuation stairs definition",
+    "intent": "edu_evac_stairs_doors",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.583989143371582
+    }
+  },
+  {
+    "text": "evacuation signs",
+    "intent": "edu_evac_lighting_signs",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.5729480981826782
+    }
+  },
+  {
+    "text": "fire evacuation lighting",
+    "intent": "edu_evac_lighting_signs",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.5346634387969971
+    }
+  },
+  {
+    "text": "fire evacuation signs",
+    "intent": "edu_evac_lighting_signs",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.7185832858085632
+    }
+  },
+  {
+    "text": "evacuation emergency lighting",
+    "intent": "edu_evac_lighting_signs",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.5220873355865479
+    }
+  },
+  {
+    "text": "evacuation exit signs",
+    "intent": "edu_evac_lighting_signs",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.7917044758796692
+    }
+  },
+  {
+    "text": "fire evacuation emergency lighting",
+    "intent": "edu_evac_lighting_signs",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.6480845212936401
+    }
+  },
+  {
+    "text": "fire evacuation exit signs",
+    "intent": "edu_evac_lighting_signs",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.8657938241958618
+    }
+  },
+  {
+    "text": "evacuation assembly",
+    "intent": "edu_evac_assembly",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.711237370967865
+    }
+  },
+  {
+    "text": "fire evacuation assembly",
+    "intent": "edu_evac_assembly",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.6714666485786438
+    }
+  },
+  {
+    "text": "evacuation gathering points",
+    "intent": "edu_evac_assembly",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.5702160000801086
+    }
+  },
+  {
+    "text": "fire evacuation gathering points",
+    "intent": "edu_evac_assembly",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.5863412022590637
+    }
+  },
+  {
+    "text": "evacuation assembly explanation",
+    "intent": "edu_evac_assembly",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.6190820932388306
+    }
+  },
+  {
+    "text": "evacuation assembly definition",
+    "intent": "edu_evac_assembly",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.45089420676231384
+    }
+  },
+  {
+    "text": "evacuation assembly meaning",
+    "intent": "edu_evac_assembly",
+    "intent_prediction": {
+      "name": "edu_evacuation",
+      "confidence": 0.6141748428344727
+    }
+  }
+]

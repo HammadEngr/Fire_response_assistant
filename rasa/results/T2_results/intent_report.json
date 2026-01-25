@@ -1,0 +1,332 @@
+{
+  "fire_education": {
+    "precision": 1.0,
+    "recall": 0.42857142857142855,
+    "f1-score": 0.6,
+    "support": 21,
+    "confused_with": {
+      "edu_prev_hotwork": 3,
+      "edu_prevention": 3
+    }
+  },
+  "affirm": {
+    "precision": 1.0,
+    "recall": 0.6,
+    "f1-score": 0.7499999999999999,
+    "support": 5,
+    "confused_with": {
+      "pos_inside": 1,
+      "greet": 1
+    }
+  },
+  "edu_prev_structural": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "report_fire": {
+    "precision": 0.5625,
+    "recall": 0.9,
+    "f1-score": 0.6923076923076923,
+    "support": 10,
+    "confused_with": {
+      "edu_ra_why": 1
+    }
+  },
+  "edu_prev_hotwork": {
+    "precision": 0.7692307692307693,
+    "recall": 1.0,
+    "f1-score": 0.8695652173913044,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_prevention": {
+    "precision": 0.7692307692307693,
+    "recall": 1.0,
+    "f1-score": 0.8695652173913044,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_evacuation": {
+    "precision": 0.2,
+    "recall": 0.8888888888888888,
+    "f1-score": 0.326530612244898,
+    "support": 9,
+    "confused_with": {
+      "edu_evac_means": 1
+    }
+  },
+  "deny": {
+    "precision": 1.0,
+    "recall": 0.8,
+    "f1-score": 0.888888888888889,
+    "support": 5,
+    "confused_with": {
+      "inform": 1
+    }
+  },
+  "edu_prev_flammable_liquids": {
+    "precision": 0.9090909090909091,
+    "recall": 1.0,
+    "f1-score": 0.9523809523809523,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_af_detection": {
+    "precision": 0.625,
+    "recall": 1.0,
+    "f1-score": 0.7692307692307693,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_evac_lighting_signs": {
+    "precision": 1.0,
+    "recall": 0.3,
+    "f1-score": 0.4615384615384615,
+    "support": 10,
+    "confused_with": {
+      "edu_evacuation": 7
+    }
+  },
+  "inform": {
+    "precision": 0.9130434782608695,
+    "recall": 1.0,
+    "f1-score": 0.9545454545454545,
+    "support": 21,
+    "confused_with": {}
+  },
+  "edu_fire_consequences": {
+    "precision": 0.9,
+    "recall": 0.9,
+    "f1-score": 0.9,
+    "support": 10,
+    "confused_with": {
+      "report_fire": 1
+    }
+  },
+  "goodbye": {
+    "precision": 1.0,
+    "recall": 0.8333333333333334,
+    "f1-score": 0.9090909090909091,
+    "support": 6,
+    "confused_with": {
+      "out_of_scope": 1
+    }
+  },
+  "edu_prev_combustibles": {
+    "precision": 1.0,
+    "recall": 0.9,
+    "f1-score": 0.9473684210526316,
+    "support": 10,
+    "confused_with": {
+      "edu_prev_flammable_liquids": 1
+    }
+  },
+  "edu_fire_spread": {
+    "precision": 0.7,
+    "recall": 0.7,
+    "f1-score": 0.7,
+    "support": 10,
+    "confused_with": {
+      "edu_what_is_fire": 2,
+      "report_fire": 1
+    }
+  },
+  "out_of_scope": {
+    "precision": 0.9615384615384616,
+    "recall": 0.9803921568627451,
+    "f1-score": 0.970873786407767,
+    "support": 51,
+    "confused_with": {
+      "edu_what_is_fire": 1
+    }
+  },
+  "pos_inside": {
+    "precision": 0.6,
+    "recall": 0.75,
+    "f1-score": 0.6666666666666665,
+    "support": 4,
+    "confused_with": {
+      "out_of_scope": 1
+    }
+  },
+  "edu_prev_ignition": {
+    "precision": 0.8888888888888888,
+    "recall": 0.8,
+    "f1-score": 0.8421052631578948,
+    "support": 10,
+    "confused_with": {
+      "report_fire": 1,
+      "edu_evac_assembly": 1
+    }
+  },
+  "edu_back_main": {
+    "precision": 0.8333333333333334,
+    "recall": 1.0,
+    "f1-score": 0.9090909090909091,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_risk_assessment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_prev_housekeeping": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_what_is_fire": {
+    "precision": 0.42857142857142855,
+    "recall": 0.6,
+    "f1-score": 0.5,
+    "support": 10,
+    "confused_with": {
+      "edu_fire_triangle": 1,
+      "report_fire": 1
+    }
+  },
+  "edu_evac_means": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 9,
+    "confused_with": {
+      "edu_evacuation": 8,
+      "edu_what_is_fire": 1
+    }
+  },
+  "edu_evac_stairs_doors": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 10,
+    "confused_with": {
+      "edu_evacuation": 10
+    }
+  },
+  "edu_ra_why": {
+    "precision": 0.9090909090909091,
+    "recall": 1.0,
+    "f1-score": 0.9523809523809523,
+    "support": 10,
+    "confused_with": {}
+  },
+  "edu_fire_basics": {
+    "precision": 0.8,
+    "recall": 0.8,
+    "f1-score": 0.8000000000000002,
+    "support": 10,
+    "confused_with": {
+      "report_fire": 1,
+      "edu_back_basics": 1
+    }
+  },
+  "edu_back_basics": {
+    "precision": 0.9090909090909091,
+    "recall": 1.0,
+    "f1-score": 0.9523809523809523,
+    "support": 10,
+    "confused_with": {}
+  },
+  "greet": {
+    "precision": 0.8571428571428571,
+    "recall": 1.0,
+    "f1-score": 0.923076923076923,
+    "support": 6,
+    "confused_with": {}
+  },
+  "pos_outside": {
+    "precision": 0.6,
+    "recall": 0.75,
+    "f1-score": 0.6666666666666665,
+    "support": 4,
+    "confused_with": {
+      "pos_inside": 1
+    }
+  },
+  "edu_fire_classification": {
+    "precision": 0.9,
+    "recall": 0.9,
+    "f1-score": 0.9,
+    "support": 10,
+    "confused_with": {
+      "edu_what_is_fire": 1
+    }
+  },
+  "edu_af_extinguishing": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 9,
+    "confused_with": {
+      "edu_af_extinguishers": 5,
+      "edu_fire_spread": 2,
+      "pos_outside": 2
+    }
+  },
+  "edu_fire_triangle": {
+    "precision": 0.8888888888888888,
+    "recall": 0.8,
+    "f1-score": 0.8421052631578948,
+    "support": 10,
+    "confused_with": {
+      "report_fire": 2
+    }
+  },
+  "edu_alarm_firefighting": {
+    "precision": 1.0,
+    "recall": 0.2,
+    "f1-score": 0.33333333333333337,
+    "support": 10,
+    "confused_with": {
+      "edu_af_detection": 4,
+      "edu_af_extinguishers": 2
+    }
+  },
+  "restart": {
+    "precision": 1.0,
+    "recall": 0.5714285714285714,
+    "f1-score": 0.7272727272727273,
+    "support": 14,
+    "confused_with": {
+      "edu_back_main": 2,
+      "edu_prev_ignition": 1
+    }
+  },
+  "edu_evac_assembly": {
+    "precision": 0.6666666666666666,
+    "recall": 0.2222222222222222,
+    "f1-score": 0.3333333333333333,
+    "support": 9,
+    "confused_with": {
+      "edu_evacuation": 7
+    }
+  },
+  "micro avg": {
+    "precision": 0.78125,
+    "recall": 0.7633587786259542,
+    "f1-score": 0.7722007722007723,
+    "support": 393
+  },
+  "macro avg": {
+    "precision": 0.7664252296951574,
+    "recall": 0.7395787944807553,
+    "f1-score": 0.7197305381385912,
+    "support": 393
+  },
+  "weighted avg": {
+    "precision": 0.8012325694121247,
+    "recall": 0.7633587786259542,
+    "f1-score": 0.7499616543587996,
+    "support": 393
+  },
+  "accuracy": 0.7633587786259542
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "text": "electrical",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "value": "electrical",
+        "entity": "warehouse_material"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "house_location",
+        "start": 0,
+        "end": 10,
+        "confidence_entity": 0.7768588662147522,
+        "value": "electrical",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]
