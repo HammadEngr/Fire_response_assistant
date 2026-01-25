@@ -410,7 +410,7 @@ responses:
           - title: "🍳 Kitchen"
             payload: '/inform{{"house_location": "kitchen"}}'
           - title: "⚡ Electrical / Technical Room"
-            payload: '/inform{{"house_location": "electrical"}}'
+            payload: '/inform{{"house_location": "technical"}}'
           - title: "🛏️ Bedroom / Living Area"
             payload: '/inform{{"house_location": "bedroom"}}'
           - title: "🚗 Garage"

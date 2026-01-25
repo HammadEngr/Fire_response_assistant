@@ -1,0 +1,500 @@
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - good morning
+      - good evening
+      - hey there
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you later
+      - see ya
+      - have a nice day
+      - catch you later
+  - intent: report_fire
+    examples: |
+      - there's a fire
+      - fire emergency
+      - i want to report a fire
+      - help! fire!
+      - fire broke out
+      - urgent fire situation
+      - need assistance with fire
+      - fire incident reported
+      - building is on fire
+      - fire started here
+
+  - intent: inform
+    examples: |
+      - [house](site_type)
+      - [building](site_type)
+      - [factory](site_type)
+      - [warehouse](site_type)
+      - [forest](site_type)
+      - [kitchen](house_location)
+      - [technical](house_location)
+      - [bedroom](house_location)
+      - [garage](house_location)
+      - [gas_area](house_location)
+      - [other](house_location)
+      - [worker](factory_role)
+      - [visitor](factory_role)
+      - [garments](warehouse_material)
+      - [electrical](warehouse_material)
+      - [mechanical](warehouse_material)
+      - [wood](warehouse_material)
+      - [ceramics](warehouse_material)
+      - [rubber](warehouse_material)
+      - [chemicals](warehouse_material)
+      - [mixed](warehouse_material)
+
+  - intent: affirm
+    examples: |
+      - yes
+      - indeed
+      - of course
+      - absolutely
+      - sure
+
+  - intent: deny
+    examples: |
+      - no
+      - never
+      - not at all
+      - don't think so
+      - no way
+
+  - intent: pos_inside
+    examples: |
+      - inside
+      - indoors
+      - within the building
+      - inside the premises
+
+  - intent: pos_outside
+    examples: |
+      - outside
+      - outdoors
+      - outside the building
+      - out in the open
+
+  - intent: out_of_scope
+    examples: |
+      - what's the weather like?
+      - tell me a joke
+      - how are you?
+      - what's your name?
+      - do you like music?
+      - can you dance?
+      - what's the capital of France?
+      - how old are you?
+      - what's 2 plus 2?
+      - tell me something interesting
+      - do you know any fun facts?
+      - what's the meaning of life?
+      - can you sing?
+      - what's your favorite color?
+      - do you have any hobbies?
+      - what's your favorite food?
+      - can you play games?
+      - what's the time?
+      - how's the weather today?
+      - tell me a story
+      - do you have pets?
+      - what's your favorite movie?
+      - can you help me with my homework?
+      - what's your favorite book?
+      - do you like sports?
+      - what's your favorite TV show?
+      - can you recommend a restaurant?
+      - what's your favorite song?
+      - do you like to travel?
+      - what's your favorite place?
+      - can you tell me a riddle?
+      - what's your favorite animal?
+      - do you like art?
+      - what's your favorite game?
+      - can you draw?
+      - what's your favorite season?
+      - do you like nature?
+      - what's your favorite holiday?
+      - can you tell me a secret?
+      - what's your favorite drink?
+      - do you like dancing?
+      - what's your favorite dessert?
+      - can you tell me a joke?
+      - what's your favorite sport?
+      - do you like cooking?
+      - what's your favorite hobby?
+      - can you tell me a fun fact?
+      - what's your favorite activity?
+      - do you like reading?
+      - what's your favorite subject?
+      - can you tell me something funny?
+
+  - intent: restart
+    examples: |
+      - restart
+      - start over
+      - reset
+      - begin again
+      - let's start from the beginning
+      - can we restart?
+      - I want to start again
+      - let's reset the conversation
+      - can we begin again?
+      - I need to restart
+      - let's start fresh
+      - can we start over?
+      - I would like to reset
+      - let's begin from the start
+
+  - intent: fire_education
+    examples: |
+      - learn
+      - education
+      - teach me
+      - fire safety education
+      - learn about fire
+      - i want to learn
+      - educate me
+      - fire training
+      - safety training
+      - i want fire education
+      - fire knowledge
+      - fire safety knowledge
+      - fire awareness
+      - fire safety tips
+      - fire prevention education
+      - fire safety information
+      - fire safety course
+      - fire safety program
+      - fire safety workshop
+      - fire safety seminar
+      - fire safety class
+
+  - intent: edu_fire_basics
+    examples: |
+      - fire basics
+      - basics of fire
+      - basic fire knowledge
+      - fire fundamental
+      - fire basic concepts
+      - fire basic information
+      - fire basic facts
+      - fire basic principles
+      - fire basic understanding
+      - fire basic overview
+
+  - intent: edu_what_is_fire
+    examples: |
+      - what is fire
+      - define fire
+      - fire definition
+      - fire meaning
+      - fire explanation
+      - fire description
+      - fire concept
+      - fire nature
+      - fire characteristics
+      - fire properties
+
+  - intent: edu_fire_triangle
+    examples: |
+      - fire triangle
+      - triangle of fire
+      - three elements of fire
+      - fire components
+      - fire ingredients
+      - fire factors
+      - fire elements
+      - fire triangle explanation
+      - fire triangle definition
+      - fire triangle meaning
+
+  - intent: edu_fire_classification
+    examples: |
+      - fire classification
+      - types of fire
+      - fire classes
+      - class of fire
+      - fire categories
+      - fire types explanation
+      - fire classification definition
+      - fire classification meaning
+      - fire class types
+      - fire class categories
+
+  - intent: edu_fire_spread
+    examples: |
+      - how fire spreads
+      - fire spread
+      - spreading of fire
+      - fire propagation
+      - fire transmission
+      - fire diffusion
+      - fire expansion
+      - fire spread explanation
+      - fire spread definition
+      - fire spread meaning
+
+  - intent: edu_fire_consequences
+    examples: |
+      - consequences of fire
+      - fire consequences
+      - effects of fire
+      - fire damage
+      - fire impact
+      - fire outcomes
+      - fire results
+      - fire consequences explanation
+      - fire consequences definition
+      - fire consequences meaning
+
+  - intent: edu_back_main
+    examples: |
+      - main menu
+      - back to main
+      - go back
+      - return to main
+      - main menu options
+      - back to main menu
+      - return to main menu
+      - go back to main
+      - main menu selection
+      - back to main options
+
+  - intent: edu_back_basics
+    examples: |
+      - back to basics
+      - fire basics menu
+      - return to basics
+      - go back to basics
+      - basics menu
+      - back to fire basics
+      - return to fire basics
+      - go back to fire basics
+      - fire basics options
+      - back to basics options
+
+  - intent: edu_risk_assessment
+    examples: |
+      - risk assessment
+      - fire risk
+      - fire risk assessment
+      - risk evaluation
+      - fire hazard assessment
+      - risk analysis
+      - fire risk evaluation
+      - risk assessment explanation
+      - risk assessment definition
+      - risk assessment meaning
+
+  - intent: edu_ra_why
+    examples: |
+      - why risk assessment
+      - why do risk assessment
+      - importance of risk assessment
+      - reason for risk assessment
+      - purpose of risk assessment
+      - significance of risk assessment
+      - why is risk assessment important
+      - risk assessment importance
+      - risk assessment reason
+      - risk assessment purpose
+
+  - intent: edu_prevention
+    examples: |
+      - fire prevention
+      - preventing fire
+      - fire safety measures
+      - fire prevention tips
+      - fire prevention strategies
+      - fire prevention techniques
+      - fire prevention methods
+      - fire prevention explanation
+      - fire prevention definition
+      - fire prevention meaning
+
+  - intent: edu_prev_combustibles
+    examples: |
+      - combustible materials
+      - flammable materials
+      - fire fuels
+      - fire combustible substances
+      - combustible items
+      - flammable substances
+      - fire fuel sources
+      - combustible materials explanation
+      - combustible materials definition
+      - combustible materials meaning
+
+  - intent: edu_prev_ignition
+    examples: |
+      - ignition sources
+      - fire ignition
+      - fire starters
+      - ignition points
+      - fire ignition sources
+      - ignition causes
+      - fire starting points
+      - ignition sources explanation
+      - ignition sources definition
+      - ignition sources meaning
+
+  - intent: edu_prev_hotwork
+    examples: |
+      - hot work
+      - fire hot work
+      - fire welding
+      - hot work safety
+      - fire hot work safety
+      - welding fire safety
+      - hot work procedures
+      - hot work explanation
+      - hot work definition
+      - hot work meaning
+
+  - intent: edu_prev_housekeeping
+    examples: |
+      - housekeeping
+      - fire housekeeping
+      - fire safety housekeeping
+      - housekeeping practices
+      - fire housekeeping tips
+      - fire safety housekeeping tips
+      - housekeeping procedures
+      - housekeeping explanation
+      - housekeeping definition
+      - housekeeping meaning
+
+  - intent: edu_prev_flammable_liquids
+    examples: |
+      - flammable liquids
+      - fire flammable liquids
+      - flammable liquid safety
+      - fire safety flammable liquids
+      - flammable liquid handling
+      - fire flammable liquid handling
+      - flammable liquid procedures
+      - flammable liquids explanation
+      - flammable liquids definition
+      - flammable liquids meaning
+
+  - intent: edu_prev_structural
+    examples: |
+      - structural measures
+      - fire structural measures
+      - fire safety structural measures
+      - structural fire safety
+      - fire structural safety
+      - structural fire protection
+      - fire structural protection
+      - structural measures explanation
+      - structural measures definition
+      - structural measures meaning
+
+  - intent: edu_alarm_firefighting
+    examples: |
+      - fire alarm
+      - firefighting
+      - fire extinguisher
+      - fire alarm systems
+      - firefighting techniques
+      - fire extinguisher usage
+      - fire alarm procedures
+      - fire alarm explanation
+      - fire alarm definition
+      - fire alarm meaning
+
+  - intent: edu_af_detection
+    examples: |
+      - fire detection
+      - fire warning
+      - fire alarm
+      - detection systems
+      - fire detection systems
+      - fire warning systems
+      - fire detection procedures
+      - fire detection explanation
+      - fire detection definition
+      - fire detection meaning
+
+  - intent: edu_af_extinguishing
+    examples: |
+      - fire extinguishing
+      - fire suppression
+      - fire putting out
+      - fire extinguishing methods
+      - fire suppression techniques
+      - fire putting out procedures
+      - fire extinguishing explanation
+      - fire extinguishing definition
+      - fire extinguishing meaning
+
+  - intent: edu_evacuation
+    examples: |
+      - fire evacuation
+      - evacuation procedures
+      - fire escape
+      - fire evacuation plans
+      - evacuation routes
+      - fire escape routes
+      - fire evacuation explanation
+      - fire evacuation definition
+      - fire evacuation meaning
+
+  - intent: edu_evac_means
+    examples: |
+      - evacuation means
+      - evacuation methods
+      - evacuation options
+      - fire evacuation means
+      - fire evacuation methods
+      - fire evacuation options
+      - evacuation means explanation
+      - evacuation means definition
+      - evacuation means meaning
+
+  - intent: edu_evac_stairs_doors
+    examples: |
+      - evacuation stairs
+      - evacuation doors
+      - fire evacuation stairs
+      - fire evacuation doors
+      - evacuation stairways
+      - evacuation exits
+      - fire evacuation stairways
+      - fire evacuation exits
+      - evacuation stairs explanation
+      - evacuation stairs definition
+
+  - intent: edu_evac_lighting_signs
+    examples: |
+      - evacuation lighting
+      - evacuation signs
+      - fire evacuation lighting
+      - fire evacuation signs
+      - evacuation emergency lighting
+      - evacuation exit signs
+      - fire evacuation emergency lighting
+      - fire evacuation exit signs
+      - evacuation lighting explanation
+      - evacuation lighting definition
+
+  - intent: edu_evac_assembly
+    examples: |
+      - evacuation assembly
+      - assembly points
+      - fire evacuation assembly
+      - fire assembly points
+      - evacuation gathering points
+      - fire evacuation gathering points
+      - evacuation assembly explanation
+      - evacuation assembly definition
+      - evacuation assembly meaning

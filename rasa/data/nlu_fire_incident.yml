@@ -50,7 +50,7 @@ nlu:
       - [warehouse](site_type)
       - [forest](site_type)
       - [kitchen](house_location)
-      - [electrical](house_location)
+      - [technical](house_location)
       - [bedroom](house_location)
       - [garage](house_location)
       - [gas_area](house_location)
@@ -124,6 +124,47 @@ nlu:
       - I don't know
       - something else
       - xyz
+      - what's your name
+      - do you like music
+      - can you dance
+      - what's the capital of France
+      - what's 2 plus 2
+      - who is the president
+      - can you sing
+      - what's your favorite color
+      - do you have feelings
+      - are you a robot
+      - what time is it
+      - how old are you
+      - where are you from
+      - can you help with math
+      - tell me a story
+      - do you sleep
+      - are you real
+      - what language do you speak
+      - can you see me
+      - do you have a family
+      - what's your favorite food
+      - can you play games
+      - do you get tired
+      - what's love
+      - can you think
+      - do you dream
+      - what are you made of
+      - hello there friend
+      - abcdef
+      - test test
+      - junk input
+      - nothing important
+      - haha
+      - lol
+      - okay whatever
+      - hmm interesting
+      - what's your favorite movie
+      - do you like sports
+      - can you cook
+      - what's your hobby
+      - tell me about yourself
 
   - intent: restart
     examples: |

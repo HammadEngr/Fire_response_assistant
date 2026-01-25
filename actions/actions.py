@@ -104,7 +104,7 @@ class ValidateHouseFireForm(RiskFormValidationMixin, FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         
-        valid_locations = ["kitchen", "electrical", "bedroom", "garage", "gas_area", "other"]
+        valid_locations = ["kitchen", "technical", "bedroom", "garage", "gas_area", "other"]
         
         if slot_value in valid_locations:
             return {"house_location": slot_value}

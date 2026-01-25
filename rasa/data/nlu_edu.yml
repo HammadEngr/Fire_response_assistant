@@ -12,6 +12,7 @@ nlu:
       - educate me
       - fire training
       - safety training
+
   # BASICS
   - intent: edu_fire_basics
     examples: |
@@ -24,12 +25,32 @@ nlu:
       - what is fire
       - define fire
       - fire definition
+      - explain fire
+      - fire meaning
+      - fire definition
+      - explain fire to me
+      - tell me about fire
+      - what exactly is fire
+      - how would you define fire
+      - fire meaning
+      - what does fire mean
+      - describe fire
+      - fire explanation
+      - what is fire made of
 
   - intent: edu_fire_triangle
     examples: |
       - fire triangle
       - triangle of fire
       - three elements of fire
+      - what is the fire triangle
+      - explain fire triangle
+      - fire triangle concept
+      - elements needed for fire
+      - what makes fire burn
+      - fuel heat oxygen
+      - three things fire needs
+      - components of fire
 
   - intent: edu_fire_classification
     examples: |
@@ -37,12 +58,42 @@ nlu:
       - types of fire
       - fire classes
       - class of fire
+      - what are the classes of fire
+      - different types of fire
+      - how are fires classified
+      - fire categories
+      - explain fire classes
+      - class A fire
+      - class B fire
+      - class C fire
+      - electrical fire class
+      - metal fire class
+      - what type of fire is this
+      - fire classification system
+      - how many types of fire are there
+      - tell me about fire classes
+      - classification of fires
 
   - intent: edu_fire_spread
     examples: |
       - how fire spreads
       - fire spread
       - spreading of fire
+      - how does fire spread
+      - ways fire can spread
+      - fire propagation
+      - what causes fire to spread
+      - how flames spread
+      - fire transmission methods
+      - conduction convection radiation
+      - fire spread mechanisms
+      - why does fire spread quickly
+      - how fire moves
+      - fire spreading patterns
+      - what makes fire spread faster
+      - how fire travels
+      - fire growth
+      - how does fire get bigger
 
   - intent: edu_fire_consequences
     examples: |
@@ -50,29 +101,105 @@ nlu:
       - fire consequences
       - effects of fire
       - fire damage
+      - what happens after a fire
+      - fire aftermath
+      - impact of fire
+      - fire results
+      - dangers of fire
+      - fire hazards
+      - what can fire cause
+      - fire injuries
+      - fire deaths
+      - property damage from fire
+      - smoke damage
+      - fire destruction
+      - how fire affects people
+      - long term effects of fire
+      - fire losses
+      - why is fire dangerous
 
   - intent: edu_back_main
     examples: |
       - main menu
       - back to main
       - go back
+      - return to main
+      - go to main menu
+      - back to start
+      - start over
+      - return to beginning
+      - home
+      - go home
+      - main screen
+      - back to home
+      - return home
+      - exit this section
+      - leave this topic
+      - back to menu
+      - show main menu
+      - take me back
 
   - intent: edu_back_basics
     examples: |
       - back to basics
       - fire basics menu
+      - return to basics
+      - go back to basics
+      - basics menu
+      - show basics
+      - fire basics options
+      - back to fire basics
+      - return to fire basics
+      - basics section
+      - go to basics
+      - take me to basics
+      - basics again
+      - show fire basics
+      - previous menu
+      - back to basics menu
 
   # RISK ASSESSMENT
   - intent: edu_risk_assessment
     examples: |
       - risk assessment
       - fire risk
+      - fire risk assessment
+      - what is risk assessment
+      - explain risk assessment
+      - risk evaluation
+      - how to assess fire risk
+      - fire safety assessment
+      - workplace risk assessment
+      - building fire risk
+      - assess fire hazards
+      - risk assessment process
+      - fire risk analysis
+      - tell me about risk assessment
+      - why do risk assessment
+      - risk assessment steps
+      - conduct risk assessment
+      - fire risk evaluation
 
   - intent: edu_ra_why
     examples: |
       - why risk assessment
       - why do risk assessment
       - purpose of risk assessment
+      - why is risk assessment important
+      - importance of risk assessment
+      - reason for risk assessment
+      - what is the point of risk assessment
+      - benefits of risk assessment
+      - why assess fire risk
+      - why do we need risk assessment
+      - risk assessment benefits
+      - why should I do risk assessment
+      - what is risk assessment for
+      - why bother with risk assessment
+      - risk assessment purpose
+      - goals of risk assessment
+      - value of risk assessment
+      - why is fire risk assessment needed
 
   - intent: edu_ra_step1
     examples: |
@@ -112,30 +239,106 @@ nlu:
     examples: |
       - fire prevention
       - prevent fire
+      - how to prevent fire
+      - fire prevention methods
+      - preventing fires
+      - stop fire from starting
+      - fire prevention tips
+      - avoid fire
+      - fire safety measures
+      - reduce fire risk
+      - fire prevention techniques
+      - how to avoid fire
+      - ways to prevent fire
+      - fire prevention strategies
+      - keep fire from happening
+      - minimize fire risk
+      - fire prevention basics
+      - what prevents fire
 
   - intent: edu_prev_combustibles
     examples: |
       - combustibles
       - control combustibles
       - flammable materials
+      - what are combustibles
+      - combustible materials
+      - managing combustibles
+      - storing combustibles
+      - combustible storage
+      - reduce combustibles
+      - combustible hazards
+      - things that burn easily
+      - burnable materials
+      - fuel sources
+      - fire fuel
+      - materials that catch fire
+      - keeping combustibles safe
+      - combustible control measures
+      - how to handle combustibles
 
   - intent: edu_prev_ignition
     examples: |
       - ignition sources
       - control ignition
       - ignition control
+      - what causes ignition
+      - sources of ignition
+      - things that start fires
+      - sparks and flames
+      - heat sources
+      - controlling ignition sources
+      - common ignition sources
+      - what can ignite a fire
+      - fire starting sources
+      - electrical ignition
+      - how fires start
+      - managing ignition sources
+      - reduce ignition risk
+      - ignition hazards
+      - prevent ignition
 
   - intent: edu_prev_hotwork
     examples: |
       - hot work
       - welding safety
       - hot work precautions
+      - what is hot work
+      - hot work permit
+      - welding hazards
+      - cutting and grinding
+      - hot work safety
+      - brazing safety
+      - soldering fire risk
+      - hot work procedures
+      - permit to work
+      - safe welding practices
+      - hot work fire prevention
+      - torch safety
+      - flame work precautions
+      - hot work area
+      - fire watch for hot work
 
   - intent: edu_prev_housekeeping
     examples: |
       - housekeeping
       - fire housekeeping
       - tidiness
+      - good housekeeping
+      - workplace cleanliness
+      - keeping area clean
+      - fire safety housekeeping
+      - clutter removal
+      - clear escape routes
+      - waste management
+      - rubbish removal
+      - clean workspace
+      - tidy workplace
+      - remove fire hazards
+      - housekeeping standards
+      - prevent fire through cleanliness
+      - storage and tidiness
+      - organized workspace
 
   - intent: edu_prev_flammable_liquids
     examples: |
@@ -143,6 +346,20 @@ nlu:
       - lpg storage
       - gas storage
       - flash point
+      - storing flammable liquids
+      - petrol storage
+      - fuel storage safety
+      - handling flammable liquids
+      - flammable liquid safety
+      - chemical storage
+      - solvent storage
+      - paint storage
+      - flammable cabinet
+      - gasoline safety
+      - propane storage
+      - flammable liquid hazards
+      - what is flash point
+      - safe storage of fuels
 
   - intent: edu_prev_structural
     examples: |
@@ -161,9 +378,24 @@ nlu:
   # FIREFIGHTINGS
   - intent: edu_alarm_firefighting
     examples: |
-      - fire alarm
       - firefighting
-      - fire extinguisher
+      - alarm and firefighting
+      - firefighting equipment
+      - how to fight fire
+      - fire response equipment
+      - fire safety equipment
+      - firefighting basics
+      - active fire protection
+      - firefighting tools
+      - emergency fire equipment
+      - fire response
+      - fighting fires
+      - fire control equipment
+      - firefighting overview
+      - learn about firefighting
+      - firefighting techniques
+      - how to respond to fire
+      - fire combat
 
   - intent: edu_af_detection
     examples: |
@@ -171,6 +403,23 @@ nlu:
       - fire warning
       - fire alarm
       - detection systems
+      - how is fire detected
+      - fire detection methods
+      - early fire warning
+      - fire alert systems
+      - automatic fire detection
+      - detecting fire
+      - fire warning systems
+      - fire notification
+      - alarm activation
+      - how fire alarms work
+      - fire detection equipment
+      - when does alarm sound
+      - fire monitoring
+      - what is fire detection
+      - purpose of fire detection
+      - why fire detection matters
+      - fire detection overview
 
   - intent: edu_af_detectors
     examples: |
@@ -178,6 +427,25 @@ nlu:
       - smoke detector
       - heat detector
       - types of detectors
+      - what types of detectors are there
+      - optical detector
+      - ionization detector
+      - multi sensor detector
+      - flame detector
+      - carbon monoxide detector
+      - which detector to use
+      - detector selection
+      - best detector type
+      - different fire detectors
+      - how smoke detectors work
+      - how heat detectors work
+      - detector comparison
+      - choosing a detector
+      - detector for kitchen
+      - detector for bedroom
+      - point detector
+      - beam detector
+      - aspirating detector
 
   - intent: edu_af_extinguishers
     examples: |
@@ -185,6 +453,20 @@ nlu:
       - extinguisher types
       - which extinguisher
       - extinguisher classes
+      - types of fire extinguisher
+      - what extinguisher to use
+      - water extinguisher
+      - foam extinguisher
+      - CO2 extinguisher
+      - powder extinguisher
+      - wet chemical extinguisher
+      - extinguisher for electrical fire
+      - extinguisher colours
+      - fire extinguisher guide
+      - choosing an extinguisher
+      - extinguisher for each fire class
+      - how to select extinguisher
+      - right extinguisher for fire
 
   - intent: edu_af_limitations
     examples: |
@@ -192,6 +474,20 @@ nlu:
       - wrong extinguisher
       - extinguisher danger
       - extinguisher safety
+      - when not to use extinguisher
+      - extinguisher risks
+      - using wrong extinguisher
+      - dangers of wrong extinguisher
+      - extinguisher hazards
+      - can extinguisher be dangerous
+      - water on electrical fire
+      - extinguisher mistakes
+      - what happens if wrong extinguisher
+      - extinguisher warnings
+      - safe use of extinguisher
+      - when to avoid extinguisher
+      - extinguisher precautions
+      - limits of fire extinguisher
 
   - intent: edu_af_other_equipment
     examples: |
@@ -220,6 +516,21 @@ nlu:
       - evacuation
       - escape plan
       - emergency exit
+      - fire evacuation
+      - how to evacuate
+      - evacuation procedures
+      - emergency evacuation
+      - leaving the building
+      - getting out safely
+      - fire escape
+      - exit the building
+      - evacuation plan
+      - what to do in fire
+      - fire drill
+      - emergency escape
+      - safe evacuation
+      - evacuation routes
+      - how to escape fire
 
   - intent: edu_evac_means
     examples: |
